@@ -1,3 +1,3 @@
-module in.dubbadhar.StreamPiPluginAPI{
-    exports in.dubbadhar.StreamPiPluginAPI;
+module com.StreamPi.StreamPiActionAPI{
+    exports com.StreamPi.StreamPiActionAPI;
 }

@@ -1,9 +1,11 @@
-package in.dubbadhar.StreamPiPluginAPI;
+package com.StreamPi.StreamPiActionAPI;
 
-public abstract class Plugin {
+public abstract class ActionAPI {
     String name, author, repo, version, description;
 
-    public Plugin(String name, String author, String repo, String version, String description)
+    final String versionPlugin = "0.0.1";
+
+    public ActionAPI(String name, String author, String repo, String version, String description)
     {
         this.name = name;
         this.author = author;
