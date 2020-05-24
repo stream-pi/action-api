@@ -1,3 +1,3 @@
-module com.StreamPi.StreamPiActionAPI{
-    exports com.StreamPi.StreamPiActionAPI;
+module com.StreamPi.ActionAPI{
+    exports com.StreamPi.ActionAPI;
 }

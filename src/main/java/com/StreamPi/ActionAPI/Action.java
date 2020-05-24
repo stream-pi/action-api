@@ -1,18 +1,22 @@
-package com.StreamPi.StreamPiActionAPI;
+package com.StreamPi.ActionAPI;
 
-public abstract class ActionAPI {
-    String name, author, repo, version, description;
+import java.util.HashMap;
+
+public abstract class Action {
+    String name, author, repo, version, description, ID;
 
     final String versionPlugin = "0.0.1";
 
-    public ActionAPI(String name, String author, String repo, String version, String description)
+    public Action(String name, String ID, String author, String repo, String version, String description)
     {
         this.name = name;
         this.author = author;
         this.repo = repo;
         this.version = version;
         this.description = description;
+        this.ID = ID;
     }
+
 
     public String getName()
     {
@@ -39,6 +43,5 @@ public abstract class ActionAPI {
         return description;
     }
 
-    public abstract void actionOnClient();
     public abstract void actionOnServer();
 }

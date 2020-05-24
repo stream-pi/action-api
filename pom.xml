@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.StreamPi</groupId>
-    <artifactId>StreamPiActionAPI</artifactId>
+    <artifactId>ActionAPI</artifactId>
     <version>0.1</version>
 
     <build>
