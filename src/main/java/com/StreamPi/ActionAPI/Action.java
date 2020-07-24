@@ -1,13 +1,21 @@
+/*
+ActionAPI for StreamPi
+Written by Debayan Sutradhar (dubbadhar)
+ */
 package com.StreamPi.ActionAPI;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ServiceLoader;
 
 public abstract class Action {
-    String name, author, repo, version, description, ID;
+    final ActionType actionType;
+    final String name, author, repo, version, description, ID;
 
-    final String versionPlugin = "0.0.1";
+    final String moduleName = getClass().getModule().getName();
 
-    public Action(String name, String ID, String author, String repo, String version, String description)
+    public Action(String name, String ID, String author, String repo, String version, String description, ActionType actionType)
     {
         this.name = name;
         this.author = author;
@@ -15,8 +23,12 @@ public abstract class Action {
         this.version = version;
         this.description = description;
         this.ID = ID;
+        this.actionType = actionType;
     }
 
+    public ActionType getActionType() {
+        return actionType;
+    }
 
     public String getName()
     {
@@ -41,6 +53,10 @@ public abstract class Action {
     public String getDescription()
     {
         return description;
+    }
+
+    public String getModuleName() {
+        return moduleName;
     }
 
     public abstract void actionOnServer();
