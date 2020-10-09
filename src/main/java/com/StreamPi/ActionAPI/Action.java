@@ -4,17 +4,21 @@ Written by Debayan Sutradhar (dubbadhar)
  */
 package com.StreamPi.ActionAPI;
 
+import com.StreamPi.Util.Version.Version;
+
 import java.util.*;
 
 public abstract class Action {
     final ActionType actionType;
-    final String name, author, repo, version, description, ID;
+    final String name, author, repo, description, ID;
+
+    final Version version;
 
     private final Properties properties;
 
     final String moduleName = getClass().getModule().getName();
 
-    public Action(String name, String ID, String author, String repo, String version, String description, ActionType actionType, Properties properties)
+    public Action(String name, String ID, String author, String repo, Version version, String description, ActionType actionType, Properties properties)
     {
         this.name = name;
         this.author = author;
@@ -47,7 +51,7 @@ public abstract class Action {
         return repo;
     }
 
-    public String getVersion()
+    public Version getVersion()
     {
         return version;
     }
