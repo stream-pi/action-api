@@ -7,7 +7,7 @@ import com.StreamPi.Util.Version.Version;
 
 public abstract class NormalAction extends Action {
 
-    final String author, repo, description;
+    final String author, repo;
 
     final Version version;
 
@@ -15,12 +15,11 @@ public abstract class NormalAction extends Action {
 
     final String moduleName = getClass().getModule().getName();
 
-    public NormalAction(String name, String ID, String author, String repo, Version version, String description, Properties properties) {
+    public NormalAction(String name, String ID, String author, String repo, Version version, Properties properties) {
         super(name, ID, ActionType.NORMAL);
 
         this.author = author;
         this.repo = repo;
-        this.description = description;
         this.version = version;
         this.properties = properties;
 
@@ -35,11 +34,6 @@ public abstract class NormalAction extends Action {
     public String getRepo()
     {
         return repo;
-    }
-
-    public String getDescription()
-    {
-        return description;
     }
 
     public Version getVersion()
