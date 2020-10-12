@@ -38,6 +38,7 @@
 
     <properties>
         <UtilVersion>1.0</UtilVersion>
+        <JavaFXVersion>15</JavaFXVersion>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -49,6 +50,12 @@
             <groupId>com.StreamPi</groupId>
             <artifactId>Util</artifactId>
             <version>${UtilVersion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${JavaFXVersion}</version>
         </dependency>
     </dependencies>
 
