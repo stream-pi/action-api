@@ -6,12 +6,9 @@ import java.util.HashMap;
 
 public class Properties {
     private HashMap<String, Property> properties;
-    boolean finalize = false;
 
-    public void addProperty(String propertyName, Property property) throws MinorException {
-        if(finalize)
-            throw new MinorException("Cannot add new properties");
-
+    public void addProperty(String propertyName, Property property)
+    {
         properties.put(propertyName, property);
     }
 
@@ -31,15 +28,8 @@ public class Properties {
         }
     }
 
-    public void removeProperty(String propertyName, Property property) throws MinorException {
-        if(finalize)
-            throw new MinorException("Cannot add new properties");
-
-        properties.remove(propertyName);
-    }
-
-    public void finalizeProperties()
+    public void removeProperty(String propertyName, Property property)
     {
-        finalize = true;
+        properties.remove(propertyName);
     }
 }
