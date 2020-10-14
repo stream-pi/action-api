@@ -1,21 +1,19 @@
-package com.StreamPi.ActionAPI.Service;
+package com.StreamPi.ActionAPI.NormalAction;
 
 import com.StreamPi.ActionAPI.ActionProperty.Properties;
-import com.StreamPi.ActionAPI.ActionProperty.Property;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public abstract class ServerService {
+public abstract class CommonBackgroundService{
     private Properties properties;
     final private String moduleName;
 
-    public ServerService(Properties properties, String moduleName)
+    public CommonBackgroundService(Properties properties, String moduleName)
     {
         this.moduleName = moduleName;
         this.properties = properties;
+        init();
     }
+
+    public abstract void init();
 
     public String getModuleName()
     {

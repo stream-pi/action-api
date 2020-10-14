@@ -3,7 +3,6 @@ package com.StreamPi.ActionAPI.NormalAction;
 import com.StreamPi.ActionAPI.Action.Action;
 import com.StreamPi.ActionAPI.Action.ActionType;
 import com.StreamPi.ActionAPI.ActionProperty.Properties;
-import com.StreamPi.ActionAPI.Service.Service;
 import com.StreamPi.Util.Version.Version;
 
 public abstract class NormalAction extends Action {
@@ -12,20 +11,29 @@ public abstract class NormalAction extends Action {
 
     final Version version;
 
-    final Service service;
-
     private final Properties properties;
 
     final String moduleName = getClass().getModule().getName();
 
-    public NormalAction(String name, String ID, String author, String repo, Version version, Properties properties, Service service) {
+    public NormalAction(String name, String ID, String author, String repo, Version version, Properties properties) {
         super(name, ID, ActionType.NORMAL);
 
         this.author = author;
         this.repo = repo;
         this.version = version;
         this.properties = properties;
-        this.service = service;
+
+        initAction();
+    }
+
+    public void setCommonBackgroundService(CommonBackgroundService commonBackgroundService)
+    {
+        CommonBackgroundServices.getInstance().addBgService(commonBackgroundService);
+    }
+
+    public CommonBackgroundService getCommonBackgroundService()
+    {
+        return CommonBackgroundServices.getInstance().getBgService(moduleName);
     }
 
     public String getAuthor()
@@ -52,13 +60,7 @@ public abstract class NormalAction extends Action {
         return moduleName;
     }
 
-    public void initAction()
-    {
+    public abstract void initAction();
 
-    }
-
-    public void actionClicked()
-    {
-        service.onActionClicked();
-    }
+    public abstract void actionClicked();
 }
