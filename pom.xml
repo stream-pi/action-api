@@ -6,7 +6,7 @@
 
     <groupId>com.StreamPi</groupId>
     <artifactId>ActionAPI</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
 
     <build>
         <plugins>
@@ -37,7 +37,7 @@
     </build>
 
     <properties>
-        <UtilVersion>1.0</UtilVersion>
+        <UtilVersion>1.0.0</UtilVersion>
         <JavaFXVersion>15</JavaFXVersion>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
