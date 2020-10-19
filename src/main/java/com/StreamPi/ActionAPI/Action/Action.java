@@ -5,6 +5,7 @@ Written by Debayan Sutradhar (dubbadhar)
 package com.StreamPi.ActionAPI.Action;
 
 
+import com.StreamPi.ActionAPI.ActionProperty.Properties;
 import javafx.scene.image.Image;
 
 public class Action {
@@ -12,6 +13,8 @@ public class Action {
     private String name, ID;
     private Image icon = null;
     private Location location = null;
+
+    public Properties properties;
 
     public Action(String name, String ID, ActionType actionType)
     {
@@ -44,6 +47,11 @@ public class Action {
         return ID;
     }
 
+    public void setProperties(Properties properties)
+    {
+        this.properties = properties;
+    }
+
     public void setLocation(Location location)
     {
         this.location = location;
@@ -61,5 +69,10 @@ public class Action {
 
     public Image getIcon() {
         return icon;
+    }
+
+    public Properties getProperties()
+    {
+        return properties;
     }
 }

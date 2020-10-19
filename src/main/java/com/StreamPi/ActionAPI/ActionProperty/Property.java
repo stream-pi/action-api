@@ -3,9 +3,21 @@ package com.StreamPi.ActionAPI.ActionProperty;
 public class Property {
     private Object value;
 
-    public Property(Object value)
+    private String name;
+
+    public Property(String name)
     {
-        this.value = value;
+        this.name = name;
+    }
+
+    public void setName()
+    {
+        this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 
     public void setValue(Object value)

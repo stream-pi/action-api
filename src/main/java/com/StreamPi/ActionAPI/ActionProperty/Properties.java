@@ -2,34 +2,30 @@ package com.StreamPi.ActionAPI.ActionProperty;
 
 import com.StreamPi.Util.Exception.MinorException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Properties {
-    private HashMap<String, Property> properties;
+    private ArrayList<Property> properties;
 
-    public void addProperty(String propertyName, Property property)
+    public void addProperty(Property property)
     {
-        properties.put(propertyName, property);
-    }
-
-    public void setPropertyValue(String propertyName, Property property)
-    {
-        properties.replace(propertyName, property);
+        properties.add(property);
     }
 
     public Property getProperty(String propertyName) throws MinorException {
-        try
+
+        for(Property property : properties)
         {
-            return properties.get(propertyName);
+            if(property.getName().equals(propertyName))
+                return property;
         }
-        catch (Exception e)
-        {
-            throw new MinorException("Unable to get property '"+propertyName+"'. Check stacktrace! ");
-        }
+
+        throw new MinorException("Cannot find property '"+propertyName+"'.");
     }
 
-    public void removeProperty(String propertyName, Property property)
+    public void removeProperty(Property property)
     {
-        properties.remove(propertyName);
+        properties.remove(property);
     }
 }
