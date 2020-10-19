@@ -13,8 +13,11 @@ public class Action {
     private String name, ID;
     private Image icon = null;
     private Location location = null;
+    private boolean hasIcon = false;
 
     public Properties properties;
+
+    public String moduleName;
 
     public Action(String name, String ID, ActionType actionType)
     {
@@ -52,6 +55,21 @@ public class Action {
         this.properties = properties;
     }
 
+    public void setModuleName(String moduleName)
+    {
+        this.moduleName = moduleName;
+    }
+
+    public void setHasIcon(boolean value)
+    {
+        hasIcon = value;
+    }
+
+    public boolean isHasIcon()
+    {
+        return hasIcon;
+    }
+
     public void setLocation(Location location)
     {
         this.location = location;
@@ -74,5 +92,10 @@ public class Action {
     public Properties getProperties()
     {
         return properties;
+    }
+
+    public String getModuleName()
+    {
+        return moduleName;
     }
 }

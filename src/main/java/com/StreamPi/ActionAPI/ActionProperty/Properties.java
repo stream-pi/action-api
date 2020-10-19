@@ -28,4 +28,14 @@ public class Properties {
     {
         properties.remove(property);
     }
+
+    public int getSize()
+    {
+        return properties.size();
+    }
+
+    public ArrayList<Property> get()
+    {
+        return properties;
+    }
 }

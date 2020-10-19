@@ -11,8 +11,6 @@ public abstract class NormalAction extends Action {
 
     final Version version;
 
-    final String moduleName = getClass().getModule().getName();
-
     public NormalAction(String name, String ID, String author, String repo, Version version, Properties properties) {
         super(name, ID, ActionType.NORMAL);
 
@@ -47,11 +45,6 @@ public abstract class NormalAction extends Action {
     public Version getVersion()
     {
         return version;
-    }
-
-
-    public String getModuleName() {
-        return moduleName;
     }
 
     public abstract void initAction();
