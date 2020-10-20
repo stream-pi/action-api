@@ -8,6 +8,16 @@ import java.util.HashMap;
 public class Properties {
     private ArrayList<Property> properties;
 
+    public Properties()
+    {
+        properties = new ArrayList<>();
+    }
+
+    public void set(ArrayList<Property> properties)
+    {
+        this.properties = properties;
+    }
+
     public void addProperty(Property property)
     {
         properties.add(property);
