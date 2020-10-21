@@ -16,14 +16,26 @@ public class Action {
     private boolean hasIcon = false;
 
     public Properties properties;
+    public String category;
 
     public String moduleName;
 
     public Action(String name, String ID, ActionType actionType)
     {
         this.name = name;
+        this.category = "Others";
         this.ID = ID;
         this.actionType = actionType;
+    }
+
+    public void setCategory(String category)
+    {
+        this.category = category;
+    }
+
+    public String getCategory()
+    {
+        return category;
     }
 
     public ActionType getActionType() {
