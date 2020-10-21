@@ -10,6 +10,8 @@ public class OtherAction extends Action{
 
     public OtherAction(String name, String ID, ActionType actionType) {
         super(name, ID, actionType);
+
+        setCategory("StreamPi");
     }
 
     public void setActions(ArrayList<Action> actions)
