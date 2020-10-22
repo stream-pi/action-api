@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 
 public class Action {
     private final ActionType actionType;
-    private String name, ID;
+    private String name, actionName, ID;
     private Image icon = null;
     private Location location = null;
     private boolean hasIcon = false;
@@ -20,12 +20,42 @@ public class Action {
 
     public String moduleName;
 
+    public boolean invalid;
+
     public Action(String name, String ID, ActionType actionType)
     {
         this.name = name;
+        this.actionName = "Action";
         this.category = "Others";
         this.ID = ID;
         this.actionType = actionType;
+    }
+
+    public void setInvalid(boolean invalid) {
+        this.invalid = invalid;
+    }
+
+    public boolean isInvalid() {
+        return invalid;
+    }
+
+    public Action(String ID, ActionType actionType)
+    {
+        this.actionName = "Action";
+        this.category = "Others";
+        this.ID = ID;
+        this.actionType = actionType;
+    }
+
+
+    public void setActionName(String actionName)
+    {
+        this.actionName = actionName;
+    }
+
+    public String getActionName()
+    {
+        return actionName;
     }
 
     public void setCategory(String category)

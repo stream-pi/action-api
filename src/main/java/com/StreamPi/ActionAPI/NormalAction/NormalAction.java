@@ -3,6 +3,7 @@ package com.StreamPi.ActionAPI.NormalAction;
 import com.StreamPi.ActionAPI.Action.Action;
 import com.StreamPi.ActionAPI.Action.ActionType;
 import com.StreamPi.ActionAPI.ActionProperty.Properties;
+import com.StreamPi.Util.Exception.MinorException;
 import com.StreamPi.Util.Version.Version;
 
 public abstract class NormalAction extends Action {
@@ -18,8 +19,6 @@ public abstract class NormalAction extends Action {
         this.repo = repo;
         this.version = version;
         this.properties = properties;
-
-        initAction();
     }
 
     public void setCommonBackgroundService(CommonBackgroundService commonBackgroundService)
@@ -47,7 +46,7 @@ public abstract class NormalAction extends Action {
         return version;
     }
 
-    public abstract void initAction();
+    public abstract void initAction() throws MinorException;
 
     public abstract void actionClicked();
 }

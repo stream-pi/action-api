@@ -6,6 +6,6 @@ public class FolderAction extends OtherAction {
     public FolderAction(String name, String ID) {
         super(name, ID, ActionType.FOLDER);
 
-        setCategory("StreamPi");
+        setActionName("Folder");
     }
 }
