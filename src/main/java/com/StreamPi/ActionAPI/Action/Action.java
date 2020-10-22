@@ -8,15 +8,17 @@ package com.StreamPi.ActionAPI.Action;
 import com.StreamPi.ActionAPI.ActionProperty.Properties;
 import javafx.scene.image.Image;
 
+import java.util.UUID;
+
 public class Action {
-    private final ActionType actionType;
+    private ActionType actionType;
     private String name, actionName, ID;
     private Image icon = null;
     private Location location = null;
     private boolean hasIcon = false;
 
-    public Properties properties;
-    public String category;
+    private Properties properties;
+    private String category;
 
     public String moduleName;
 
@@ -25,8 +27,7 @@ public class Action {
     public Action(String name, String ID, ActionType actionType)
     {
         this.name = name;
-        this.actionName = "Action";
-        this.category = "Others";
+        setCategory("Others");
         this.ID = ID;
         this.actionType = actionType;
     }
@@ -41,10 +42,20 @@ public class Action {
 
     public Action(String ID, ActionType actionType)
     {
-        this.actionName = "Action";
         this.category = "Others";
         this.ID = ID;
         this.actionType = actionType;
+    }
+
+    public Action(ActionType actionType)
+    {
+        setCategory("Others");
+        this.actionType = actionType;
+    }
+
+    public void setIDRandom()
+    {
+        setID(UUID.randomUUID().toString());
     }
 
 

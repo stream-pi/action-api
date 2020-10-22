@@ -8,17 +8,39 @@ import com.StreamPi.Util.Version.Version;
 
 public abstract class NormalAction extends Action {
 
-    final String author, repo;
+    private String author, repo;
 
-    final Version version;
+    private Version version;
 
-    public NormalAction(String name, String ID, String author, String repo, Version version, Properties properties) {
-        super(name, ID, ActionType.NORMAL);
 
+    public NormalAction(String name, String author, String repo, Version version) {
+        super(ActionType.NORMAL);
+        setName(name);
         this.author = author;
         this.repo = repo;
         this.version = version;
-        this.properties = properties;
+    }
+
+    public NormalAction()
+    {
+        super(ActionType.NORMAL);
+        setModuleName(getClass().getModule().getName());
+    }
+
+
+    public void setAuthor(String author)
+    {
+        this.author = author;
+    }
+
+    public void setRepo(String repo)
+    {
+        this.repo = repo;
+    }
+
+    public void setVersion(Version version)
+    {
+        this.version = version;
     }
 
     public void setCommonBackgroundService(CommonBackgroundService commonBackgroundService)
@@ -48,5 +70,5 @@ public abstract class NormalAction extends Action {
 
     public abstract void initAction() throws MinorException;
 
-    public abstract void actionClicked();
+    public abstract void onActionClicked() throws MinorException;
 }
