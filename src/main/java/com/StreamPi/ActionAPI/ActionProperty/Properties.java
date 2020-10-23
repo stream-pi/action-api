@@ -4,39 +4,41 @@ import com.StreamPi.Util.Exception.MinorException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 public class Properties {
-    private ArrayList<Property> properties;
+    private HashMap<String, String> properties;
 
     public Properties()
     {
-        properties = new ArrayList<>();
+        properties = new HashMap<>();
     }
 
-    public void set(ArrayList<Property> properties)
+    public void set(HashMap<String, String> properties)
     {
         this.properties = properties;
     }
 
-    public void addProperty(Property property)
+    public void addProperty(String keyName, String property)
     {
-        properties.add(property);
+        properties.put(keyName, property);
     }
 
-    public Property getProperty(String propertyName) throws MinorException {
-
-        for(Property property : properties)
+    public Object getProperty(String propertyName) throws MinorException {
+        try
         {
-            if(property.getName().equals(propertyName))
-                return property;
+            return properties.get(propertyName);
         }
-
-        throw new MinorException("Cannot find property '"+propertyName+"'.");
+        catch (NoSuchElementException e)
+        {
+            e.printStackTrace();
+            throw new MinorException("Cannot find property '"+propertyName+"'.");
+        }
     }
 
-    public void removeProperty(Property property)
+    public void removeProperty(String propertyName)
     {
-        properties.remove(property);
+        properties.remove(propertyName);
     }
 
     public int getSize()
@@ -44,7 +46,7 @@ public class Properties {
         return properties.size();
     }
 
-    public ArrayList<Property> get()
+    public HashMap<String, String> get()
     {
         return properties;
     }

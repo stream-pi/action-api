@@ -68,7 +68,7 @@ public abstract class NormalAction extends Action {
         return version;
     }
 
-    public abstract void initAction() throws MinorException;
+    public abstract void initAction() throws Exception;
 
-    public abstract void onActionClicked() throws MinorException;
+    public abstract void onActionClicked() throws Exception;
 }

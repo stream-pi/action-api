@@ -6,6 +6,7 @@ package com.StreamPi.ActionAPI.Action;
 
 
 import com.StreamPi.ActionAPI.ActionProperty.Properties;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 
 import java.util.UUID;
@@ -16,6 +17,9 @@ public class Action {
     private Image icon = null;
     private Location location = null;
     private boolean hasIcon = false;
+
+    private Node serverButtonGraphic = null;
+
 
     private Properties properties;
     private String category;
@@ -30,6 +34,16 @@ public class Action {
         setCategory("Others");
         this.ID = ID;
         this.actionType = actionType;
+    }
+
+    public void setServerButtonGraphic(Node graphic)
+    {
+        this.serverButtonGraphic = graphic;
+    }
+
+    public Node getServerButtonGraphic()
+    {
+        return serverButtonGraphic;
     }
 
     public void setInvalid(boolean invalid) {
