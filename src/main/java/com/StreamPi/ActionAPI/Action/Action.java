@@ -8,6 +8,11 @@ package com.StreamPi.ActionAPI.Action;
 import com.StreamPi.ActionAPI.ActionProperty.Properties;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import org.kordamp.ikonli.javafx.FontIcon;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
@@ -17,6 +22,8 @@ public class Action {
     private Image icon = null;
     private Location location = null;
     private boolean hasIcon = false;
+
+    private Logger logger = LoggerFactory.getLogger(Action.class);
 
     private Node serverButtonGraphic = null;
 
@@ -36,7 +43,20 @@ public class Action {
         this.actionType = actionType;
     }
 
-    public void setServerButtonGraphic(Node graphic)
+    public void setServerButtonGraphic(String iconName)
+    {
+        try
+        {
+            this.serverButtonGraphic = new FontIcon(iconName);
+        }
+        catch (Exception e)
+        {
+            this.serverButtonGraphic = null;
+            logger.error("ICON FALLBACK BECAUSE INVALID ICON SUPPLIED");
+        }
+    }
+
+    public void setServerButtonGraphic(ImageView graphic)
     {
         this.serverButtonGraphic = graphic;
     }
