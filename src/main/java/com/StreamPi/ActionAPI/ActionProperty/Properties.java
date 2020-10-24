@@ -5,13 +5,24 @@ import com.StreamPi.Util.Exception.MinorException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
-public class Properties {
+class Properties {
     private HashMap<String, String> properties;
 
     public Properties()
     {
         properties = new HashMap<>();
+    }
+
+    public Properties(String... propertyNames)
+    {
+        properties = new HashMap<>();
+
+        for(String each : propertyNames)
+        {
+            properties.put(each, null);
+        }
     }
 
     public void set(HashMap<String, String> properties)
@@ -41,13 +52,18 @@ public class Properties {
         properties.remove(propertyName);
     }
 
+    private HashMap<String, String> get()
+    {
+        return properties;
+    }
+
+    public Set<String> getKeySet()
+    {
+        return properties.keySet();
+    }
+
     public int getSize()
     {
         return properties.size();
-    }
-
-    public HashMap<String, String> get()
-    {
-        return properties;
     }
 }

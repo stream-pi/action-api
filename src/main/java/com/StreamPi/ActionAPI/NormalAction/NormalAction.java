@@ -2,7 +2,6 @@ package com.StreamPi.ActionAPI.NormalAction;
 
 import com.StreamPi.ActionAPI.Action.Action;
 import com.StreamPi.ActionAPI.Action.ActionType;
-import com.StreamPi.ActionAPI.ActionProperty.Properties;
 import com.StreamPi.Util.Exception.MinorException;
 import com.StreamPi.Util.Version.Version;
 
@@ -10,15 +9,13 @@ public abstract class NormalAction extends Action {
 
     private String author, repo;
 
-    private Version version;
-
 
     public NormalAction(String name, String author, String repo, Version version) {
         super(ActionType.NORMAL);
         setName(name);
         this.author = author;
         this.repo = repo;
-        this.version = version;
+        setVersion(version);
     }
 
     public NormalAction()
@@ -38,10 +35,6 @@ public abstract class NormalAction extends Action {
         this.repo = repo;
     }
 
-    public void setVersion(Version version)
-    {
-        this.version = version;
-    }
 
     public void setCommonBackgroundService(CommonBackgroundService commonBackgroundService)
     {
@@ -63,10 +56,6 @@ public abstract class NormalAction extends Action {
         return repo;
     }
 
-    public Version getVersion()
-    {
-        return version;
-    }
 
     public abstract void initAction() throws Exception;
 

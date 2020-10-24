@@ -1,15 +1,18 @@
 package com.StreamPi.ActionAPI.NormalAction;
 
-import com.StreamPi.ActionAPI.ActionProperty.Properties;
+import com.StreamPi.ActionAPI.ActionProperty.ServerProperties;
+import com.StreamPi.ActionAPI.ActionProperty.ClientProperties;
 
 public abstract class CommonBackgroundService{
-    private Properties properties;
+    private ServerProperties serverProperties;
+    private ClientProperties clientProperties;
     final private String moduleName;
 
-    public CommonBackgroundService(Properties properties, String moduleName)
+    public CommonBackgroundService(ServerProperties serverProperties, ClientProperties clientProperties, String moduleName)
     {
         this.moduleName = moduleName;
-        this.properties = properties;
+        this.serverProperties = serverProperties;
+        this.clientProperties = clientProperties;
         init();
     }
 
@@ -20,13 +23,23 @@ public abstract class CommonBackgroundService{
         return moduleName;
     }
 
-    public Properties getProperties()
+    public ServerProperties getServerProperties()
     {
-        return properties;
+        return serverProperties;
     }
 
-    public void setProperties(Properties properties)
+    public ClientProperties getClientProperties()
     {
-        this.properties = properties;
+        return clientProperties;
+    }
+
+    public void setServerProperties(ServerProperties properties)
+    {
+        this.serverProperties = properties;
+    }
+
+    public void setClientProperties(ClientProperties properties)
+    {
+        this.clientProperties = properties;
     }
 }

@@ -5,7 +5,9 @@ Written by Debayan Sutradhar (dubbadhar)
 package com.StreamPi.ActionAPI.Action;
 
 
-import com.StreamPi.ActionAPI.ActionProperty.Properties;
+import com.StreamPi.ActionAPI.ActionProperty.ClientProperties;
+import com.StreamPi.ActionAPI.ActionProperty.ServerProperties;
+import com.StreamPi.Util.Version.Version;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,6 +21,7 @@ import java.util.UUID;
 public class Action {
     private ActionType actionType;
     private String name, actionName, ID;
+    private Version version;
     private Image icon = null;
     private Location location = null;
     private boolean hasIcon = false;
@@ -28,7 +31,8 @@ public class Action {
     private Node serverButtonGraphic = null;
 
 
-    private Properties properties;
+    private ServerProperties serverProperties;
+    private ClientProperties clientProperties;
     private String category;
 
     public String moduleName;
@@ -137,9 +141,14 @@ public class Action {
         return ID;
     }
 
-    public void setProperties(Properties properties)
+    public void setServerProperties(ServerProperties properties)
     {
-        this.properties = properties;
+        this.serverProperties = properties;
+    }
+
+    public void setClientProperties(ClientProperties properties)
+    {
+        this.clientProperties = properties;
     }
 
     public void setModuleName(String moduleName)
@@ -176,13 +185,30 @@ public class Action {
         return icon;
     }
 
-    public Properties getProperties()
+    public ServerProperties getServerProperties()
     {
-        return properties;
+        return serverProperties;
+    }
+
+    public ClientProperties getClientProperties()
+    {
+        return clientProperties;
     }
 
     public String getModuleName()
     {
         return moduleName;
+    }
+
+
+    public void setVersion(Version version)
+    {
+        this.version = version;
+    }
+
+
+    public Version getVersion()
+    {
+        return version;
     }
 }
