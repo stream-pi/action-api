@@ -35,7 +35,7 @@ class Properties {
         properties.put(keyName, property);
     }
 
-    public Object getProperty(String propertyName) throws MinorException {
+    public String getProperty(String propertyName) throws MinorException {
         try
         {
             return properties.get(propertyName);
