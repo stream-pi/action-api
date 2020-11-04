@@ -41,6 +41,7 @@ public class Action {
 
     public Action(String name, String ID, ActionType actionType)
     {
+        this.serverProperties = new ServerProperties();
         this.name = name;
         setCategory("Others");
         this.ID = ID;
@@ -80,6 +81,7 @@ public class Action {
 
     public Action(String ID, ActionType actionType)
     {
+        this.serverProperties = new ServerProperties();
         this.category = "Others";
         this.ID = ID;
         this.actionType = actionType;
@@ -87,8 +89,14 @@ public class Action {
 
     public Action(ActionType actionType)
     {
+        this.serverProperties = new ServerProperties();
         setCategory("Others");
         this.actionType = actionType;
+    }
+
+    public Action()
+    {
+        this.serverProperties = new ServerProperties();
     }
 
     public void setIDRandom()
@@ -139,11 +147,6 @@ public class Action {
     public String getID()
     {
         return ID;
-    }
-
-    public void setServerProperties(ServerProperties properties)
-    {
-        this.serverProperties = properties;
     }
 
     public void setClientProperties(ClientProperties properties)

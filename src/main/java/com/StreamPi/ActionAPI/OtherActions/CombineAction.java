@@ -2,6 +2,9 @@ package com.StreamPi.ActionAPI.OtherActions;
 
 import com.StreamPi.ActionAPI.Action.ActionType;
 import com.StreamPi.ActionAPI.ActionProperty.ClientProperties;
+import com.StreamPi.ActionAPI.ActionProperty.Property.ControlType;
+import com.StreamPi.ActionAPI.ActionProperty.Property.Property;
+import com.StreamPi.ActionAPI.ActionProperty.Property.Type;
 import com.StreamPi.Util.Exception.MinorException;
 
 import java.util.LinkedList;
@@ -22,7 +25,7 @@ public class CombineAction extends OtherAction {
         LinkedList<String> children = new LinkedList<>();
         for(int i = 1;i<=size; i++)
         {
-            children.add(getClientProperties().getProperty(i+"").toString());
+            children.add(getClientProperties().getSingleProperty(i+"").toString());
         }
 
         return children;
@@ -30,7 +33,13 @@ public class CombineAction extends OtherAction {
 
     public void addChild(String actionID, int index)
     {
-        getClientProperties().addProperty(index+"", actionID);
+        try {
+            Property property = new Property(index+"", Type.STRING, ControlType.TEXT_FIELD);
+            property.setStringValue(actionID);
+            getClientProperties().addProperty(property);
+        } catch (MinorException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addChild(String actionID)

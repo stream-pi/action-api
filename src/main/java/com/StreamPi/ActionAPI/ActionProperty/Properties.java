@@ -1,65 +1,113 @@
 package com.StreamPi.ActionAPI.ActionProperty;
 
+import com.StreamPi.ActionAPI.ActionProperty.Property.Property;
 import com.StreamPi.Util.Exception.MinorException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.*;
 
 class Properties {
-    private HashMap<String, String> properties;
+    private List<Property> properties;
+    private boolean isDuplicatePropertyAllowed = false;
 
     public Properties()
     {
-        properties = new HashMap<>();
+        properties = new ArrayList<>();
     }
 
-    public Properties(String... propertyNames)
-    {
-        properties = new HashMap<>();
-
-        for(String each : propertyNames)
-        {
-            properties.put(each, null);
-        }
-    }
-
-    public void set(HashMap<String, String> properties)
+    public Properties(List<Property> properties)
     {
         this.properties = properties;
     }
 
-    public void addProperty(String keyName, String property)
+    public void set(List<Property> properties)
     {
-        properties.put(keyName, property);
+        this.properties = properties;
     }
 
-    public String getProperty(String propertyName) throws MinorException {
-        try
+    public void setDuplicatePropertyAllowed(boolean value)
+    {
+        isDuplicatePropertyAllowed = value;
+    }
+
+    public boolean isDuplicatePropertyAllowed()
+    {
+        return isDuplicatePropertyAllowed;
+    }
+
+    public void addProperty(Property property)
+    {
+        if(!isDuplicatePropertyAllowed)
+            removeProperty(property.getName());
+
+        properties.add(property);
+    }
+
+    public void clear()
+    {
+        properties.clear();
+    }
+
+    public void set(Properties properties)
+    {
+        this.properties = properties.get();
+    }
+
+    public int getPropertyIndex(String name)
+    {
+        for(int i = 0;i<properties.size();i++)
         {
-            return properties.get(propertyName);
+            if(properties.get(i).getName().equals(name))
+                return i;
         }
-        catch (NoSuchElementException e)
+        return -1;
+    }
+
+    public Property getSingleProperty(String propertyName) throws MinorException {
+        if(isDuplicatePropertyAllowed)
+            throw new MinorException("DO NOT USE THIS");
+
+        int index = getPropertyIndex(propertyName);
+        if(index == -1)
+            return null;
+        else
+            return properties.get(index);
+    }
+
+    public List<Property> getMultipleProperties(String propertyName){
+        ArrayList<Property> tbr = new ArrayList<>();
+
+        for(Property property : properties)
         {
-            e.printStackTrace();
-            throw new MinorException("Cannot find property '"+propertyName+"'.");
+            if(property.getName().equals(propertyName))
+                tbr.add(property);
         }
+
+        return tbr;
     }
 
     public void removeProperty(String propertyName)
     {
-        properties.remove(propertyName);
+        int index = getPropertyIndex(propertyName);
+        if(index!=-1)
+            properties.remove(index);
     }
 
-    private HashMap<String, String> get()
+    public List<Property> get()
     {
         return properties;
     }
 
-    public Set<String> getKeySet()
+    public List<String> getNames()
     {
-        return properties.keySet();
+        ArrayList<String> names = new ArrayList<>();
+
+        for(Property property : properties)
+        {
+            if(!names.contains(property.getName()))
+                names.add(property.getName());
+        }
+
+        return names;
     }
 
     public int getSize()

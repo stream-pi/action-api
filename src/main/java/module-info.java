@@ -10,5 +10,6 @@ module com.StreamPi.ActionAPI{
     exports com.StreamPi.ActionAPI.Action;
     exports com.StreamPi.ActionAPI.OtherActions;
     exports com.StreamPi.ActionAPI.ActionProperty;
+    exports com.StreamPi.ActionAPI.ActionProperty.Property;
     exports com.StreamPi.ActionAPI.NormalAction;
 }
