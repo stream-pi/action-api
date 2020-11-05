@@ -24,7 +24,7 @@ public class Action {
     private Version version;
     private Image icon = null;
     private Location location = null;
-    private boolean hasIcon = false;
+    private boolean showIcon = false;
 
     private String displayText = null;
     private boolean showDisplayText = true;
@@ -188,14 +188,14 @@ public class Action {
         this.moduleName = moduleName;
     }
 
-    public void setHasIcon(boolean value)
+    public void setShowIcon(boolean value)
     {
-        hasIcon = value;
+        this.showIcon = value;
     }
 
-    public boolean isHasIcon()
+    public boolean isShowIcon()
     {
-        return hasIcon;
+        return showIcon;
     }
 
     public void setLocation(Location location)
