@@ -26,6 +26,10 @@ public class Action {
     private Location location = null;
     private boolean hasIcon = false;
 
+    private String displayText = null;
+    private boolean showDisplayText = true;
+    private DisplayTextAlignment displayTextAlignment = DisplayTextAlignment.CENTER;
+
     private Logger logger = LoggerFactory.getLogger(Action.class);
 
     private Node serverButtonGraphic = null;
@@ -46,6 +50,31 @@ public class Action {
         setCategory("Others");
         this.ID = ID;
         this.actionType = actionType;
+    }
+
+    public void setDisplayText(String displayText) {
+        this.displayText = displayText;
+    }
+
+    public void setShowDisplayText(boolean showDisplayText) {
+        this.showDisplayText = showDisplayText;
+    }
+
+    public void setDisplayTextAlignment(DisplayTextAlignment displayTextAlignment) {
+        this.displayTextAlignment = displayTextAlignment;
+    }
+
+    public DisplayTextAlignment getDisplayTextAlignment() {
+        return displayTextAlignment;
+    }
+
+    public String getDisplayText() {
+        return displayText;
+    }
+
+    public boolean isShowDisplayText()
+    {
+        return showDisplayText;
     }
 
     public void setServerButtonGraphic(String iconName)
