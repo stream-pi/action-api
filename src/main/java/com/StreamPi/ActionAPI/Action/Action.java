@@ -22,7 +22,7 @@ public class Action {
     private ActionType actionType;
     private String name, actionName, ID;
     private Version version;
-    private Image icon = null;
+    private byte[] icon = null;
     private Location location = null;
     private boolean showIcon = false;
 
@@ -208,12 +208,12 @@ public class Action {
         return location;
     }
 
-    public void setIcon(Image icon)
+    public void setIcon(byte[] icon)
     {
         this.icon = icon;
     }
 
-    public Image getIcon() {
+    public byte[] getIconAsByteArray() {
         return icon;
     }
 
