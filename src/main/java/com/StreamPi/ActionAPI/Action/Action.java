@@ -220,6 +220,10 @@ public class Action {
         return hasIcon;
     }
 
+    public void setHasIcon(boolean hasIcon) {
+        this.hasIcon = hasIcon;
+    }
+
     public byte[] getIconAsByteArray() {
         return icon;
     }
