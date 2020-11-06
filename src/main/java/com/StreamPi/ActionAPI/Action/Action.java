@@ -27,6 +27,8 @@ public class Action {
     private Location location = null;
     private boolean showIcon = false;
 
+    private String bgColourHex = null;
+
     private String displayText = null;
     private boolean showDisplayText = true;
     private DisplayTextAlignment displayTextAlignment = DisplayTextAlignment.CENTER;
@@ -63,6 +65,14 @@ public class Action {
 
     public void setDisplayTextAlignment(DisplayTextAlignment displayTextAlignment) {
         this.displayTextAlignment = displayTextAlignment;
+    }
+
+    public void setBgColourHex(String bgColourHex) {
+        this.bgColourHex = bgColourHex;
+    }
+
+    public String getBgColourHex() {
+        return bgColourHex;
     }
 
     public DisplayTextAlignment getDisplayTextAlignment() {
