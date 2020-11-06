@@ -23,6 +23,7 @@ public class Action {
     private String name, actionName, ID;
     private Version version;
     private byte[] icon = null;
+    private boolean hasIcon = false;
     private Location location = null;
     private boolean showIcon = false;
 
@@ -210,7 +211,13 @@ public class Action {
 
     public void setIcon(byte[] icon)
     {
+        this.hasIcon = true;
         this.icon = icon;
+    }
+
+    public boolean isHasIcon()
+    {
+        return hasIcon;
     }
 
     public byte[] getIconAsByteArray() {
