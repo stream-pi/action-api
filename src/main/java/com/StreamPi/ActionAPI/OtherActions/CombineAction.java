@@ -34,7 +34,7 @@ public class CombineAction extends OtherAction {
     public void addChild(String actionID, int index)
     {
         try {
-            Property property = new Property(index+"", Type.STRING, ControlType.TEXT_FIELD);
+            Property property = new Property(index+"", Type.STRING);
             property.setStringValue(actionID);
             getClientProperties().addProperty(property);
         } catch (MinorException e) {

@@ -27,7 +27,7 @@ public class FolderAction extends OtherAction {
     public void addChild(String actionID)
     {
         try {
-            Property property = new Property("child", Type.STRING, ControlType.TEXT_FIELD);
+            Property property = new Property("child", Type.STRING);
             property.setStringValue(actionID);
             getClientProperties().addProperty(property);
         } catch (MinorException e) {
