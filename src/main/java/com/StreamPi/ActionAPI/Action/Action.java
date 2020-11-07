@@ -28,7 +28,7 @@ public class Action {
     private boolean showIcon = false;
 
 
-    private String displayFontColourHex = null;
+    private String displayTextFontColourHex = null;
     private String bgColourHex = null;
 
     private String displayText = null;
@@ -70,12 +70,12 @@ public class Action {
     }
 
 
-    public void setDisplayFontColourHex(String displayFontColourHex) {
-        this.displayFontColourHex = displayFontColourHex;
+    public void setDisplayTextFontColourHex(String displayTextFontColourHex) {
+        this.displayTextFontColourHex = displayTextFontColourHex;
     }
 
-    public String getDisplayFontColourHex() {
-        return displayFontColourHex;
+    public String getDisplayTextFontColourHex() {
+        return displayTextFontColourHex;
     }
 
     public void setBgColourHex(String bgColourHex) {
