@@ -28,7 +28,7 @@ public class Action {
     private boolean showIcon = false;
 
 
-    private String fontColourHex = null;
+    private String displayFontColourHex = null;
     private String bgColourHex = null;
 
     private String displayText = null;
@@ -69,12 +69,13 @@ public class Action {
         this.displayTextAlignment = displayTextAlignment;
     }
 
-    public void setFontColourHex(String fontColourHex) {
-        this.fontColourHex = fontColourHex;
+
+    public void setDisplayFontColourHex(String displayFontColourHex) {
+        this.displayFontColourHex = displayFontColourHex;
     }
 
-    public String getFontColourHex() {
-        return fontColourHex;
+    public String getDisplayFontColourHex() {
+        return displayFontColourHex;
     }
 
     public void setBgColourHex(String bgColourHex) {
