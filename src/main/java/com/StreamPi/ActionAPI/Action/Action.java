@@ -51,6 +51,7 @@ public class Action {
     public Action(String name, String ID, ActionType actionType)
     {
         this.serverProperties = new ServerProperties();
+        this.clientProperties = new ClientProperties();
         this.name = name;
         setCategory("Others");
         this.ID = ID;
@@ -133,6 +134,7 @@ public class Action {
     public Action(String ID, ActionType actionType)
     {
         this.serverProperties = new ServerProperties();
+        this.clientProperties = new ClientProperties();
         this.category = "Others";
         this.ID = ID;
         this.actionType = actionType;
@@ -141,6 +143,7 @@ public class Action {
     public Action(ActionType actionType)
     {
         this.serverProperties = new ServerProperties();
+        this.clientProperties = new ClientProperties();
         setCategory("Others");
         this.actionType = actionType;
     }
