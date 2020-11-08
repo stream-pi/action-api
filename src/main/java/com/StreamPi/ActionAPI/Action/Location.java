@@ -1,36 +1,36 @@
 package com.StreamPi.ActionAPI.Action;
 
 public class Location {
-    int x,y;
+    int row,col;
 
-    public Location(int x, int y)
+    public Location(int row, int col)
     {
-        setLocation(x,y);
+        setLocation(row,col);
     }
 
-    public int getX()
+    public int getRow()
     {
-        return x;
+        return row;
     }
 
-    public int getY()
+    public int getCol()
     {
-        return y;
+        return col;
     }
 
-    public void setX(int x)
+    public void setRow(int row)
     {
-        this.x = x;
+        this.row = row;
     }
 
-    public void setY(int y)
+    public void setCol(int col)
     {
-        this.y = y;
+        this.col = col;
     }
 
-    public void setLocation(int x, int y)
+    public void setLocation(int row, int col)
     {
-        this.x = x;
-        this.y = y;
+        this.row = row;
+        this.col = col;
     }
 }
