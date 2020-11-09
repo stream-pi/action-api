@@ -41,6 +41,21 @@ public abstract class NormalAction extends Action {
         }
     }
 
+    public void addClientProperties(Property... properties)
+    {
+        for (Property property : properties)
+        {
+            if(property.getType() == Type.LIST || property.getType() == Type.INTEGER || property.getType() == Type.DOUBLE)
+                property.setRawValue("0");
+            else if(property.getType() == Type.BOOLEAN)
+                property.setRawValue("false");
+            else if(property.getType() == Type.STRING)
+                property.setRawValue("");
+
+            getClientProperties().addProperty(property);
+        }
+    }
+
 
     public void setAuthor(String author)
     {
