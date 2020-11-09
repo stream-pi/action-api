@@ -26,7 +26,15 @@ public class Action {
     private boolean hasIcon = false;
     private Location location = null;
     private boolean showIcon = false;
+    private String parent = null;
 
+    public void setParent(String parent) {
+        this.parent = parent;
+    }
+
+    public String getParent() {
+        return parent;
+    }
 
     private String displayTextFontColourHex = null;
     private String bgColourHex = null;
