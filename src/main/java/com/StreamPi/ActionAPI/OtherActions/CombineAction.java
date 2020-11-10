@@ -15,7 +15,7 @@ public class CombineAction extends OtherAction {
     public CombineAction(String name, String ID) {
         super(name, ID, ActionType.COMBINE);
 
-        setActionName("Combine");
+        setDisplayText("Combine Action");
         setClientProperties(new ClientProperties());
     }
 

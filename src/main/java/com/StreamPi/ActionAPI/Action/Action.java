@@ -20,7 +20,7 @@ import java.util.UUID;
 
 public class Action {
     private ActionType actionType;
-    private String name, actionName, ID;
+    private String name, ID;
     private Version version;
     private byte[] icon = null;
     private boolean hasIcon = false;
@@ -164,17 +164,6 @@ public class Action {
     public void setIDRandom()
     {
         setID(UUID.randomUUID().toString());
-    }
-
-
-    public void setActionName(String actionName)
-    {
-        this.actionName = actionName;
-    }
-
-    public String getActionName()
-    {
-        return actionName;
     }
 
     public void setCategory(String category)
