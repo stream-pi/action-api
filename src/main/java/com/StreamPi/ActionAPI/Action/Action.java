@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
-public class Action {
+public class Action implements Cloneable{
     private ActionType actionType;
     private String name, ID;
     private Version version;
@@ -270,9 +270,12 @@ public class Action {
         this.version = version;
     }
 
-
     public Version getVersion()
     {
         return version;
+    }
+
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

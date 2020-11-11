@@ -7,7 +7,7 @@ import com.StreamPi.ActionAPI.ActionProperty.Property.Type;
 import com.StreamPi.Util.Exception.MinorException;
 import com.StreamPi.Util.Version.Version;
 
-public abstract class NormalAction extends Action {
+public abstract class NormalAction extends Action{
 
     private String author, repo;
 
