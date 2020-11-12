@@ -11,6 +11,7 @@ import com.StreamPi.Util.Version.Version;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DataFormat;
 import javafx.scene.text.Font;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.slf4j.Logger;
@@ -28,6 +29,12 @@ public class Action implements Cloneable, Serializable {
     private Location location = null;
     private boolean showIcon = false;
     private String parent = null;
+
+    private static final DataFormat dataFormat = new DataFormat("com.StreamPi.ActionAPI.Action");
+
+    public static DataFormat getDataFormat() {
+        return dataFormat;
+    }
 
     public void setParent(String parent) {
         this.parent = parent;
