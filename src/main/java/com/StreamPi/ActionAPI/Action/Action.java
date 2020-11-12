@@ -16,9 +16,10 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Action implements Cloneable{
+public class Action implements Cloneable, Serializable {
     private ActionType actionType;
     private String name, ID;
     private Version version;
