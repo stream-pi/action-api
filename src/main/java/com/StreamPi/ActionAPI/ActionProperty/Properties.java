@@ -3,9 +3,10 @@ package com.StreamPi.ActionAPI.ActionProperty;
 import com.StreamPi.ActionAPI.ActionProperty.Property.Property;
 import com.StreamPi.Util.Exception.MinorException;
 
+import java.io.Serializable;
 import java.util.*;
 
-class Properties {
+class Properties implements Serializable {
     private List<Property> properties;
     private boolean isDuplicatePropertyAllowed = false;
 

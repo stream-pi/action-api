@@ -1,6 +1,8 @@
 package com.StreamPi.ActionAPI.Action;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable {
     int row,col;
 
     public Location(int row, int col)

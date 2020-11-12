@@ -2,10 +2,11 @@ package com.StreamPi.ActionAPI.ActionProperty.Property;
 
 import com.StreamPi.Util.Exception.MinorException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Property {
+public class Property implements Serializable {
     private final String name;
     private ControlType controlType;
     private final Type type;
