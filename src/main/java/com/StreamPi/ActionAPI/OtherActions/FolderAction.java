@@ -20,7 +20,8 @@ public class FolderAction extends OtherAction {
         getClientProperties().setDuplicatePropertyAllowed(true);
     }
 
-    public List<Property> getChildrenID() throws MinorException {
+    public List<Property> getChildrenID()
+    {
         return getClientProperties().getMultipleProperties("child");
     }
 
