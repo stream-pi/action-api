@@ -12,27 +12,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class FolderAction extends OtherAction {
-    public FolderAction(String name, String ID) {
-        super(name, ID, ActionType.FOLDER);
-
+    public FolderAction() {
+        super("Folder", null, ActionType.FOLDER);
         setDisplayText("Folder");
         setClientProperties(new ClientProperties());
         getClientProperties().setDuplicatePropertyAllowed(true);
-    }
-
-    public List<Property> getChildrenID()
-    {
-        return getClientProperties().getMultipleProperties("child");
-    }
-
-    public void addChild(String actionID)
-    {
-        try {
-            Property property = new Property("child", Type.STRING);
-            property.setStringValue(actionID);
-            getClientProperties().addProperty(property);
-        } catch (MinorException e) {
-            e.printStackTrace();
-        }
     }
 }
