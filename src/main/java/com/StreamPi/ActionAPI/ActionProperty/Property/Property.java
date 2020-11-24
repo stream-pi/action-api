@@ -11,8 +11,44 @@ public class Property implements Serializable {
     private ControlType controlType;
     private final Type type;
     private boolean visible = true;
+    private String defaultValue;
+
+    public void setDefaultValueStr(String defaultValue) throws MinorException{
+        typeCheck(Type.STRING);
+        this.defaultValue = defaultValue;
+    }
+
+    public void setDefaultValueInt(int valueInt) throws MinorException{
+        typeCheck(Type.INTEGER);
+        this.defaultValue = valueInt + "";
+    }
+
+    public void setDefaultValueDouble(double defaultValueDouble) throws MinorException
+    {
+        typeCheck(Type.DOUBLE);
+        this.defaultValue = defaultValueDouble + "";
+    }
+
+    public String getDefaultRawValue() {
+        return defaultValue;
+    }
 
     private String value;
+
+    private boolean canBeBlank = true;
+
+    public boolean isCanBeBlank() {
+        return canBeBlank;
+    }
+
+    public void setCanBeBlank(boolean canBeBlank) throws MinorException{
+        typeCheck(Type.STRING);
+
+        if(getDefaultRawValue().isEmpty())
+            setDefaultValueStr("nothing");
+
+        this.canBeBlank = canBeBlank;
+    }
 
     public Property(String name, Type type, ControlType controlType) throws MinorException
     {
@@ -22,6 +58,7 @@ public class Property implements Serializable {
 
         if(type==Type.INTEGER)
         {
+            setDefaultValueInt(0);
             maxIntValue = 100;
             minIntValue = 0;
             value="0";
@@ -29,6 +66,7 @@ public class Property implements Serializable {
         }
         else if(type == Type.DOUBLE)
         {
+            setDefaultValueDouble(0.0);
             maxDoubleValue = 100;
             minDoubleValue = 0;
             value="0";
@@ -36,6 +74,7 @@ public class Property implements Serializable {
         }
         else if(type==Type.STRING)
         {
+            setDefaultValueStr("");
             value="";
             controlTypeCheck(ControlType.TEXT_FIELD);
         }
@@ -56,34 +95,44 @@ public class Property implements Serializable {
         this.name = name;
         this.type = type;
 
-        if(type==Type.INTEGER)
+        try
         {
-            maxIntValue = 100;
-            minIntValue = 0;
-            value="0";
-            this.controlType = ControlType.TEXT_FIELD;
+            if(type==Type.INTEGER)
+            {
+                setDefaultValueInt(0);
+                maxIntValue = 100;
+                minIntValue = 0;
+                value="0";
+                this.controlType = ControlType.TEXT_FIELD;
+            }
+            else if(type == Type.DOUBLE)
+            {
+                setDefaultValueDouble(0.0);
+                maxDoubleValue = 100;
+                minDoubleValue = 0;
+                value="0";
+                this.controlType = ControlType.TEXT_FIELD;
+            }
+            else if(type==Type.STRING)
+            {
+                setDefaultValueStr("");
+                value="";
+                this.controlType = ControlType.TEXT_FIELD;
+            }
+            else if(type==Type.BOOLEAN)
+            {
+                value="false";
+                this.controlType = ControlType.TOGGLE;
+            }
+            else if (type==Type.LIST)
+            {
+                value="0";
+                this.controlType = ControlType.COMBO_BOX;
+            }
         }
-        else if(type == Type.DOUBLE)
+        catch (MinorException e)
         {
-            maxDoubleValue = 100;
-            minDoubleValue = 0;
-            value="0";
-            this.controlType = ControlType.TEXT_FIELD;
-        }
-        else if(type==Type.STRING)
-        {
-            value="";
-            this.controlType = ControlType.TEXT_FIELD;
-        }
-        else if(type==Type.BOOLEAN)
-        {
-            value="false";
-            this.controlType = ControlType.TOGGLE;
-        }
-        else if (type==Type.LIST)
-        {
-            value="0";
-            this.controlType = ControlType.COMBO_BOX;
+            e.printStackTrace();
         }
     }
 
