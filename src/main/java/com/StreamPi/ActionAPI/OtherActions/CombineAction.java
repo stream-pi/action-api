@@ -59,6 +59,8 @@ public class CombineAction extends OtherAction {
                 indexToBeRemoved = i;
         }
 
+        System.out.println("INDEX TO BE REMOVED : "+indexToBeRemoved);
+
         ClientProperties clientProperties = new ClientProperties();
 
         for(int i =0;i<indexToBeRemoved;i++)
@@ -71,8 +73,7 @@ public class CombineAction extends OtherAction {
         for(int j = (indexToBeRemoved+1); j<ids.size();j++)
         {
             String id = (j-1)+"";
-            if(indexToBeRemoved == 0)
-                id= j+"";
+
 
             Property property = new Property(id+"", Type.STRING);
             property.setRawValue(ids.get(j));

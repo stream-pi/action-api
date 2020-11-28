@@ -2,6 +2,7 @@ package com.StreamPi.ActionAPI.NormalAction;
 
 import com.StreamPi.ActionAPI.Action.Action;
 import com.StreamPi.ActionAPI.Action.ActionType;
+import com.StreamPi.ActionAPI.ActionProperty.ClientProperties;
 import com.StreamPi.ActionAPI.ActionProperty.Property.Property;
 import com.StreamPi.ActionAPI.ActionProperty.Property.Type;
 import com.StreamPi.Util.Exception.MinorException;
@@ -92,4 +93,10 @@ public abstract class NormalAction extends Action{
     public abstract void initAction() throws Exception;
 
     public abstract void onActionClicked() throws Exception;
+
+    public NormalAction clone() throws CloneNotSupportedException {
+        NormalAction action = (NormalAction) super.clone();
+        action.setClientProperties((ClientProperties) action.getClientProperties().clone());
+        return action;
+    }
 }

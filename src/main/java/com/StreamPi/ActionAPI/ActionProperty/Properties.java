@@ -6,7 +6,7 @@ import com.StreamPi.Util.Exception.MinorException;
 import java.io.Serializable;
 import java.util.*;
 
-class Properties implements Serializable {
+class Properties implements Cloneable, Serializable {
     private List<Property> properties;
     private boolean isDuplicatePropertyAllowed = false;
 
@@ -35,12 +35,15 @@ class Properties implements Serializable {
         return isDuplicatePropertyAllowed;
     }
 
-    public void addProperty(Property property)
-    {
+    public void addProperty(Property property) {
         if(!isDuplicatePropertyAllowed)
             removeProperty(property.getName());
 
-        properties.add(property);
+        try {
+            properties.add(property.clone());
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void clear()
@@ -114,5 +117,10 @@ class Properties implements Serializable {
     public int getSize()
     {
         return properties.size();
+    }
+
+    public Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
     }
 }

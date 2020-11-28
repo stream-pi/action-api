@@ -283,7 +283,9 @@ public class Action implements Cloneable, Serializable {
         return version;
     }
 
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Action clone() throws CloneNotSupportedException {
+        Action action = (Action) super.clone();
+        action.setClientProperties((ClientProperties) action.getClientProperties().clone());
+        return action;
     }
 }

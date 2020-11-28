@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Property implements Serializable {
+public class Property implements Cloneable, Serializable {
     private final String name;
     private ControlType controlType;
     private final Type type;
@@ -370,5 +370,10 @@ public class Property implements Serializable {
 
         if(isFail)
             throw new MinorException("Property '"+name+"' cannot have ControlType '"+controlType+"' because Type is set to "+type);
+    }
+
+    public Property clone() throws CloneNotSupportedException
+    {
+        return (Property)super.clone();
     }
 }
