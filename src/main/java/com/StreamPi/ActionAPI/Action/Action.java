@@ -13,9 +13,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DataFormat;
 import javafx.scene.text.Font;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.kordamp.ikonli.javafx.FontIcon;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -51,7 +51,7 @@ public class Action implements Cloneable, Serializable {
     private boolean showDisplayText = true;
     private DisplayTextAlignment displayTextAlignment = DisplayTextAlignment.CENTER;
 
-    private Logger logger = LoggerFactory.getLogger(Action.class);
+    private Logger logger = LogManager.getLogger(Action.class);
 
     private Node serverButtonGraphic = null;
 
