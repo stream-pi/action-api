@@ -55,6 +55,17 @@ public class Action implements Cloneable, Serializable {
 
     private Node serverButtonGraphic = null;
 
+    private String repo = null;
+
+    public String getRepo()
+    {
+        return repo;
+    }
+
+    public void setRepo(String repo)
+    {
+        this.repo = repo;
+    }
 
     private ServerProperties serverProperties;
     private ClientProperties clientProperties;
