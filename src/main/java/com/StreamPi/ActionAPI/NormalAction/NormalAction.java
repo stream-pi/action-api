@@ -7,11 +7,13 @@ import com.StreamPi.ActionAPI.ActionProperty.Property.Property;
 import com.StreamPi.ActionAPI.ActionProperty.Property.Type;
 import com.StreamPi.Util.Exception.MinorException;
 import com.StreamPi.Util.Version.Version;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public abstract class NormalAction extends Action{
 
     private String author;
-
 
     public NormalAction(String name, String author, String repo, Version version) {
         super(ActionType.NORMAL);
@@ -82,6 +84,7 @@ public abstract class NormalAction extends Action{
     }
 
 
+    public abstract void initProperties() throws Exception;
 
 
     public abstract void initAction() throws Exception;
@@ -92,5 +95,17 @@ public abstract class NormalAction extends Action{
         NormalAction action = (NormalAction) super.clone();
         action.setClientProperties((ClientProperties) action.getClientProperties().clone());
         return action;
+    }
+
+    private VBox buttonBar = null;
+    public void setButtonBar(Button... buttons)
+    {
+        buttonBar = new VBox(buttons);
+        buttonBar.setSpacing(5.0);
+    }
+
+    public VBox getButtonBar()
+    {
+        return buttonBar;
     }
 }

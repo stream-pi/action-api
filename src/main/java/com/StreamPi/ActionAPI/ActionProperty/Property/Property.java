@@ -12,9 +12,15 @@ public class Property implements Cloneable, Serializable {
     private final Type type;
     private boolean visible = true;
     private String defaultValue;
+    private String helpLink=null;
+    private String displayName;
 
     public void setDefaultValueStr(String defaultValue) throws MinorException{
         typeCheck(Type.STRING);
+
+        if(!isCanBeBlank() && defaultValue.isBlank())
+            throw new MinorException("Property '"+name+"' is set to cannot be blank. Default Property cannot be blank.");
+
         this.defaultValue = defaultValue;
     }
 
@@ -23,10 +29,32 @@ public class Property implements Cloneable, Serializable {
         this.defaultValue = valueInt + "";
     }
 
+    public void setHelpLink(String URL)
+    {
+        this.helpLink = URL;
+    }
+
+    public String getHelpLink()
+    {
+        return helpLink;
+    }
+
     public void setDefaultValueDouble(double defaultValueDouble) throws MinorException
     {
         typeCheck(Type.DOUBLE);
         this.defaultValue = defaultValueDouble + "";
+    }
+
+    public void setDefaultValueBoolean(boolean defaultValueBoolean) throws MinorException
+    {
+        typeCheck(Type.BOOLEAN);
+        this.defaultValue = defaultValueBoolean+"";
+    }
+
+    public void setDefaultValueList(int index) throws MinorException
+    {
+        typeCheck(Type.LIST);
+        this.defaultValue = index+"";
     }
 
     public String getDefaultRawValue() {
@@ -50,49 +78,34 @@ public class Property implements Cloneable, Serializable {
         this.canBeBlank = canBeBlank;
     }
 
-    public Property(String name, Type type, ControlType controlType) throws MinorException
+    public void setControlType(ControlType controlType) throws MinorException
     {
-        this.name = name;
-        this.type = type;
-        this.controlType = controlType;
-
-        if(type==Type.INTEGER)
-        {
-            setDefaultValueInt(0);
-            maxIntValue = 100;
-            minIntValue = 0;
-            value="0";
+        if(type == Type.INTEGER)
             controlTypeCheck(ControlType.SLIDER_INTEGER, ControlType.TEXT_FIELD);
-        }
         else if(type == Type.DOUBLE)
-        {
-            setDefaultValueDouble(0.0);
-            maxDoubleValue = 100;
-            minDoubleValue = 0;
-            value="0";
             controlTypeCheck(ControlType.SLIDER_DOUBLE, ControlType.TEXT_FIELD);
-        }
-        else if(type==Type.STRING)
-        {
-            setDefaultValueStr("");
-            value="";
+        else if(type == Type.STRING)
             controlTypeCheck(ControlType.TEXT_FIELD);
-        }
-        else if(type==Type.BOOLEAN)
-        {
-            value="false";
+        else if(type == Type.BOOLEAN)
             controlTypeCheck(ControlType.TOGGLE);
-        }
-        else if (type==Type.LIST)
-        {
-            value="0";
+        else if(type == Type.LIST)
             controlTypeCheck(ControlType.COMBO_BOX);
-        }
+    }
+
+    public void setDisplayName(String displayName)
+    {
+        this.displayName = displayName;
+    }
+
+    public String getDisplayName()
+    {
+        return displayName;
     }
 
     public Property(String name, Type type)
     {
         this.name = name;
+        this.displayName = name;
         this.type = type;
 
         try
@@ -102,7 +115,7 @@ public class Property implements Cloneable, Serializable {
                 setDefaultValueInt(0);
                 maxIntValue = 100;
                 minIntValue = 0;
-                value="0";
+                //value="0";
                 this.controlType = ControlType.TEXT_FIELD;
             }
             else if(type == Type.DOUBLE)
@@ -110,23 +123,25 @@ public class Property implements Cloneable, Serializable {
                 setDefaultValueDouble(0.0);
                 maxDoubleValue = 100;
                 minDoubleValue = 0;
-                value="0";
+                //value="0";
                 this.controlType = ControlType.TEXT_FIELD;
             }
             else if(type==Type.STRING)
             {
                 setDefaultValueStr("");
-                value="";
+                //value="";
                 this.controlType = ControlType.TEXT_FIELD;
             }
             else if(type==Type.BOOLEAN)
             {
-                value="false";
+                setDefaultValueBoolean(false);
+                //value="false";
                 this.controlType = ControlType.TOGGLE;
             }
             else if (type==Type.LIST)
             {
-                value="0";
+                setDefaultValueList(0);
+                //value="0";
                 this.controlType = ControlType.COMBO_BOX;
             }
         }

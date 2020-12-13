@@ -299,4 +299,16 @@ public class Action implements Cloneable, Serializable {
         action.setClientProperties((ClientProperties) action.getClientProperties().clone());
         return action;
     }
+
+    private ServerPropertySaver serverPropertySaver = null;
+
+    public void setServerPropertySaver(ServerPropertySaver serverPropertySaver)
+    {
+        this.serverPropertySaver = serverPropertySaver;
+    }
+
+    public void saveServerProperties()
+    {
+        serverPropertySaver.saveServerProperties();
+    }
 }
