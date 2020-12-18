@@ -66,18 +66,6 @@ public abstract class NormalAction extends Action{
     }
 
 
-
-
-    public void setCommonBackgroundService(CommonBackgroundService commonBackgroundService)
-    {
-        CommonBackgroundServices.getInstance().addBgService(commonBackgroundService);
-    }
-
-    public CommonBackgroundService getCommonBackgroundService()
-    {
-        return CommonBackgroundServices.getInstance().getBgService(moduleName);
-    }
-
     public String getAuthor()
     {
         return author;
