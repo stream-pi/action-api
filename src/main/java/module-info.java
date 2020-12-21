@@ -1,11 +1,11 @@
 module com.StreamPi.ActionAPI{
-    requires com.StreamPi.Util;
+    requires transitive com.StreamPi.Util;
 
-    requires javafx.graphics;
-    requires javafx.controls;
+    requires transitive javafx.graphics;
+    requires transitive javafx.controls;
 
-    requires org.kordamp.ikonli.javafx;
-    requires org.kordamp.ikonli.fontawesome5;
+    requires transitive org.kordamp.ikonli.javafx;
+    requires transitive org.kordamp.ikonli.fontawesome5;
 
     requires org.apache.logging.log4j;
 
