@@ -7,7 +7,7 @@ module com.StreamPi.ActionAPI{
     requires transitive org.kordamp.ikonli.javafx;
     requires transitive org.kordamp.ikonli.fontawesome5;
 
-    requires org.apache.logging.log4j;
+    requires transitive java.logging;
 
     exports com.StreamPi.ActionAPI;
     exports com.StreamPi.ActionAPI.Action;

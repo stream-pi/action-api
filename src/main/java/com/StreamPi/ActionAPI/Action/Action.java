@@ -4,7 +4,6 @@ Written by Debayan Sutradhar (dubbadhar)
  */
 package com.StreamPi.ActionAPI.Action;
 
-
 import com.StreamPi.ActionAPI.ActionProperty.ClientProperties;
 import com.StreamPi.ActionAPI.ActionProperty.ServerProperties;
 import com.StreamPi.Util.Version.Version;
@@ -13,8 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DataFormat;
 import javafx.scene.text.Font;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.Serializable;
@@ -50,8 +47,6 @@ public class Action implements Cloneable, Serializable {
     private String displayText = null;
     private boolean showDisplayText = true;
     private DisplayTextAlignment displayTextAlignment = DisplayTextAlignment.CENTER;
-
-    private Logger logger = LogManager.getLogger(Action.class);
 
     private Node serverButtonGraphic = null;
 
@@ -136,7 +131,7 @@ public class Action implements Cloneable, Serializable {
         catch (Exception e)
         {
             this.serverButtonGraphic = null;
-            logger.error("ICON FALLBACK BECAUSE INVALID ICON SUPPLIED");
+            
         }
     }
 
