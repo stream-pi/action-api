@@ -23,6 +23,18 @@ public abstract class NormalAction extends Action{
         setVersion(version);
     }
 
+    private boolean isSuiteMother = false;
+
+    public void setSuiteMother(boolean isSuiteMother) 
+    {
+        this.isSuiteMother = isSuiteMother;
+    }
+
+    public boolean isSuiteMother() 
+    {
+        return isSuiteMother;
+    }
+
     public NormalAction()
     {
         super(ActionType.NORMAL);
