@@ -46,17 +46,9 @@
 
         <IkonliVersion>11.5.0</IkonliVersion>
         <IkonliFA5PackVersion>11.5.0</IkonliFA5PackVersion>
-
-        <Log4JVersion>2.14.0</Log4JVersion>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${Log4JVersion}</version>
-        </dependency>
-
         <dependency>
             <groupId>com.StreamPi</groupId>
             <artifactId>Util</artifactId>
