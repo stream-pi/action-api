@@ -306,4 +306,17 @@ public class Action implements Cloneable, Serializable {
     {
         serverPropertySaver.saveServerProperties();
     }
+
+    
+    private ServerConnection serverConnection = null;
+
+    public void setServerConnection(ServerConnection serverConnection)
+    {
+        this.serverConnection = serverConnection;
+    }
+
+    public ServerConnection getServerConnection()
+    {
+        return serverConnection;
+    }
 }

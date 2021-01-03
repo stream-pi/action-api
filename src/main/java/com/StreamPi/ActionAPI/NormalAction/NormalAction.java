@@ -2,6 +2,7 @@ package com.StreamPi.ActionAPI.NormalAction;
 
 import com.StreamPi.ActionAPI.Action.Action;
 import com.StreamPi.ActionAPI.Action.ActionType;
+import com.StreamPi.ActionAPI.Action.ServerConnection;
 import com.StreamPi.ActionAPI.ActionProperty.ClientProperties;
 import com.StreamPi.ActionAPI.ActionProperty.Property.Property;
 import com.StreamPi.ActionAPI.ActionProperty.Property.Type;
@@ -23,16 +24,27 @@ public abstract class NormalAction extends Action{
         setVersion(version);
     }
 
-    private boolean isSuiteMother = false;
+    private boolean visibileInPluginsPane = true;
+    private boolean visibileInServerSettingsPane = true;
 
-    public void setSuiteMother(boolean isSuiteMother) 
+    public void setVisibilityInPluginsPane(boolean visibileInPluginsPane) 
     {
-        this.isSuiteMother = isSuiteMother;
+        this.visibileInPluginsPane = visibileInPluginsPane;
     }
 
-    public boolean isSuiteMother() 
+    public void setVisibilityInServerSettingsPane(boolean visibileInServerSettingsPane) 
     {
-        return isSuiteMother;
+        this.visibileInServerSettingsPane = visibileInServerSettingsPane;
+    }
+
+    public boolean isVisibleInPluginsPane() 
+    {
+        return visibileInPluginsPane;
+    }
+
+    public boolean isVisibleInServerSettingsPane() 
+    {
+        return visibileInServerSettingsPane;
     }
 
     public NormalAction()
