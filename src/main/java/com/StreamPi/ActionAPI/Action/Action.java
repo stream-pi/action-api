@@ -18,9 +18,9 @@ import java.io.Serializable;
 import java.util.UUID;
 
 public class Action implements Cloneable, Serializable {
-    private ActionType actionType;
-    private String name, ID;
-    private Version version;
+    private ActionType actionType=null;
+    private String name ="Unknown Action", ID=null;
+    private Version version=new Version(0,0,0);
     private byte[] icon = null;
     private boolean hasIcon = false;
     private Location location = null;

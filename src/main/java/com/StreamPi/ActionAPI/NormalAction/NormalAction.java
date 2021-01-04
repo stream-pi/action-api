@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 
 public abstract class NormalAction extends Action{
 
-    private String author;
+    private String author = "Unknown Author";
 
     public NormalAction(String name, String author, String repo, Version version) {
         super(ActionType.NORMAL);
