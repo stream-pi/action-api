@@ -1,5 +1,5 @@
 package com.StreamPi.ActionAPI.Action;
 
-public interface ServerPropertySaver {
+public interface PropertySaver {
     void saveServerProperties();
 }

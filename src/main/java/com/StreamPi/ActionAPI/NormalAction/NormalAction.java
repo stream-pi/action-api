@@ -103,6 +103,8 @@ public abstract class NormalAction extends Action{
 
     public abstract void onActionClicked() throws Exception;
 
+    public abstract void onShutDown() throws Exception;
+
     public NormalAction clone() throws CloneNotSupportedException {
         NormalAction action = (NormalAction) super.clone();
         action.setClientProperties((ClientProperties) action.getClientProperties().clone());

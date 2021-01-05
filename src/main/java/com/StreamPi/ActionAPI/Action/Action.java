@@ -295,18 +295,17 @@ public class Action implements Cloneable, Serializable {
         return action;
     }
 
-    private ServerPropertySaver serverPropertySaver = null;
+    private PropertySaver propertySaver = null;
 
-    public void setServerPropertySaver(ServerPropertySaver serverPropertySaver)
+    public void setPropertySaver(PropertySaver propertySaver)
     {
-        this.serverPropertySaver = serverPropertySaver;
+        this.propertySaver = propertySaver;
     }
 
     public void saveServerProperties()
     {
-        serverPropertySaver.saveServerProperties();
+        propertySaver.saveServerProperties();
     }
-
     
     private ServerConnection serverConnection = null;
 
