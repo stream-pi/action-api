@@ -11,7 +11,7 @@ public class Property implements Cloneable, Serializable {
     private ControlType controlType;
     private final Type type;
     private boolean visible = true;
-    private String defaultValue;
+    private String defaultValue=null;
     private String helpLink=null;
     private String displayName;
 
@@ -73,7 +73,9 @@ public class Property implements Cloneable, Serializable {
         typeCheck(Type.STRING);
 
         if(getDefaultRawValue().isEmpty())
-            setDefaultValueStr("nothing");
+        {
+            throw new MinorException("No default value given.");
+        }
 
         this.canBeBlank = canBeBlank;
     }
