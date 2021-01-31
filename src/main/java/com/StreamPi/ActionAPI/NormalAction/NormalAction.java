@@ -16,11 +16,11 @@ public abstract class NormalAction extends Action{
 
     private String author = "Unknown Author";
 
-    public NormalAction(String name, String author, String repo, Version version) {
+    public NormalAction(String name, String author, String helpLink, Version version) {
         super(ActionType.NORMAL);
         setName(name);
         this.author = author;
-        setRepo(repo);
+        setHelpLink(helpLink);
         setVersion(version);
     }
 

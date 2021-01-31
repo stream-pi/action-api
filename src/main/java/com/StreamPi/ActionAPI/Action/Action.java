@@ -50,16 +50,16 @@ public class Action implements Cloneable, Serializable {
 
     private Node serverButtonGraphic = null;
 
-    private String repo = null;
+    private String helpLink = null;
 
-    public String getRepo()
+    public String getHelpLink()
     {
-        return repo;
+        return helpLink;
     }
 
-    public void setRepo(String repo)
+    public void setHelpLink(String helpLink)
     {
-        this.repo = repo;
+        this.helpLink = helpLink;
     }
 
     private ServerProperties serverProperties;
