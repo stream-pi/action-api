@@ -1,5 +1,5 @@
-module com.StreamPi.ActionAPI{
-    requires transitive com.StreamPi.Util;
+module com.stream_pi.actionapi{
+    requires transitive com.stream_pi.util;
 
     requires transitive javafx.graphics;
     requires transitive javafx.controls;
@@ -9,10 +9,10 @@ module com.StreamPi.ActionAPI{
 
     requires transitive java.logging;
 
-    exports com.StreamPi.ActionAPI;
-    exports com.StreamPi.ActionAPI.Action;
-    exports com.StreamPi.ActionAPI.OtherActions;
-    exports com.StreamPi.ActionAPI.ActionProperty;
-    exports com.StreamPi.ActionAPI.ActionProperty.Property;
-    exports com.StreamPi.ActionAPI.NormalAction;
+    exports com.stream_pi.actionapi;
+    exports com.stream_pi.actionapi.action;
+    exports com.stream_pi.actionapi.otheractions;
+    exports com.stream_pi.actionapi.actionproperty;
+    exports com.stream_pi.actionapi.actionproperty.property;
+    exports com.stream_pi.actionapi.normalaction;
 }

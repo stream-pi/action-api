@@ -2,16 +2,14 @@
 ActionAPI for StreamPi
 Written by Debayan Sutradhar (dubbadhar)
  */
-package com.StreamPi.ActionAPI.Action;
+package com.stream_pi.actionapi.action;
 
-import com.StreamPi.ActionAPI.ActionProperty.ClientProperties;
-import com.StreamPi.ActionAPI.ActionProperty.ServerProperties;
-import com.StreamPi.Util.Version.Version;
+import com.stream_pi.actionapi.actionproperty.ClientProperties;
+import com.stream_pi.actionapi.actionproperty.ServerProperties;
+import com.stream_pi.util.version.Version;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DataFormat;
-import javafx.scene.text.Font;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.Serializable;
@@ -19,7 +17,7 @@ import java.util.UUID;
 
 public class Action implements Cloneable, Serializable {
     private ActionType actionType=null;
-    private String name ="Unknown Action", ID=null;
+    private String name ="Unknown action", ID=null;
     private Version version=new Version(0,0,0);
     private byte[] icon = null;
     private boolean hasIcon = false;
@@ -27,7 +25,7 @@ public class Action implements Cloneable, Serializable {
     private boolean showIcon = false;
     private String parent = null;
 
-    private static final DataFormat dataFormat = new DataFormat("com.StreamPi.ActionAPI.Action");
+    private static final DataFormat dataFormat = new DataFormat("com.StreamPi.ActionAPI.action");
 
     public static DataFormat getDataFormat() {
         return dataFormat;
