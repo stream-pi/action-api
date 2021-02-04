@@ -71,7 +71,7 @@ public class Property implements Cloneable, Serializable {
     public void setCanBeBlank(boolean canBeBlank) throws MinorException{
         typeCheck(Type.STRING);
 
-        if(getDefaultRawValue().isEmpty())
+        if(getDefaultRawValue().isEmpty() && !canBeBlank)
         {
             throw new MinorException("No default value given.");
         }
