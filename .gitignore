@@ -1,7 +1,11 @@
-.idea/
+# Maven
 target/
-ActionAPI.iml
 
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
 .settings/
 .project
 .factorypath
