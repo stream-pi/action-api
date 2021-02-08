@@ -7,8 +7,9 @@ import java.io.Serializable;
 import java.util.*;
 
 class Properties implements Cloneable, Serializable {
+
     private List<Property> properties;
-    private boolean isDuplicatePropertyAllowed = false;
+    private boolean isDuplicatePropertyAllowed;
 
     public Properties()
     {
@@ -56,12 +57,12 @@ class Properties implements Cloneable, Serializable {
         this.properties = properties.get();
     }
 
-    public int getPropertyIndex(String name)
-    {
-        for(int i = 0;i<properties.size();i++)
+    public int getPropertyIndex(String name) {
+        for (int i=0; i<properties.size(); i++)
         {
-            if(properties.get(i).getName().equals(name))
+            if (properties.get(i).getName().equals(name)) {
                 return i;
+            }
         }
         return -1;
     }
@@ -101,16 +102,15 @@ class Properties implements Cloneable, Serializable {
         return properties;
     }
 
+    // TODO: What is this method doing?
     public List<String> getNames()
     {
         ArrayList<String> names = new ArrayList<>();
-
         for(Property property : properties)
         {
             if(!names.contains(property.getName()))
                 names.add(property.getName());
         }
-
         return names;
     }
 

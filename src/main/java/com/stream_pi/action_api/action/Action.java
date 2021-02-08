@@ -16,6 +16,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 public class Action implements Cloneable, Serializable {
+
     private ActionType actionType=null;
     private String name ="Unknown action", ID=null;
     private Version version=new Version(0,0,0);
@@ -41,7 +42,6 @@ public class Action implements Cloneable, Serializable {
 
     private String displayTextFontColourHex = null;
     private String bgColourHex = null;
-
     private String displayText = null;
     private boolean showDisplayText = true;
     private DisplayTextAlignment displayTextAlignment = DisplayTextAlignment.CENTER;
@@ -90,7 +90,6 @@ public class Action implements Cloneable, Serializable {
         this.displayTextAlignment = displayTextAlignment;
     }
 
-
     public void setDisplayTextFontColourHex(String displayTextFontColourHex) {
         this.displayTextFontColourHex = displayTextFontColourHex;
     }
@@ -129,7 +128,6 @@ public class Action implements Cloneable, Serializable {
         catch (Exception e)
         {
             this.serverButtonGraphic = null;
-            
         }
     }
 
