@@ -1,4 +1,4 @@
-package com.stream_pi.actionapi.action;
+package com.stream_pi.action_api.action;
 
 public enum ActionType {
     FOLDER, NORMAL, COMBINE

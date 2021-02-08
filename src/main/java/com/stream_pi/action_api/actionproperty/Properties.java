@@ -1,6 +1,6 @@
-package com.stream_pi.actionapi.actionproperty;
+package com.stream_pi.action_api.actionproperty;
 
-import com.stream_pi.actionapi.actionproperty.property.Property;
+import com.stream_pi.action_api.actionproperty.property.Property;
 import com.stream_pi.util.exception.MinorException;
 
 import java.io.Serializable;

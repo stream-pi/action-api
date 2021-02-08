@@ -1,7 +1,7 @@
-package com.stream_pi.actionapi.otheractions;
+package com.stream_pi.action_api.otheractions;
 
-import com.stream_pi.actionapi.action.Action;
-import com.stream_pi.actionapi.action.ActionType;
+import com.stream_pi.action_api.action.Action;
+import com.stream_pi.action_api.action.ActionType;
 
 import java.util.ArrayList;
 

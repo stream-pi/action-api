@@ -1,4 +1,4 @@
-package com.stream_pi.actionapi.action;
+package com.stream_pi.action_api.action;
 
 import com.stream_pi.util.platform.Platform;
 

@@ -1,4 +1,4 @@
-package com.stream_pi.actionapi.actionproperty.property;
+package com.stream_pi.action_api.actionproperty.property;
 
 import com.stream_pi.util.exception.MinorException;
 

@@ -1,7 +1,7 @@
-package com.stream_pi.actionapi.otheractions;
+package com.stream_pi.action_api.otheractions;
 
-import com.stream_pi.actionapi.action.ActionType;
-import com.stream_pi.actionapi.actionproperty.ClientProperties;
+import com.stream_pi.action_api.action.ActionType;
+import com.stream_pi.action_api.actionproperty.ClientProperties;
 
 public class FolderAction extends OtherAction {
     public FolderAction() {

@@ -1,4 +1,4 @@
-package com.stream_pi.actionapi;
+package com.stream_pi.action_api;
 
 
 import com.stream_pi.util.version.Version;

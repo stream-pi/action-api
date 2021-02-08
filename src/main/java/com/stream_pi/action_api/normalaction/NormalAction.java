@@ -1,10 +1,10 @@
-package com.stream_pi.actionapi.normalaction;
+package com.stream_pi.action_api.normalaction;
 
-import com.stream_pi.actionapi.action.Action;
-import com.stream_pi.actionapi.action.ActionType;
-import com.stream_pi.actionapi.actionproperty.ClientProperties;
-import com.stream_pi.actionapi.actionproperty.property.Property;
-import com.stream_pi.actionapi.actionproperty.property.Type;
+import com.stream_pi.action_api.action.Action;
+import com.stream_pi.action_api.action.ActionType;
+import com.stream_pi.action_api.actionproperty.ClientProperties;
+import com.stream_pi.action_api.actionproperty.property.Property;
+import com.stream_pi.action_api.actionproperty.property.Type;
 import com.stream_pi.util.version.Version;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;

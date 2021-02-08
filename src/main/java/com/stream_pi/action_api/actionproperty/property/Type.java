@@ -1,4 +1,4 @@
-package com.stream_pi.actionapi.actionproperty.property;
+package com.stream_pi.action_api.actionproperty.property;
 
 public enum Type {
     INTEGER, DOUBLE, STRING, BOOLEAN, LIST
