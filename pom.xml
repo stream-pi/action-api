@@ -136,7 +136,7 @@
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/Stream-Pi/util/issues</url>
+        <url>https://github.com/Stream-Pi/actionapi/issues</url>
     </issueManagement>
 
     <licenses>
@@ -163,9 +163,9 @@
     </developers>
 
     <scm>
-        <url>https://github.com/stream-pi/util</url>
-        <connection>scm:git:git://github.com/stream-pi/util.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:stream-pi/util.git</developerConnection>
+        <url>https://github.com/stream-pi/actionapi</url>
+        <connection>scm:git:git://github.com/stream-pi/actionapi.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:stream-pi/actionapi.git</developerConnection>
     </scm>
 
     <distributionManagement>
