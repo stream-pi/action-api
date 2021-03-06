@@ -5,7 +5,7 @@ import com.stream_pi.action_api.actionproperty.ClientProperties;
 
 public class FolderAction extends OtherAction {
     public FolderAction() {
-        super("Folder", null, ActionType.FOLDER);
+        super("Folder", ActionType.FOLDER);
         setDisplayText("Folder");
         setClientProperties(new ClientProperties());
         getClientProperties().setDuplicatePropertyAllowed(true);

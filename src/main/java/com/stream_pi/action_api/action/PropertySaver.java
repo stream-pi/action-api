@@ -1,5 +1,6 @@
 package com.stream_pi.action_api.action;
 
-public interface PropertySaver {
+public interface PropertySaver
+{
     void saveServerProperties();
 }

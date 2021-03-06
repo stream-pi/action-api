@@ -13,7 +13,7 @@ import java.util.List;
 public class CombineAction extends OtherAction {
 
     public CombineAction() {
-        super("Combine", null, ActionType.COMBINE);
+        super("Combine", ActionType.COMBINE);
         setDisplayText("Combine");
         setClientProperties(new ClientProperties());
     }

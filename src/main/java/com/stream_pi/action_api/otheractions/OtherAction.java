@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public class OtherAction extends Action{
     ArrayList<Action> actions;
 
-    public OtherAction(String name, String ID, ActionType actionType) {
-        super(name, ID, actionType);
+    public OtherAction(String name, ActionType actionType) {
+        super(name, null, actionType);
 
-        setCategory("StreamPi");
+        setCategory("Stream-Pi");
     }
 
     public void setActions(ArrayList<Action> actions)
