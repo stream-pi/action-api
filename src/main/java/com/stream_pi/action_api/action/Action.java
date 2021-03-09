@@ -26,7 +26,19 @@ public class Action implements Cloneable, Serializable {
     private boolean showIcon = false;
     private String parent = null;
 
-    private static final DataFormat dataFormat = new DataFormat("com.StreamPi.ActionAPI.action");
+    private int delayBeforeExecuting = 0;
+
+    public void setDelayBeforeExecuting(int delayBeforeExecuting)
+    {
+        this.delayBeforeExecuting = delayBeforeExecuting;
+    }
+
+    public int getDelayBeforeExecuting()
+    {
+        return delayBeforeExecuting;
+    }
+
+    private static final DataFormat dataFormat = new DataFormat("com.stream_pi.action_api.action");
 
     public static DataFormat getDataFormat() {
         return dataFormat;

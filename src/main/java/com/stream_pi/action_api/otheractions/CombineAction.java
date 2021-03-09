@@ -10,9 +10,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class CombineAction extends OtherAction {
+public class CombineAction extends OtherAction
+{
 
-    public CombineAction() {
+    public CombineAction()
+    {
         super("Combine", ActionType.COMBINE);
         setDisplayText("Combine");
         setClientProperties(new ClientProperties());
