@@ -1,11 +1,14 @@
 package com.stream_pi.action_api.actionproperty.property;
 
 import com.stream_pi.util.exception.MinorException;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
-public class Property implements Cloneable, Serializable {
+public class Property implements Cloneable, Serializable
+{
     private final String name;
     private ControlType controlType;
     private final Type type;
@@ -86,11 +89,13 @@ public class Property implements Cloneable, Serializable {
         else if(type == Type.DOUBLE)
             controlTypeCheck(ControlType.SLIDER_DOUBLE, ControlType.TEXT_FIELD);
         else if(type == Type.STRING)
-            controlTypeCheck(ControlType.TEXT_FIELD);
+            controlTypeCheck(ControlType.TEXT_FIELD, ControlType.FILE_PATH);
         else if(type == Type.BOOLEAN)
             controlTypeCheck(ControlType.TOGGLE);
         else if(type == Type.LIST)
             controlTypeCheck(ControlType.COMBO_BOX);
+
+        this.controlType = controlType;
     }
 
     public void setDisplayName(String displayName)
@@ -391,5 +396,18 @@ public class Property implements Cloneable, Serializable {
     public Property clone() throws CloneNotSupportedException
     {
         return (Property)super.clone();
+    }
+
+    private FileExtensionFilter[] extensionFilters = null;
+
+    public void setExtensionFilters(FileExtensionFilter... extensionFilters) throws MinorException
+    {
+        controlTypeCheck(ControlType.FILE_PATH);
+        this.extensionFilters = extensionFilters;
+    }
+
+    public FileExtensionFilter[] getExtensionFilters()
+    {
+        return extensionFilters;
     }
 }

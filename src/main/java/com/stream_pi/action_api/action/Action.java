@@ -15,8 +15,8 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import java.io.Serializable;
 import java.util.UUID;
 
-public class Action implements Cloneable, Serializable {
-
+public class Action implements Cloneable, Serializable
+{
     private ActionType actionType=null;
     private String name ="Unknown action", ID=null;
     private Version version=new Version(0,0,0);
