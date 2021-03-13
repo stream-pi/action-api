@@ -7,7 +7,6 @@ package com.stream_pi.action_api.action;
 import com.stream_pi.action_api.actionproperty.ClientProperties;
 import com.stream_pi.action_api.actionproperty.ServerProperties;
 import com.stream_pi.util.exception.MinorException;
-import com.stream_pi.util.exception.StreamPiException;
 import com.stream_pi.util.version.Version;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
@@ -19,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 public class Action implements Cloneable, Serializable
 {
@@ -29,24 +29,109 @@ public class Action implements Cloneable, Serializable
     private HashMap<String,byte[]> icons = null;
     private String currentIconState = null;
 
+    private void actionTypeCheck(ActionType... required) throws MinorException
+    {
+        boolean isFail = true;
+        for(ActionType c : required)
+        {
+            if (getActionType() == c)
+            {
+                isFail = false;
+                break;
+            }
+        }
+
+        if(isFail)
+            throw new MinorException("Action not supported for "+getActionType());
+    }
+
+    public void setDefaultIcon(byte[] icon) throws MinorException
+    {
+        actionTypeCheck(ActionType.NORMAL, ActionType.FOLDER, ActionType.COMBINE);
+
+        addIcon("default",icon);
+        setCurrentIconState("default");
+    }
+
+    public byte[] getDefaultIcon() throws MinorException
+    {
+        actionTypeCheck(ActionType.NORMAL, ActionType.FOLDER, ActionType.COMBINE);
+
+        return getIcon("default");
+    }
+
+    public void setToggleOnIcon(byte[] icon) throws MinorException
+    {
+        actionTypeCheck(ActionType.TOGGLE);
+
+        addIcon("toggle_on",icon);
+    }
+
+    public byte[] getToggleOnIcon() throws MinorException
+    {
+        actionTypeCheck(ActionType.TOGGLE);
+
+        return getIcon("toggle_on");
+    }
+
+    public void setToggleOffIcon(byte[] icon) throws MinorException
+    {
+        actionTypeCheck(ActionType.TOGGLE);
+
+        addIcon("toggle_off",icon);
+    }
+
+    public byte[] getToggleOffIcon() throws MinorException
+    {
+        actionTypeCheck(ActionType.TOGGLE);
+
+        return getIcon("toggle_off");
+    }
+
     public void setIcons(HashMap<String,byte[]> icons)
     {
         this.icons = icons;
     }
 
-    public void addIcon(String state, byte[] icon)
+    public void addIcon(String state, byte[] icon) throws MinorException
     {
         if(icons==null)
             icons = new HashMap<>();
 
+        if(state.equals("default") || state.equals("toggle_on") || state.equals("toggle_off"))
+            throw new MinorException("Default keyword "+state+" not allowed!");
+
         icons.put(state, icon);
     }
 
-    public void removeIcon(String state) throws StreamPiException
+    public byte[] getIcon(String state)
+    {
+        return icons.get(state);
+    }
+
+    public void removeIcon(String state) throws MinorException
     {
         if(currentIconState.equals(state))
         {
             throw new MinorException("Cant change! Default icon state is set to "+state);
+        }
+
+        if(state.equals("default"))
+        {
+            if(actionType == ActionType.NORMAL ||
+            actionType == ActionType.COMBINE ||
+            actionType == ActionType.FOLDER)
+            {
+                throw new MinorException("Cant delete default icon!");
+            }
+        }
+
+        if(state.equals("toggle_on") || state.equals("toggle_off"))
+        {
+            if(actionType == ActionType.TOGGLE)
+            {
+                throw new MinorException("Cant delete on/off icon!");
+            }
         }
 
 
