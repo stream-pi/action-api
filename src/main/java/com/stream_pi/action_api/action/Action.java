@@ -6,6 +6,8 @@ package com.stream_pi.action_api.action;
 
 import com.stream_pi.action_api.actionproperty.ClientProperties;
 import com.stream_pi.action_api.actionproperty.ServerProperties;
+import com.stream_pi.util.exception.MinorException;
+import com.stream_pi.util.exception.StreamPiException;
 import com.stream_pi.util.version.Version;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
@@ -13,6 +15,9 @@ import javafx.scene.input.DataFormat;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class Action implements Cloneable, Serializable
@@ -20,10 +25,70 @@ public class Action implements Cloneable, Serializable
     private ActionType actionType=null;
     private String name ="Unknown action", ID=null;
     private Version version=new Version(0,0,0);
-    private byte[] icon = null;
-    private boolean hasIcon = false;
+
+    private HashMap<String,byte[]> icons = null;
+    private String currentIconState = null;
+
+    public void setIcons(HashMap<String,byte[]> icons)
+    {
+        this.icons = icons;
+    }
+
+    public void addIcon(String state, byte[] icon)
+    {
+        if(icons==null)
+            icons = new HashMap<>();
+
+        icons.put(state, icon);
+    }
+
+    public void removeIcon(String state) throws StreamPiException
+    {
+        if(currentIconState.equals(state))
+        {
+            throw new MinorException("Cant change! Default icon state is set to "+state);
+        }
+
+
+        icons.remove(state);
+    }
+
+    public HashMap<String,byte[]> getIcons()
+    {
+        return icons;
+    }
+
+    public String getCurrentIconState()
+    {
+        return currentIconState;
+    }
+
+    public byte[] getCurrentIcon()
+    {
+        return icons.get(currentIconState);
+    }
+
+    public void setCurrentIconState(String currentIconState)
+    {
+        this.currentIconState = currentIconState;
+    }
+
+    public boolean isHasIcon()
+    {
+        if(icons == null)
+            return false;
+
+        return icons.size() > 0;
+    }
+
+
+    public boolean isShowIcon()
+    {
+        return currentIconState != null;
+    }
+
+
     private Location location = null;
-    private boolean showIcon = false;
     private String parent = null;
 
     private int delayBeforeExecuting = 0;
@@ -232,16 +297,6 @@ public class Action implements Cloneable, Serializable
         this.moduleName = moduleName;
     }
 
-    public void setShowIcon(boolean value)
-    {
-        this.showIcon = value;
-    }
-
-    public boolean isShowIcon()
-    {
-        return showIcon;
-    }
-
     public void setLocation(Location location)
     {
         this.location = location;
@@ -250,25 +305,6 @@ public class Action implements Cloneable, Serializable
     public Location getLocation()
     {
         return location;
-    }
-
-    public void setIcon(byte[] icon)
-    {
-        this.hasIcon = true;
-        this.icon = icon;
-    }
-
-    public boolean isHasIcon()
-    {
-        return hasIcon;
-    }
-
-    public void setHasIcon(boolean hasIcon) {
-        this.hasIcon = hasIcon;
-    }
-
-    public byte[] getIconAsByteArray() {
-        return icon;
     }
 
     public ServerProperties getServerProperties()
@@ -300,6 +336,7 @@ public class Action implements Cloneable, Serializable
     public Action clone() throws CloneNotSupportedException {
         Action action = (Action) super.clone();
         action.setClientProperties((ClientProperties) action.getClientProperties().clone());
+        action.setIcons((HashMap<String, byte[]>) action.getIcons().clone());
         return action;
     }
 
@@ -313,6 +350,11 @@ public class Action implements Cloneable, Serializable
     public void saveServerProperties()
     {
         propertySaver.saveServerProperties();
+    }
+
+    public void saveClientIcons()
+    {
+        propertySaver.saveClientIcons();
     }
     
     private ServerConnection serverConnection = null;
