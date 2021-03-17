@@ -18,7 +18,7 @@ public class Property implements Cloneable, Serializable
     private String displayName;
 
     public void setDefaultValueStr(String defaultValue) throws MinorException {
-        typeCheck(Type.STRING, Type.PASSWORD);
+        typeCheck(Type.STRING);
 
         if(!isCanBeBlank() && defaultValue.isBlank())
             throw new MinorException("property '"+name+"' is set to cannot be blank. Default property cannot be blank.");
@@ -72,7 +72,7 @@ public class Property implements Cloneable, Serializable
     }
 
     public void setCanBeBlank(boolean canBeBlank) throws MinorException{
-        typeCheck(Type.STRING, Type.PASSWORD);
+        typeCheck(Type.STRING);
 
         if(getDefaultRawValue().isEmpty() && !canBeBlank)
         {
@@ -88,8 +88,8 @@ public class Property implements Cloneable, Serializable
             controlTypeCheck(ControlType.SLIDER_INTEGER, ControlType.TEXT_FIELD);
         else if(type == Type.DOUBLE)
             controlTypeCheck(ControlType.SLIDER_DOUBLE, ControlType.TEXT_FIELD);
-        else if(type == Type.STRING || type == Type.PASSWORD)
-            controlTypeCheck(ControlType.TEXT_FIELD, ControlType.FILE_PATH);
+        else if(type == Type.STRING)
+            controlTypeCheck(ControlType.TEXT_FIELD, ControlType.FILE_PATH, ControlType.TEXT_FIELD_MASKED);
         else if(type == Type.BOOLEAN)
             controlTypeCheck(ControlType.TOGGLE);
         else if(type == Type.LIST)
@@ -132,7 +132,7 @@ public class Property implements Cloneable, Serializable
                 //value="0";
                 this.controlType = ControlType.TEXT_FIELD;
             }
-            else if(type==Type.STRING || type==Type.PASSWORD)
+            else if(type==Type.STRING)
             {
                 setDefaultValueStr("");
                 //value="";
@@ -217,7 +217,7 @@ public class Property implements Cloneable, Serializable
     //For Type STRING
     public void setStringValue(String value) throws MinorException
     {
-        typeCheck(Type.STRING, Type.PASSWORD);
+        typeCheck(Type.STRING);
 
         this.value = value;
     }
@@ -225,7 +225,7 @@ public class Property implements Cloneable, Serializable
 
     public String getStringValue() throws MinorException
     {
-        typeCheck(Type.STRING, Type.PASSWORD);
+        typeCheck(Type.STRING);
 
         return value;
     }
@@ -370,19 +370,9 @@ public class Property implements Cloneable, Serializable
 
 
     //Type Check
-    private void typeCheck(Type... required) throws MinorException
+    private void typeCheck(Type required) throws MinorException
     {
-        boolean isFail = true;
-        for(Type c : required)
-        {
-            if (type == c)
-            {
-                isFail = false;
-                break;
-            }
-        }
-
-        if(isFail)
+        if(type != required)
             throw new MinorException("property '"+name+"' cannot have "+type+"!");
     }
 
