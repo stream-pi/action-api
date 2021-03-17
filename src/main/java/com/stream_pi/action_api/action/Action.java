@@ -2,6 +2,7 @@
 ActionAPI for StreamPi
 Written by Debayan Sutradhar (dubbadhar)
  */
+
 package com.stream_pi.action_api.action;
 
 import com.stream_pi.action_api.actionproperty.ClientProperties;
@@ -14,11 +15,8 @@ import javafx.scene.input.DataFormat;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 public class Action implements Cloneable, Serializable
 {
@@ -98,9 +96,6 @@ public class Action implements Cloneable, Serializable
         if(icons==null)
             icons = new HashMap<>();
 
-        if(state.equals("default") || state.equals("toggle_on") || state.equals("toggle_off"))
-            throw new MinorException("Default keyword "+state+" not allowed!");
-
         icons.put(state, icon);
     }
 
@@ -169,7 +164,7 @@ public class Action implements Cloneable, Serializable
 
     public boolean isShowIcon()
     {
-        return currentIconState != null;
+        return currentIconState != null && currentIconState.isBlank();
     }
 
 
