@@ -48,7 +48,6 @@ public class Action implements Cloneable, Serializable
         actionTypeCheck(ActionType.NORMAL, ActionType.FOLDER, ActionType.COMBINE);
 
         addIcon("default",icon);
-        setCurrentIconState("default");
     }
 
     public byte[] getDefaultIcon() throws MinorException
@@ -162,8 +161,10 @@ public class Action implements Cloneable, Serializable
     }
 
 
-    public boolean isShowIcon()
+    public boolean isShowIcon() throws MinorException
     {
+        actionTypeCheck(ActionType.NORMAL, ActionType.FOLDER, ActionType.COMBINE);
+
         return currentIconState != null && currentIconState.isBlank();
     }
 
