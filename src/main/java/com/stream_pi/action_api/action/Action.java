@@ -164,14 +164,6 @@ public class Action implements Cloneable, Serializable
     }
 
 
-    public boolean isShowIcon() throws MinorException
-    {
-        actionTypeCheck(ActionType.NORMAL, ActionType.FOLDER, ActionType.COMBINE);
-
-        return currentIconState != null && currentIconState.isBlank();
-    }
-
-
     private Location location = null;
     private String parent = null;
 
