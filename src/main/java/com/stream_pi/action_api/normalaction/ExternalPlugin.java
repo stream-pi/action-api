@@ -30,6 +30,8 @@ public abstract class ExternalPlugin extends Action
         setModuleName(getClass().getModule().getName());
     }
 
+
+
     public void setVisibilityInPluginsPane(boolean visibileInPluginsPane)
     {
         this.visibileInPluginsPane = visibileInPluginsPane;
@@ -98,8 +100,6 @@ public abstract class ExternalPlugin extends Action
 
 
     public abstract void initAction() throws Exception;
-
-    public abstract void onActionClicked() throws Exception;
 
     public abstract void onShutDown() throws Exception;
 

@@ -100,7 +100,7 @@ public class Action implements Cloneable, Serializable
 
     public byte[] getIcon(String state)
     {
-        return icons.get(state);
+        return icons.getOrDefault(state,null);
     }
 
     public void removeIcon(String state) throws MinorException
