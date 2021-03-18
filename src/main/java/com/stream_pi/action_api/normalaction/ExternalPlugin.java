@@ -9,11 +9,11 @@ import com.stream_pi.util.version.Version;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
-public abstract class PluginActionBase extends Action
+public abstract class ExternalPlugin extends Action
 {
     private String author = "Unknown Author";
 
-    public PluginActionBase(String name, String author, String helpLink, Version version) {
+    public ExternalPlugin(String name, String author, String helpLink, Version version) {
         super(ActionType.NORMAL);
         setName(name);
         this.author = author;
@@ -24,7 +24,7 @@ public abstract class PluginActionBase extends Action
     private boolean visibileInPluginsPane = true;
     private boolean visibileInServerSettingsPane = true;
 
-    public PluginActionBase(ActionType normal)
+    public ExternalPlugin(ActionType normal)
     {
         super(normal);
         setModuleName(getClass().getModule().getName());
@@ -103,8 +103,8 @@ public abstract class PluginActionBase extends Action
 
     public abstract void onShutDown() throws Exception;
 
-    public NormalAction clone() throws CloneNotSupportedException {
-        NormalAction action = (NormalAction) super.clone();
+    public ExternalPlugin clone() throws CloneNotSupportedException {
+        ExternalPlugin action = (ExternalPlugin) super.clone();
         action.setClientProperties((ClientProperties) action.getClientProperties().clone());
         return action;
     }

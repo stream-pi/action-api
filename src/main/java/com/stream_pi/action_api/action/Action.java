@@ -25,7 +25,7 @@ public class Action implements Cloneable, Serializable
     private Version version=new Version(0,0,0);
 
     private HashMap<String,byte[]> icons = null;
-    private String currentIconState = null;
+    private String currentIconState = "";
 
     private void actionTypeCheck(ActionType... required) throws MinorException
     {
@@ -134,6 +134,9 @@ public class Action implements Cloneable, Serializable
 
     public HashMap<String,byte[]> getIcons()
     {
+        if(icons == null)
+            icons = new HashMap<>();
+
         return icons;
     }
 
