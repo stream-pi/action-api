@@ -428,10 +428,10 @@ public class Action implements Cloneable, Serializable
         propertySaver.saveServerProperties();
     }
 
-    public void saveClientIcons()
+    /*public void saveClientIcons()
     {
         propertySaver.saveClientIcons();
-    }
+    }*/
     
     private ServerConnection serverConnection = null;
 
