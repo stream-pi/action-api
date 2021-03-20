@@ -15,6 +15,7 @@ import javafx.scene.input.DataFormat;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.Serializable;
+import java.net.SocketAddress;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -443,5 +444,46 @@ public class Action implements Cloneable, Serializable
     public ServerConnection getServerConnection()
     {
         return serverConnection;
+    }
+
+    private String profileID;
+
+    public void setProfileID(String profileID)
+    {
+        this.profileID = profileID;
+    }
+
+    public String getProfileID()
+    {
+        return profileID;
+    }
+
+    private SocketAddress socketAddressForClient;
+
+    public void setSocketAddressForClient(SocketAddress socketAddressForClient)
+    {
+        this.socketAddressForClient = socketAddressForClient;
+    }
+
+    public SocketAddress getSocketAddressForClient()
+    {
+        return socketAddressForClient;
+    }
+
+
+
+    public void saveClientAction()
+    {
+        propertySaver.saveClientAction(getProfileID(), getID(), getSocketAddressForClient());
+    }
+
+    public void saveAllIcons()
+    {
+        propertySaver.saveAllIcons(getProfileID(), getID(), getSocketAddressForClient());
+    }
+
+    public void saveIcon(String state)
+    {
+        propertySaver.saveIcon(state, getProfileID(), getID(), getSocketAddressForClient());
     }
 }
