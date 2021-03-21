@@ -1,6 +1,7 @@
 package com.stream_pi.action_api.normalaction;
 
 import com.stream_pi.action_api.action.ActionType;
+import com.stream_pi.util.exception.MinorException;
 
 public abstract class ToggleAction extends ExternalPlugin
 {
@@ -11,4 +12,40 @@ public abstract class ToggleAction extends ExternalPlugin
 
     public abstract void onToggleOn() throws Exception;
     public abstract void onToggleOff() throws Exception;
+
+    public void setToggleOnIcon(byte[] icon, boolean sync) throws MinorException
+    {
+        addIcon("toggle_on",icon);
+
+        if(sync)
+            saveIcon("toggle_on");
+    }
+
+    public void setToggleOnIcon(byte[] icon) throws MinorException
+    {
+        setToggleOnIcon(icon, true);
+    }
+
+    public byte[] getToggleOnIcon() throws MinorException
+    {
+        return getIcon("toggle_on");
+    }
+
+    public void setToggleOffIcon(byte[] icon, boolean sync) throws MinorException
+    {
+        addIcon("toggle_off",icon);
+
+        if(sync)
+            saveIcon("toggle_on");
+    }
+
+    public void setToggleOffIcon(byte[] icon) throws MinorException
+    {
+        setToggleOffIcon(icon, true);
+    }
+
+    public byte[] getToggleOffIcon() throws MinorException
+    {
+        return getIcon("toggle_off");
+    }
 }

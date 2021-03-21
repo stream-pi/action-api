@@ -28,64 +28,6 @@ public class Action implements Cloneable, Serializable
     private HashMap<String,byte[]> icons = null;
     private String currentIconState = "";
 
-    private void actionTypeCheck(ActionType... required) throws MinorException
-    {
-        boolean isFail = true;
-        for(ActionType c : required)
-        {
-            if (getActionType() == c)
-            {
-                isFail = false;
-                break;
-            }
-        }
-
-        if(isFail)
-            throw new MinorException("Action not supported for "+getActionType());
-    }
-
-    public void setDefaultIcon(byte[] icon) throws MinorException
-    {
-        actionTypeCheck(ActionType.NORMAL, ActionType.FOLDER, ActionType.COMBINE);
-
-        addIcon("default",icon);
-    }
-
-    public byte[] getDefaultIcon() throws MinorException
-    {
-        actionTypeCheck(ActionType.NORMAL, ActionType.FOLDER, ActionType.COMBINE);
-
-        return getIcon("default");
-    }
-
-    public void setToggleOnIcon(byte[] icon) throws MinorException
-    {
-        actionTypeCheck(ActionType.TOGGLE);
-
-        addIcon("toggle_on",icon);
-    }
-
-    public byte[] getToggleOnIcon() throws MinorException
-    {
-        actionTypeCheck(ActionType.TOGGLE);
-
-        return getIcon("toggle_on");
-    }
-
-    public void setToggleOffIcon(byte[] icon) throws MinorException
-    {
-        actionTypeCheck(ActionType.TOGGLE);
-
-        addIcon("toggle_off",icon);
-    }
-
-    public byte[] getToggleOffIcon() throws MinorException
-    {
-        actionTypeCheck(ActionType.TOGGLE);
-
-        return getIcon("toggle_off");
-    }
-
     public void setIcons(HashMap<String,byte[]> icons)
     {
         this.icons = icons;
