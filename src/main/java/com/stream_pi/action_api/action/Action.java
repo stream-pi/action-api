@@ -122,12 +122,6 @@ public class Action implements Cloneable, Serializable
         return delayBeforeExecuting;
     }
 
-    private static final DataFormat dataFormat = new DataFormat("com.stream_pi.action_api.action");
-
-    public static DataFormat getDataFormat() {
-        return dataFormat;
-    }
-
     public void setParent(String parent) {
         this.parent = parent;
     }
@@ -359,23 +353,6 @@ public class Action implements Cloneable, Serializable
         return action;
     }
 
-    private PropertySaver propertySaver = null;
-
-    public void setPropertySaver(PropertySaver propertySaver)
-    {
-        this.propertySaver = propertySaver;
-    }
-
-    public void saveServerProperties()
-    {
-        propertySaver.saveServerProperties();
-    }
-
-    /*public void saveClientIcons()
-    {
-        propertySaver.saveClientIcons();
-    }*/
-    
     private ServerConnection serverConnection = null;
 
     public void setServerConnection(ServerConnection serverConnection)
@@ -410,22 +387,5 @@ public class Action implements Cloneable, Serializable
     public SocketAddress getSocketAddressForClient()
     {
         return socketAddressForClient;
-    }
-
-
-
-    public void saveClientAction()
-    {
-        propertySaver.saveClientAction(getProfileID(), getID(), getSocketAddressForClient());
-    }
-
-    public void saveAllIcons()
-    {
-        propertySaver.saveAllIcons(getProfileID(), getID(), getSocketAddressForClient());
-    }
-
-    public void saveIcon(String state)
-    {
-        propertySaver.saveIcon(state, getProfileID(), getID(), getSocketAddressForClient());
     }
 }

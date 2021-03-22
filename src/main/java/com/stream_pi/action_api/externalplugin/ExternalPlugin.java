@@ -1,7 +1,8 @@
-package com.stream_pi.action_api.normalaction;
+package com.stream_pi.action_api.externalplugin;
 
 import com.stream_pi.action_api.action.Action;
 import com.stream_pi.action_api.action.ActionType;
+import com.stream_pi.action_api.action.PropertySaver;
 import com.stream_pi.action_api.actionproperty.ClientProperties;
 import com.stream_pi.action_api.actionproperty.property.Property;
 import com.stream_pi.action_api.actionproperty.property.Type;
@@ -105,7 +106,7 @@ public abstract class ExternalPlugin extends Action
 
     public ExternalPlugin clone() throws CloneNotSupportedException {
         ExternalPlugin action = (ExternalPlugin) super.clone();
-        action.setClientProperties((ClientProperties) action.getClientProperties().clone());
+        action.setClientProperties((ClientProperties) getClientProperties().clone());
         return action;
     }
 
@@ -119,5 +120,50 @@ public abstract class ExternalPlugin extends Action
     public VBox getButtonBar()
     {
         return buttonBar;
+    }
+
+    public void onActionCreate() throws Exception
+    {
+        // This method is called when the action is first created and send to the Client
+    }
+
+    public void onActionSavedFromServer() throws Exception
+    {
+        // This method is called when action is saved from the server
+    }
+
+
+    private PropertySaver propertySaver = null;
+
+    public void setPropertySaver(PropertySaver propertySaver)
+    {
+        this.propertySaver = propertySaver;
+    }
+
+    public void saveServerProperties()
+    {
+        propertySaver.saveServerProperties();
+    }
+
+
+    public void saveClientAction(boolean sendIcons, boolean runAsync)
+    {
+        propertySaver.saveClientAction(getProfileID(), getID(), getSocketAddressForClient(), sendIcons, runAsync);
+    }
+
+    public void saveClientAction()
+    {
+        System.out.println("@@@@@@@@DNDNNDNDNDN :"+getProfileID());
+        propertySaver.saveClientAction(getProfileID(), getID(), getSocketAddressForClient(), true, false);
+    }
+
+    public void saveAllIcons()
+    {
+        propertySaver.saveAllIcons(getProfileID(), getID(), getSocketAddressForClient());
+    }
+
+    public void saveIcon(String state)
+    {
+        propertySaver.saveIcon(state, getProfileID(), getID(), getSocketAddressForClient());
     }
 }

@@ -1,4 +1,4 @@
-package com.stream_pi.action_api.normalaction;
+package com.stream_pi.action_api.externalplugin;
 
 import com.stream_pi.action_api.action.ActionType;
 import com.stream_pi.util.exception.MinorException;
@@ -12,11 +12,11 @@ public abstract class NormalAction extends ExternalPlugin
 
     public abstract void onActionClicked() throws Exception;
 
-    public void setDefaultIcon(byte[] icon, boolean sync) throws MinorException
+    public void setDefaultIcon(byte[] icon, boolean send) throws MinorException
     {
         addIcon("default",icon);
 
-        if(sync)
+        if(send)
             saveIcon("toggle_on");
     }
 
