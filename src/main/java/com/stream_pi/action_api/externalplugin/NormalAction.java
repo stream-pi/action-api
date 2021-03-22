@@ -22,7 +22,7 @@ public abstract class NormalAction extends ExternalPlugin
 
     public void setDefaultIcon(byte[] icon) throws MinorException
     {
-        setDefaultIcon(icon, true);
+        setDefaultIcon(icon, false);
     }
 
     public byte[] getDefaultIcon() throws MinorException

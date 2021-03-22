@@ -23,7 +23,7 @@ public abstract class ToggleAction extends ExternalPlugin
 
     public void setToggleOnIcon(byte[] icon) throws MinorException
     {
-        setToggleOnIcon(icon, true);
+        setToggleOnIcon(icon, false);
     }
 
     public byte[] getToggleOnIcon() throws MinorException
@@ -41,7 +41,7 @@ public abstract class ToggleAction extends ExternalPlugin
 
     public void setToggleOffIcon(byte[] icon) throws MinorException
     {
-        setToggleOffIcon(icon, true);
+        setToggleOffIcon(icon, false);
     }
 
     public byte[] getToggleOffIcon() throws MinorException
