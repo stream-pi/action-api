@@ -6,7 +6,8 @@ import com.stream_pi.util.exception.MinorException;
 import java.io.Serializable;
 import java.util.*;
 
-class Properties implements Cloneable, Serializable {
+class Properties implements Cloneable, Serializable
+{
 
     private List<Property> properties;
     private boolean isDuplicatePropertyAllowed;
@@ -40,11 +41,7 @@ class Properties implements Cloneable, Serializable {
         if(!isDuplicatePropertyAllowed)
             removeProperty(property.getName());
 
-        try {
-            properties.add(property.clone());
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+        properties.add(property.chaap());
     }
 
     public void clear()
@@ -119,8 +116,19 @@ class Properties implements Cloneable, Serializable {
         return properties.size();
     }
 
-    public Object clone() throws CloneNotSupportedException
+    public Properties clone() throws CloneNotSupportedException
     {
-        return super.clone();
+        Properties tbr = (Properties) super.clone();
+
+        List<Property> newList = new ArrayList<>();
+
+        for(Property eachProperty : properties)
+        {
+            newList.add(eachProperty.chaap());
+        }
+
+        tbr.set(newList);
+
+        return tbr;
     }
 }

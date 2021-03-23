@@ -33,7 +33,7 @@ public class Action implements Cloneable, Serializable
         this.icons = icons;
     }
 
-    public void addIcon(String state, byte[] icon) throws MinorException
+    public void addIcon(String state, byte[] icon)
     {
         if(icons==null)
             icons = new HashMap<>();

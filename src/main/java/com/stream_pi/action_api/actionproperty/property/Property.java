@@ -7,15 +7,34 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
-public class Property implements Cloneable, Serializable
+public class Property implements Serializable
 {
-    private final String name;
+    private String name;
     private ControlType controlType;
-    private final Type type;
+    private Type type;
     private boolean visible = true;
     private String defaultValue=null;
     private String helpLink=null;
     private String displayName;
+
+    private Property(String name, ControlType controlType, Type type, boolean visible, String defaultValue,
+                     String helpLink, String displayName)
+    {
+        this.name = name;
+        this.controlType = controlType;
+        this.type = type;
+        this.visible = visible;
+        this.defaultValue = defaultValue;
+        this.helpLink = helpLink;
+        this.displayName = displayName;
+    }
+
+
+    public Property chaap()
+    {
+        return new Property(getName(), getControlType(), getType(), isVisible(), getDefaultRawValue(),
+                getHelpLink(), getDisplayName());
+    }
 
     public void setDefaultValueStr(String defaultValue) throws MinorException {
         typeCheck(Type.STRING);
@@ -393,10 +412,7 @@ public class Property implements Cloneable, Serializable
             throw new MinorException("property '"+name+"' cannot have ControlType '"+controlType+"!");
     }
 
-    public Property clone() throws CloneNotSupportedException
-    {
-        return (Property)super.clone();
-    }
+
 
     private FileExtensionFilter[] extensionFilters = null;
 
