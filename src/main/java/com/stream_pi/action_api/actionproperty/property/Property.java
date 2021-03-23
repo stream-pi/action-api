@@ -18,7 +18,7 @@ public class Property implements Serializable
     private String displayName;
 
     private Property(String name, ControlType controlType, Type type, boolean visible, String defaultValue,
-                     String helpLink, String displayName)
+                     String helpLink, String displayName, String value)
     {
         this.name = name;
         this.controlType = controlType;
@@ -27,13 +27,14 @@ public class Property implements Serializable
         this.defaultValue = defaultValue;
         this.helpLink = helpLink;
         this.displayName = displayName;
+        this.value = value;
     }
 
 
     public Property chaap()
     {
         return new Property(getName(), getControlType(), getType(), isVisible(), getDefaultRawValue(),
-                getHelpLink(), getDisplayName());
+                getHelpLink(), getDisplayName(), getRawValue());
     }
 
     public void setDefaultValueStr(String defaultValue) throws MinorException {
