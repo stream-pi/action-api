@@ -367,12 +367,12 @@ public class Action implements Cloneable, Serializable
 
     private String profileID;
 
-    public void setProfileID(String profileID)
+    public synchronized void setProfileID(String profileID)
     {
         this.profileID = profileID;
     }
 
-    public String getProfileID()
+    public synchronized String getProfileID()
     {
         return profileID;
     }
