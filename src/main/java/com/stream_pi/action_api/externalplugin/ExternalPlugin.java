@@ -102,7 +102,10 @@ public abstract class ExternalPlugin extends Action
 
     public abstract void initAction() throws Exception;
 
-    public abstract void onShutDown() throws Exception;
+    public void onShutDown() throws Exception
+    {
+        //Runs when server shuts down
+    }
 
     public ExternalPlugin clone() throws CloneNotSupportedException {
         ExternalPlugin action = (ExternalPlugin) super.clone();
@@ -110,16 +113,28 @@ public abstract class ExternalPlugin extends Action
         return action;
     }
 
-    private VBox buttonBar = null;
-    public void setButtonBar(Button... buttons)
+    private VBox serverSettingsButtonBar = null;
+    public void setServerSettingsButtonBar(Button... buttons)
     {
-        buttonBar = new VBox(buttons);
-        buttonBar.setSpacing(5.0);
+        serverSettingsButtonBar = new VBox(buttons);
+        serverSettingsButtonBar.setSpacing(5.0);
     }
 
-    public VBox getButtonBar()
+    public VBox getServerSettingsButtonBar()
     {
-        return buttonBar;
+        return serverSettingsButtonBar;
+    }
+
+    private VBox clientActionSettingsButtonBar = null;
+    public void setClientActionSettingsButtonBar(Button... buttons)
+    {
+        clientActionSettingsButtonBar = new VBox(buttons);
+        clientActionSettingsButtonBar.setSpacing(5.0);
+    }
+
+    public VBox getClientActionSettingsButtonBar()
+    {
+        return clientActionSettingsButtonBar;
     }
 
     public void onActionCreate() throws Exception
