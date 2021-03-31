@@ -150,7 +150,7 @@ public class Action implements Cloneable, Serializable
         this.helpLink = helpLink;
     }
 
-    private ServerProperties serverProperties;
+    private static ServerProperties serverProperties;
     private ClientProperties clientProperties;
     private String category;
 
@@ -160,7 +160,7 @@ public class Action implements Cloneable, Serializable
 
     public Action(String name, String ID, ActionType actionType)
     {
-        this.serverProperties = new ServerProperties();
+        serverProperties = new ServerProperties();
         this.clientProperties = new ClientProperties();
         this.name = name;
         setCategory("Others");

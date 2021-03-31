@@ -102,6 +102,11 @@ public abstract class ExternalPlugin extends Action
 
     public abstract void initAction() throws Exception;
 
+    public void initClientActionSettingsButtonBar()
+    {
+
+    }
+
     public void onShutDown() throws Exception
     {
         //Runs when server shuts down
