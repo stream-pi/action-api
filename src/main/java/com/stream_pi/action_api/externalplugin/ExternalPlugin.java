@@ -97,10 +97,16 @@ public abstract class ExternalPlugin extends Action
     }
 
 
-    public abstract void initProperties() throws Exception;
+    public void initProperties() throws Exception
+    {
+
+    }
 
 
-    public abstract void initAction() throws Exception;
+    public void initAction() throws Exception
+    {
+
+    }
 
     public void initClientActionSettingsButtonBar()
     {
