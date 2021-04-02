@@ -131,4 +131,13 @@ class Properties implements Cloneable, Serializable
 
         return tbr;
     }
+
+    public void resetToDefaults()
+    {
+        for(Property property : properties)
+        {
+            if(property.getDefaultRawValue() != null)
+                property.setRawValue(property.getDefaultRawValue());
+        }
+    }
 }
