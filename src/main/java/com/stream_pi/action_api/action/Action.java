@@ -150,7 +150,7 @@ public class Action implements Cloneable, Serializable
         this.helpLink = helpLink;
     }
 
-    private static ServerProperties serverProperties;
+    private ServerProperties serverProperties;
     private ClientProperties clientProperties;
     private String category;
 
@@ -160,7 +160,7 @@ public class Action implements Cloneable, Serializable
 
     public Action(String name, String ID, ActionType actionType)
     {
-        serverProperties = new ServerProperties();
+        this.serverProperties = new ServerProperties();
         this.clientProperties = new ClientProperties();
         this.name = name;
         setCategory("Others");
@@ -348,7 +348,7 @@ public class Action implements Cloneable, Serializable
 
     public Action clone() throws CloneNotSupportedException {
         Action action = (Action) super.clone();
-        action.setClientProperties((ClientProperties) action.getClientProperties().clone());
+        action.setClientProperties(action.getClientProperties().clone());
         action.setIcons((HashMap<String, byte[]>) action.getIcons().clone());
         return action;
     }
