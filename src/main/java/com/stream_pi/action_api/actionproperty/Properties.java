@@ -136,8 +136,7 @@ class Properties implements Cloneable, Serializable
     {
         for(Property property : properties)
         {
-            if(property.getDefaultRawValue() != null)
-                property.setRawValue(property.getDefaultRawValue());
+            property.setRawValue(property.getDefaultRawValue());
         }
     }
 }
