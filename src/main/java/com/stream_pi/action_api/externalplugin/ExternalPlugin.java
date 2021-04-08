@@ -158,6 +158,15 @@ public abstract class ExternalPlugin extends Action
         // This method is called when action is saved from the server
     }
 
+    public void onActionDeleted() throws Exception
+    {
+        // This method is called when action is deleted from client.
+    }
+
+    public void onClientDisconnected() throws Exception
+    {
+        // This method is called when client is disconnected
+    }
 
     private PropertySaver propertySaver = null;
 
@@ -179,7 +188,6 @@ public abstract class ExternalPlugin extends Action
 
     public void saveClientAction()
     {
-        System.out.println("@@@@@@@@DNDNNDNDNDN :"+getProfileID());
         propertySaver.saveClientAction(getProfileID(), getID(), getSocketAddressForClient(), true, false);
     }
 
