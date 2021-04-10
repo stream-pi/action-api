@@ -168,6 +168,11 @@ public abstract class ExternalPlugin extends Action
         // This method is called when client is disconnected
     }
 
+    public void onClientConnected() throws Exception
+    {
+        // This method is called when client is connected
+    }
+
     private PropertySaver propertySaver = null;
 
     public void setPropertySaver(PropertySaver propertySaver)
