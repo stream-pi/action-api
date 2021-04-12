@@ -39,8 +39,7 @@ public abstract class ToggleAction extends ExternalPlugin
         getToggleExtras().setToggleStatus(currentStatus, getProfileID(), getID(), getSocketAddressForClient());
     }
 
-    public boolean getCurrentStatus()
-            throws ClientNotFoundException, ProfileNotFoundException, ActionNotFoundException
+    public boolean getCurrentStatus() throws MinorException
     {
         toggleValueChangeChecks("getCurrentStatus");
 
