@@ -7,7 +7,10 @@ package com.stream_pi.action_api.action;
 
 import com.stream_pi.action_api.actionproperty.ClientProperties;
 import com.stream_pi.action_api.actionproperty.ServerProperties;
+import com.stream_pi.util.exception.ActionNotFoundException;
+import com.stream_pi.util.exception.ClientNotFoundException;
 import com.stream_pi.util.exception.MinorException;
+import com.stream_pi.util.exception.ProfileNotFoundException;
 import com.stream_pi.util.version.Version;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
@@ -365,7 +368,7 @@ public class Action implements Cloneable, Serializable
         return serverConnection;
     }
 
-    private String profileID;
+    private String profileID = null;
 
     public synchronized void setProfileID(String profileID)
     {
@@ -377,7 +380,7 @@ public class Action implements Cloneable, Serializable
         return profileID;
     }
 
-    private SocketAddress socketAddressForClient;
+    private SocketAddress socketAddressForClient = null;
 
     public void setSocketAddressForClient(SocketAddress socketAddressForClient)
     {
@@ -387,5 +390,18 @@ public class Action implements Cloneable, Serializable
     public SocketAddress getSocketAddressForClient()
     {
         return socketAddressForClient;
+    }
+
+
+    private boolean currentToggleStatus = false;
+
+    public void setCurrentToggleStatus(boolean currentToggleStatus)
+    {
+        this.currentToggleStatus = currentToggleStatus;
+    }
+
+    public boolean getCurrentToggleStatus()
+    {
+        return currentToggleStatus;
     }
 }
