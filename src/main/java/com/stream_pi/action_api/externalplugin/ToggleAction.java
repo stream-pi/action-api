@@ -32,6 +32,9 @@ public abstract class ToggleAction extends ExternalPlugin
 
     public void setCurrentStatus(boolean currentStatus) throws MinorException
     {
+        if(getActionType() != ActionType.TOGGLE)
+            throw new MinorException("Action type is not TOGGLE");
+
         toggleValueChangeChecks("setCurrentStatus");
 
         setCurrentToggleStatus(currentStatus);
@@ -41,6 +44,9 @@ public abstract class ToggleAction extends ExternalPlugin
 
     public boolean getCurrentStatus() throws MinorException
     {
+        if(getActionType() != ActionType.TOGGLE)
+            throw new MinorException("Action type is not TOGGLE");
+
         toggleValueChangeChecks("getCurrentStatus");
 
         return getCurrentToggleStatus();

@@ -395,19 +395,13 @@ public class Action implements Cloneable, Serializable
 
     private boolean currentToggleStatus = false;
 
-    public void setCurrentToggleStatus(boolean currentToggleStatus) throws MinorException
+    public void setCurrentToggleStatus(boolean currentToggleStatus)
     {
-        if(getActionType() != ActionType.TOGGLE)
-            throw new MinorException("Action type is not TOGGLE");
-
         this.currentToggleStatus = currentToggleStatus;
     }
 
-    public boolean getCurrentToggleStatus() throws MinorException
+    public boolean getCurrentToggleStatus()
     {
-        if(getActionType() != ActionType.TOGGLE)
-            throw new MinorException("Action type is not TOGGLE");
-
         return currentToggleStatus;
     }
 }
