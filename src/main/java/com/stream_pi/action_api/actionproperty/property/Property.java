@@ -13,29 +13,29 @@ public class Property implements Serializable
     private ControlType controlType;
     private Type type;
     private boolean visible = true;
-    private String defaultValue=null;
+    private String defaultRawValue=null;
     private String helpLink=null;
     private String displayName;
 
-    private Property(String name, ControlType controlType, Type type, boolean visible, String defaultValue,
-                     String helpLink, String displayName, String value, List<String> list, FileExtensionFilter[] extensionFilters,
+    private Property(String name, ControlType controlType, Type type, boolean visible, String defaultRawValue,
+                     String helpLink, String displayName, String rawValue, List<String> list, FileExtensionFilter[] extensionFilters,
                      int maxIntValue, int minIntValue, double maxDoubleValue, double minDoubleValue)
     {
         this.name = name;
         this.controlType = controlType;
         this.type = type;
         this.visible = visible;
-        this.defaultValue = defaultValue;
+        this.defaultRawValue = defaultRawValue;
         this.helpLink = helpLink;
         this.displayName = displayName;
         this.list = list;
-        this.value = value;
+        this.rawValue = rawValue;
         this.extensionFilters = extensionFilters;
 
 
         this.maxIntValue = maxIntValue;
         this.minIntValue = minIntValue;
-        this.maxDoubleValue = minDoubleValue;
+        this.maxDoubleValue = maxDoubleValue;
         this.minDoubleValue = minDoubleValue;
         this.helpLink = helpLink;
     }
@@ -44,7 +44,8 @@ public class Property implements Serializable
     public Property chaap()
     {
         return new Property(getName(), getControlType(), getType(), isVisible(), getDefaultRawValue(),
-                getHelpLink(), getDisplayName(), getRawValue(), list, getExtensionFilters(), maxIntValue, minIntValue, maxDoubleValue, minDoubleValue);
+                getHelpLink(), getDisplayName(), getRawValue(), list, getExtensionFilters(),
+                maxIntValue, minIntValue, maxDoubleValue, minDoubleValue);
     }
 
     public void setDefaultValueStr(String defaultValue) throws MinorException {
@@ -53,12 +54,13 @@ public class Property implements Serializable
         if(!isCanBeBlank() && defaultValue.isBlank())
             throw new MinorException("property '"+name+"' is set to cannot be blank. Default property cannot be blank.");
 
-        this.defaultValue = defaultValue;
+        this.defaultRawValue = defaultValue;
     }
 
-    public void setDefaultValueInt(int valueInt) throws MinorException{
+    public void setDefaultValueInt(int valueInt) throws MinorException
+    {
         typeCheck(Type.INTEGER);
-        this.defaultValue = valueInt + "";
+        this.defaultRawValue = valueInt + "";
     }
 
     public void setHelpLink(String URL)
@@ -74,28 +76,33 @@ public class Property implements Serializable
     public void setDefaultValueDouble(double defaultValueDouble) throws MinorException
     {
         typeCheck(Type.DOUBLE);
-        this.defaultValue = defaultValueDouble + "";
+        this.defaultRawValue = defaultValueDouble + "";
     }
 
     public void setDefaultValueBoolean(boolean defaultValueBoolean) throws MinorException
     {
         typeCheck(Type.BOOLEAN);
-        this.defaultValue = defaultValueBoolean+"";
+        this.defaultRawValue = defaultValueBoolean+"";
+    }
+
+    public void setDefaultRawValue(String defaultValue)
+    {
+        this.defaultRawValue = defaultValue;
     }
 
     public void setDefaultValueList(int index) throws MinorException
     {
         typeCheck(Type.LIST);
-        this.defaultValue = index+"";
+        this.defaultRawValue = index+"";
     }
 
     public String getDefaultRawValue() {
-        return defaultValue;
+        return defaultRawValue;
     }
 
-    private String value;
+    protected String rawValue;
 
-    private boolean canBeBlank = true;
+    protected boolean canBeBlank = true;
 
     public boolean isCanBeBlank() {
         return canBeBlank;
@@ -204,12 +211,12 @@ public class Property implements Serializable
     
     public String getRawValue()
     {
-        return value;
+        return rawValue;
     }
 
     public void setRawValue(String value)
     {
-        this.value = value;
+        this.rawValue = value;
     }
 
     //Type
@@ -232,16 +239,16 @@ public class Property implements Serializable
         typeCheck(Type.BOOLEAN);
 
         if(value)
-            this.value = "true";
+            this.rawValue = "true";
         else
-            this.value = "false";
+            this.rawValue = "false";
     }
 
     public boolean getBoolValue() throws MinorException
     {
         typeCheck(Type.BOOLEAN);
 
-        return value.equals("true");
+        return rawValue.equals("true");
     }
 
     //For Type STRING
@@ -249,7 +256,7 @@ public class Property implements Serializable
     {
         typeCheck(Type.STRING);
 
-        this.value = value;
+        this.rawValue = value;
     }
 
 
@@ -257,30 +264,30 @@ public class Property implements Serializable
     {
         typeCheck(Type.STRING);
 
-        return value;
+        return rawValue;
     }
 
     //For Type LIST
-    private List<String> list;
+    protected List<String> list;
 
     public void setListValue(List<String> list) throws MinorException
     {
         typeCheck(Type.LIST);
 
         this.list = list;
-        this.value = "0";
+        this.rawValue = "0";
     }
 
     public void setSelectedIndex(int index) throws MinorException {
         typeCheck(Type.LIST);
 
-        this.value = index+"";
+        this.rawValue = index+"";
     }
 
     public int getSelectedIndex() throws MinorException
     {
         typeCheck(Type.LIST);
-        return Integer.parseInt(this.value);
+        return Integer.parseInt(this.rawValue);
     }
 
 
@@ -292,7 +299,7 @@ public class Property implements Serializable
     }
 
     //For Type INTEGER
-    private int maxIntValue, minIntValue;
+    protected int maxIntValue, minIntValue;
 
     public void setMaxIntValue(int maxValue) throws MinorException
     {
@@ -312,7 +319,7 @@ public class Property implements Serializable
     {
         typeCheck(Type.INTEGER);
 
-        this.value = value+"";
+        this.rawValue = value+"";
     }
 
     public int getMaxIntValue() throws MinorException
@@ -336,7 +343,7 @@ public class Property implements Serializable
 
         try
         {
-            return Integer.parseInt(value);
+            return Integer.parseInt(rawValue);
         }
         catch (NumberFormatException e)
         {
@@ -346,7 +353,7 @@ public class Property implements Serializable
 
 
     //For Type DOUBLE
-    private double maxDoubleValue, minDoubleValue;
+    protected double maxDoubleValue, minDoubleValue;
 
     public void setMaxDoubleValue(double maxValue) throws MinorException
     {
@@ -366,7 +373,7 @@ public class Property implements Serializable
     {
         typeCheck(Type.DOUBLE);
 
-        this.value = value+"";
+        this.rawValue = value+"";
     }
 
     public double getMaxDoubleValue() throws MinorException
@@ -389,7 +396,7 @@ public class Property implements Serializable
 
         try
         {
-            return Double.parseDouble(value);
+            return Double.parseDouble(rawValue);
         }
         catch (NumberFormatException e)
         {
