@@ -18,7 +18,8 @@ public class Property implements Serializable
     private String displayName;
 
     private Property(String name, ControlType controlType, Type type, boolean visible, String defaultValue,
-                     String helpLink, String displayName, String value, List<String> list, FileExtensionFilter[] extensionFilters)
+                     String helpLink, String displayName, String value, List<String> list, FileExtensionFilter[] extensionFilters,
+                     int maxIntValue, int minIntValue, double maxDoubleValue, double minDoubleValue)
     {
         this.name = name;
         this.controlType = controlType;
@@ -30,13 +31,20 @@ public class Property implements Serializable
         this.list = list;
         this.value = value;
         this.extensionFilters = extensionFilters;
+
+
+        this.maxIntValue = maxIntValue;
+        this.minIntValue = minIntValue;
+        this.maxDoubleValue = minDoubleValue;
+        this.minDoubleValue = minDoubleValue;
+        this.helpLink = helpLink;
     }
 
 
     public Property chaap()
     {
         return new Property(getName(), getControlType(), getType(), isVisible(), getDefaultRawValue(),
-                getHelpLink(), getDisplayName(), getRawValue(), list, getExtensionFilters());
+                getHelpLink(), getDisplayName(), getRawValue(), list, getExtensionFilters(), maxIntValue, minIntValue, maxDoubleValue, minDoubleValue);
     }
 
     public void setDefaultValueStr(String defaultValue) throws MinorException {
