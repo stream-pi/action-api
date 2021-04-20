@@ -2,7 +2,7 @@
 
 ![version](https://img.shields.io/badge/Version-1.0.0-green)
 
-API for building actions and/or integrations for the Stream-Pi, see [Stream-Pi Essential Actions](https://github.com/stream-pi/essentialactions) for examples of pre-built actions.
+API for building actions and/or integrations for the Stream-Pi, see [Stream-Pi Essential Actions](https://github.com/stream-pi/essential-actions) for examples of pre-built actions.
 
 ## Prerequisites
 
