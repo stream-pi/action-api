@@ -7,13 +7,8 @@ API for building actions and/or integrations for the Stream-Pi, see [Stream-Pi E
 ## Prerequisites
 
 - Java >= 11
+- Maven >= 3.6.3
 
 ## Quick Start
 
-### on Linux or Mac
-
-Build locally by executing `./mvnw clean install` from the command line.
-
-### on Windows
-
-Build locally by executing `./mvnw.cmd clean install` from the command line.
+Build locally by executing `mvn clean install` from the command line.
