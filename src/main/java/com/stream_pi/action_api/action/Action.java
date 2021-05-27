@@ -46,6 +46,9 @@ public class Action implements Cloneable, Serializable
 
     public byte[] getIcon(String state)
     {
+        if(icons == null)
+            return null;
+
         return icons.getOrDefault(state,null);
     }
 
