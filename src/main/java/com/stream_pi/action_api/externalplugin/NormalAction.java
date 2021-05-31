@@ -10,7 +10,7 @@ public abstract class NormalAction extends ExternalPlugin
         super(ActionType.NORMAL);
     }
 
-    public abstract void onActionClicked() throws Exception;
+    public abstract void onActionClicked() throws MinorException;
 
     public void setDefaultIcon(byte[] icon, boolean send) throws MinorException
     {

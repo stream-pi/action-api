@@ -6,6 +6,7 @@ import com.stream_pi.action_api.action.PropertySaver;
 import com.stream_pi.action_api.actionproperty.ClientProperties;
 import com.stream_pi.action_api.actionproperty.property.Property;
 import com.stream_pi.action_api.actionproperty.property.Type;
+import com.stream_pi.util.exception.MinorException;
 import com.stream_pi.util.version.Version;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -14,7 +15,8 @@ public abstract class ExternalPlugin extends Action
 {
     private String author = "Unknown Author";
 
-    public ExternalPlugin(String name, String author, String helpLink, Version version) {
+    public ExternalPlugin(String name, String author, String helpLink, Version version)
+    {
         super(ActionType.NORMAL);
         setName(name);
         this.author = author;
@@ -97,13 +99,13 @@ public abstract class ExternalPlugin extends Action
     }
 
 
-    public void initProperties() throws Exception
+    public void initProperties() throws MinorException
     {
 
     }
 
 
-    public void initAction() throws Exception
+    public void initAction() throws MinorException
     {
 
     }
@@ -113,7 +115,7 @@ public abstract class ExternalPlugin extends Action
 
     }
 
-    public void onShutDown() throws Exception
+    public void onShutDown() throws MinorException
     {
         //Runs when server shuts down
     }
@@ -148,27 +150,27 @@ public abstract class ExternalPlugin extends Action
         return clientActionSettingsButtonBar;
     }
 
-    public void onActionCreate() throws Exception
+    public void onActionCreate() throws MinorException
     {
         // This method is called when the action is first created and send to the Client
     }
 
-    public void onActionSavedFromServer() throws Exception
+    public void onActionSavedFromServer() throws MinorException
     {
         // This method is called when action is saved from the server
     }
 
-    public void onActionDeleted() throws Exception
+    public void onActionDeleted() throws MinorException
     {
         // This method is called when action is deleted from client.
     }
 
-    public void onClientDisconnected() throws Exception
+    public void onClientDisconnected() throws MinorException
     {
         // This method is called when client is disconnected
     }
 
-    public void onClientConnected() throws Exception
+    public void onClientConnected() throws MinorException
     {
         // This method is called when client is connected
     }

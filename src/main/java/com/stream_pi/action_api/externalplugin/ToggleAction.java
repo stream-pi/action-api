@@ -13,8 +13,8 @@ public abstract class ToggleAction extends ExternalPlugin
         super(ActionType.TOGGLE);
     }
 
-    public abstract void onToggleOn() throws Exception;
-    public abstract void onToggleOff() throws Exception;
+    public abstract void onToggleOn() throws MinorException;
+    public abstract void onToggleOff() throws MinorException;
 
 
     private ToggleExtras toggleExtras = null;
