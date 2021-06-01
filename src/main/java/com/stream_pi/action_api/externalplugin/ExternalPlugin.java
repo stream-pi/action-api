@@ -207,4 +207,9 @@ public abstract class ExternalPlugin extends Action
     {
         propertySaver.saveIcon(state, getProfileID(), getID(), getSocketAddressForClient());
     }
+
+    public void throwMinorException(MinorException exception)
+    {
+        getServerConnection().sendActionFailed(exception, getSocketAddressForClient(), getProfileID(), getID());
+    }
 }
