@@ -24,8 +24,8 @@ public abstract class ExternalPlugin extends Action
         setVersion(version);
     }
 
-    private boolean visibileInPluginsPane = true;
-    private boolean visibileInServerSettingsPane = true;
+    private boolean visibleInPluginsPane = true;
+    private boolean visibleInServerSettingsPane = true;
 
     public ExternalPlugin(ActionType normal)
     {
@@ -35,24 +35,24 @@ public abstract class ExternalPlugin extends Action
 
 
 
-    public void setVisibilityInPluginsPane(boolean visibileInPluginsPane)
+    public void setVisibilityInPluginsPane(boolean visibleInPluginsPane)
     {
-        this.visibileInPluginsPane = visibileInPluginsPane;
+        this.visibleInPluginsPane = visibleInPluginsPane;
     }
 
-    public void setVisibilityInServerSettingsPane(boolean visibileInServerSettingsPane)
+    public void setVisibilityInServerSettingsPane(boolean visibleInServerSettingsPane)
     {
-        this.visibileInServerSettingsPane = visibileInServerSettingsPane;
+        this.visibleInServerSettingsPane = visibleInServerSettingsPane;
     }
 
     public boolean isVisibleInPluginsPane()
     {
-        return visibileInPluginsPane;
+        return visibleInPluginsPane;
     }
 
     public boolean isVisibleInServerSettingsPane()
     {
-        return visibileInServerSettingsPane;
+        return visibleInServerSettingsPane;
     }
 
 
