@@ -212,4 +212,9 @@ public abstract class ExternalPlugin extends Action
     {
         getServerConnection().sendActionFailed(exception, getSocketAddressForClient(), getProfileID(), getID());
     }
+
+    public void throwMinorException(String message)
+    {
+        throwMinorException(new MinorException(message));
+    }
 }
