@@ -8,7 +8,7 @@ public class TemporaryListProperty extends Property
 {
     public TemporaryListProperty(String name)
     {
-        super(name, Type.STRING);
+        super(name, Type.TEMPORARY_LIST);
     }
 
     public void setList(List<String> list)
