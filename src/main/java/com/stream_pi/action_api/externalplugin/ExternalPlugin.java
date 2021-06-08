@@ -4,9 +4,11 @@ import com.stream_pi.action_api.action.Action;
 import com.stream_pi.action_api.action.ActionType;
 import com.stream_pi.action_api.action.PropertySaver;
 import com.stream_pi.action_api.actionproperty.ClientProperties;
+import com.stream_pi.action_api.actionproperty.property.ControlType;
 import com.stream_pi.action_api.actionproperty.property.Property;
 import com.stream_pi.action_api.actionproperty.property.Type;
 import com.stream_pi.util.exception.MinorException;
+import com.stream_pi.util.platform.PlatformType;
 import com.stream_pi.util.version.Version;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -56,7 +58,12 @@ public abstract class ExternalPlugin extends Action
     }
 
 
-    public void addServerProperties(Property... properties)
+    public void addServerProperties(Property... properties) throws MinorException
+    {
+        addProperties(PlatformType.SERVER, properties);
+    }
+
+    private void addProperties(PlatformType platformType, Property... properties) throws MinorException
     {
         for (Property property : properties)
         {
@@ -65,25 +72,28 @@ public abstract class ExternalPlugin extends Action
             else if(property.getType() == Type.BOOLEAN)
                 property.setRawValue("false");
             else if(property.getType() == Type.STRING)
+            {
                 property.setRawValue("");
+                if(property.getControlType() == ControlType.FILE_PATH && property.getExtensionFilters() == null)
+                {
+                    throw new MinorException("File property has no File Extensions specified. Contact Plugin developer");
+                }
+            }
 
-            getServerProperties().addProperty(property);
+            if(platformType == PlatformType.SERVER)
+            {
+                getServerProperties().addProperty(property);
+            }
+            else if(platformType == PlatformType.CLIENT)
+            {
+                getClientProperties().addProperty(property);
+            }
         }
     }
 
-    public void addClientProperties(Property... properties)
+    public void addClientProperties(Property... properties) throws MinorException
     {
-        for (Property property : properties)
-        {
-            if(property.getType() == Type.LIST || property.getType() == Type.INTEGER || property.getType() == Type.DOUBLE)
-                property.setRawValue("0");
-            else if(property.getType() == Type.BOOLEAN)
-                property.setRawValue("false");
-            else if(property.getType() == Type.STRING)
-                property.setRawValue("");
-
-            getClientProperties().addProperty(property);
-        }
+        addProperties(PlatformType.CLIENT, properties);
     }
 
 
