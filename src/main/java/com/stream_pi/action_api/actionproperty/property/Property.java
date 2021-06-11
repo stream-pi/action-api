@@ -1,9 +1,7 @@
 package com.stream_pi.action_api.actionproperty.property;
 
 import com.stream_pi.util.exception.MinorException;
-import javafx.stage.FileChooser;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,7 +16,7 @@ public class Property implements Serializable
     private String displayName;
 
     private Property(String name, ControlType controlType, Type type, boolean visible, String defaultRawValue,
-                     String helpLink, String displayName, String rawValue, List<String> list, FileExtensionFilter[] extensionFilters,
+                     String helpLink, String displayName, String rawValue, List list, FileExtensionFilter[] extensionFilters,
                      int maxIntValue, int minIntValue, double maxDoubleValue, double minDoubleValue)
     {
         this.name = name;
@@ -268,9 +266,9 @@ public class Property implements Serializable
     }
 
     //For Type LIST
-    protected List<String> list;
+    protected List<ListValue> list;
 
-    public void setListValue(List<String> list) throws MinorException
+    public void setListValue(List<ListValue> list) throws MinorException
     {
         typeCheck(Type.LIST);
 
@@ -290,8 +288,7 @@ public class Property implements Serializable
         return Integer.parseInt(this.rawValue);
     }
 
-
-    public List<String> getListValue() throws MinorException
+    public List<ListValue> getListValue() throws MinorException
     {
         typeCheck(Type.LIST);
 

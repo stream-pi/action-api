@@ -76,7 +76,7 @@ public abstract class ExternalPlugin extends Action
                 property.setRawValue("");
                 if(property.getControlType() == ControlType.FILE_PATH && property.getExtensionFilters() == null)
                 {
-                    throw new MinorException("File property has no File Extensions specified. Contact Plugin developer");
+                    throw new MinorException("File property "+property.getName()+" has no File Extensions specified. Contact Plugin developer.");
                 }
             }
 

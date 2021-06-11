@@ -11,10 +11,15 @@ public class ListProperty extends Property
         super(name, Type.LIST);
     }
 
-    public void setValue(List<String> list)
+    public void setValue(List<ListValue> list)
     {
         this.list = list;
         this.rawValue = "0";
+    }
+
+    public void setDefaultSelectedIndex(int index)
+    {
+        setDefaultRawValue(index+"");
     }
 
     public void setSelectedIndex(int index)
@@ -28,7 +33,7 @@ public class ListProperty extends Property
     }
 
 
-    public List<String> getList()
+    public List<ListValue> getList()
     {
         return list;
     }
