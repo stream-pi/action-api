@@ -1,6 +1,8 @@
 package com.stream_pi.action_api.actionproperty.property;
 
-public class ListValue
+import java.io.Serializable;
+
+public class ListValue implements Serializable
 {
     private final Object name;
     private final String displayName;
