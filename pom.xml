@@ -8,17 +8,25 @@
     <artifactId>action-api</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
+    <name>Stream-Pi Action API</name>
+    <description>Stream-Pi Action API</description>
+    <url>https://stream-pi.com/</url>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>11</maven.compiler.release>
 
-        <javafx.version>16-ea+7</javafx.version>
-        <ikonli.version>11.5.0</ikonli.version>
         <util.version>1.0.0-SNAPSHOT</util.version>
+
+        <maven.test.skip>true</maven.test.skip>
 
         <source.plugin.version>2.2.1</source.plugin.version>
         <javadoc.plugin.version>3.1.0</javadoc.plugin.version>
         <gpg.plugin.version>1.6</gpg.plugin.version>
+        <jar.plugin.version>3.1.0</jar.plugin.version>
+        <compiler.plugin.version>3.8.1</compiler.plugin.version>
+        <source.plugin.version>2.2.1</source.plugin.version>
+        <nexus.staging.plugin.version>1.6.7</nexus.staging.plugin.version>
     </properties>
     
     <repositories>
@@ -34,45 +42,20 @@
             <artifactId>util</artifactId>
             <version>${util.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.kordamp.ikonli</groupId>
-            <artifactId>ikonli-fontawesome5-pack</artifactId>
-            <version>${ikonli.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.kordamp.ikonli</groupId>
-            <artifactId>ikonli-javafx</artifactId>
-            <version>${ikonli.version}</version>
-        </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>test-jar</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <version>${jar.plugin.version}</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${compiler.plugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -85,7 +68,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>2.2.1</version>
+                        <version>${source.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -131,6 +114,17 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${nexus.staging.plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -143,7 +137,7 @@
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/Stream-Pi/actionapi/issues</url>
+        <url>https://github.com/Stream-Pi/action-api/issues</url>
     </issueManagement>
 
     <licenses>
@@ -157,7 +151,7 @@
     <developers>
         <developer>
             <name>Debayan Sutradhar</name>
-            <email>debayansutradhar3@gmail.com</email>
+            <email>debayan@stream-pi.com</email>
             <organization>Stream-Pi</organization>
             <organizationUrl>https://www.stream-pi.com</organizationUrl>
         </developer>
@@ -170,9 +164,9 @@
     </developers>
 
     <scm>
-        <url>https://github.com/stream-pi/actionapi</url>
-        <connection>scm:git:git://github.com/stream-pi/actionapi.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:stream-pi/actionapi.git</developerConnection>
+        <url>https://github.com/stream-pi/action-api</url>
+        <connection>scm:git:git://github.com/stream-pi/action-api.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:stream-pi/action-api.git</developerConnection>
     </scm>
 
     <distributionManagement>
