@@ -5,10 +5,12 @@ import com.stream_pi.action_api.action.ActionType;
 
 import java.util.ArrayList;
 
-public class OtherAction extends Action{
+public class OtherAction extends Action
+{
     ArrayList<Action> actions;
 
-    public OtherAction(String name, ActionType actionType) {
+    public OtherAction(String name, ActionType actionType)
+    {
         super(name, null, actionType);
 
         setCategory("Stream-Pi");

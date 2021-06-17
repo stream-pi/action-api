@@ -20,7 +20,8 @@ public class CombineAction extends OtherAction
         setClientProperties(new ClientProperties());
     }
 
-    public List<String> getChildrenIDSequential() throws MinorException {
+    public List<String> getChildrenIDSequential() throws MinorException
+    {
         int size = getClientProperties().getSize();
 
         LinkedList<String> children = new LinkedList<>();
