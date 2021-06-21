@@ -11,4 +11,25 @@ API for building actions and/or integrations for the Stream-Pi, see [Stream-Pi E
 
 ## Quick Start
 
-Build locally by executing `mvn clean install` from the command line.
+Add the following dependency to your pom.xml if not already
+
+```
+<dependency>
+  <groupId>com.stream-pi</groupId>
+  <artifactId>action-api</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+</dependency>
+```
+
+You also need to include Sonatype Snapshot Repository as a repository
+
+```
+<repositories>
+  <repository>
+    <id>sonatype-snapshot</id>
+    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+  </repository>
+</repositories>
+```
+
+You can also build locally by executing `mvn clean install` from the command line.
