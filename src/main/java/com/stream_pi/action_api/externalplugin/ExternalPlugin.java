@@ -13,6 +13,8 @@ import com.stream_pi.util.version.Version;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
+import java.util.logging.Logger;
+
 public abstract class ExternalPlugin extends Action
 {
     private String author = "Unknown Author";
@@ -226,5 +228,10 @@ public abstract class ExternalPlugin extends Action
     public void throwMinorException(String message)
     {
         throwMinorException(new MinorException(message));
+    }
+
+    public Logger getLogger()
+    {
+        return Logger.getLogger(getModuleName());
     }
 }
