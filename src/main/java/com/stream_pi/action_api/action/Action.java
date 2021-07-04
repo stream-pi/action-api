@@ -26,6 +26,7 @@ public class Action implements Cloneable, Serializable
 {
     private ActionType actionType=null;
     private String name ="Unknown action", ID=null;
+    private double nameFontSize=-1;
     private Version version=new Version(0,0,0);
 
     private HashMap<String,byte[]> icons = null;
@@ -50,6 +51,16 @@ public class Action implements Cloneable, Serializable
             return null;
 
         return icons.getOrDefault(state,null);
+    }
+
+    public void setNameFontSize(double nameFontSize)
+    {
+        this.nameFontSize = nameFontSize;
+    }
+
+    public double getNameFontSize()
+    {
+        return nameFontSize;
     }
 
     public void removeIcon(String state) throws MinorException
