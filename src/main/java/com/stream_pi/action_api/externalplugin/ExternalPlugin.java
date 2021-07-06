@@ -8,6 +8,7 @@ import com.stream_pi.action_api.actionproperty.property.ControlType;
 import com.stream_pi.action_api.actionproperty.property.Property;
 import com.stream_pi.action_api.actionproperty.property.Type;
 import com.stream_pi.util.exception.MinorException;
+import com.stream_pi.util.platform.Platform;
 import com.stream_pi.util.platform.PlatformType;
 import com.stream_pi.util.version.Version;
 import javafx.scene.control.Button;
@@ -223,6 +224,11 @@ public abstract class ExternalPlugin extends Action
     public void throwMinorException(MinorException exception)
     {
         getServerConnection().sendActionFailed(exception, getSocketAddressForClient(), getProfileID(), getID());
+    }
+
+    public Platform getPlatform()
+    {
+        return getServerConnection().getPlatform();
     }
 
     public void throwMinorException(String message)
