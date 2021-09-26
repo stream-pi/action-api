@@ -6,12 +6,14 @@ Written by Debayan Sutradhar (dubbadhar)
 package com.stream_pi.action_api.action;
 
 import com.stream_pi.action_api.actionproperty.ClientProperties;
+import com.stream_pi.action_api.actionproperty.GaugeProperties;
 import com.stream_pi.action_api.actionproperty.ServerProperties;
 import com.stream_pi.util.exception.ActionNotFoundException;
 import com.stream_pi.util.exception.ClientNotFoundException;
 import com.stream_pi.util.exception.MinorException;
 import com.stream_pi.util.exception.ProfileNotFoundException;
 import com.stream_pi.util.version.Version;
+import eu.hansolo.medusa.Gauge;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DataFormat;
@@ -179,6 +181,7 @@ public class Action implements Cloneable, Serializable
     {
         this.serverProperties = new ServerProperties();
         this.clientProperties = new ClientProperties();
+        this.gaugeProperties = new GaugeProperties();
         this.name = name;
         setCategory("Others");
         this.ID = ID;
@@ -260,6 +263,7 @@ public class Action implements Cloneable, Serializable
     {
         this.serverProperties = new ServerProperties();
         this.clientProperties = new ClientProperties();
+        this.gaugeProperties = new GaugeProperties();
         this.category = "Others";
         this.ID = ID;
         this.actionType = actionType;
@@ -269,6 +273,7 @@ public class Action implements Cloneable, Serializable
     {
         this.serverProperties = new ServerProperties();
         this.clientProperties = new ClientProperties();
+        this.gaugeProperties = new GaugeProperties();
         setCategory("Others");
         this.actionType = actionType;
     }
@@ -276,6 +281,8 @@ public class Action implements Cloneable, Serializable
     public Action()
     {
         this.serverProperties = new ServerProperties();
+        this.clientProperties = new ClientProperties();
+        this.gaugeProperties = new GaugeProperties();
     }
 
     public void setIDRandom()
@@ -366,6 +373,7 @@ public class Action implements Cloneable, Serializable
     public Action clone() throws CloneNotSupportedException {
         Action action = (Action) super.clone();
         action.setClientProperties(action.getClientProperties().clone());
+        action.setGaugeProperties(action.getGaugeProperties().chaap());
         action.setIcons((HashMap<String, byte[]>) action.getIcons().clone());
         return action;
     }
@@ -417,5 +425,27 @@ public class Action implements Cloneable, Serializable
     public boolean getCurrentToggleStatus()
     {
         return currentToggleStatus;
+    }
+
+    private GaugeProperties gaugeProperties;
+
+    public void setGaugeProperties(GaugeProperties gaugeProperties) {
+        this.gaugeProperties = gaugeProperties;
+    }
+
+    public GaugeProperties getGaugeProperties() {
+        return gaugeProperties;
+    }
+
+    private boolean isGaugeAnimated = true;
+
+    public boolean isGaugeAnimated()
+    {
+        return isGaugeAnimated;
+    }
+
+    public void setGaugeAnimated(boolean gaugeAnimated)
+    {
+        isGaugeAnimated = gaugeAnimated;
     }
 }

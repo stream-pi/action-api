@@ -17,6 +17,7 @@
         <maven.compiler.release>11</maven.compiler.release>
 
         <util.version>1.0.0-SNAPSHOT</util.version>
+        <medusa.version>11.7</medusa.version>
 
         <maven.test.skip>true</maven.test.skip>
 
@@ -41,6 +42,18 @@
             <groupId>com.stream-pi</groupId>
             <artifactId>util</artifactId>
             <version>${util.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>eu.hansolo</groupId>
+            <artifactId>Medusa</artifactId>
+            <version>${medusa.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

@@ -5,6 +5,8 @@ module com.stream_pi.action_api
     requires transitive javafx.graphics;
     requires transitive javafx.controls;
 
+    requires transitive eu.hansolo.medusa;
+
     requires transitive org.kordamp.ikonli.javafx;
     requires transitive org.kordamp.ikonli.fontawesome5;
 
