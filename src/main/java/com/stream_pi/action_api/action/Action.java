@@ -34,6 +34,28 @@ public class Action implements Cloneable, Serializable
     private HashMap<String,byte[]> icons = null;
     private String currentIconState = "";
 
+    private int rowSpan=1, colSpan=1;
+
+    public void setRowSpan(int rowSpan)
+    {
+        this.rowSpan = rowSpan;
+    }
+
+    public int getRowSpan()
+    {
+        return rowSpan;
+    }
+
+    public void setColSpan(int colSpan)
+    {
+        this.colSpan = colSpan;
+    }
+
+    public int getColSpan()
+    {
+        return colSpan;
+    }
+
     public void setIcons(HashMap<String,byte[]> icons)
     {
         this.icons = icons;
