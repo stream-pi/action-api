@@ -154,9 +154,9 @@ public class GaugeProperties implements Serializable
         this.barColor = new SerializableColor(barColor);
     }
 
-    public Color getBarColor()
+    public SerializableColor getBarColor()
     {
-        return barColor.getColor();
+        return barColor;
     }
 
     public void setForegroundBaseColor(Color foregroundBaseColor)
@@ -164,9 +164,9 @@ public class GaugeProperties implements Serializable
         this.foregroundBaseColor = new SerializableColor(foregroundBaseColor);
     }
 
-    public Color getForegroundBaseColor()
+    public SerializableColor getForegroundBaseColor()
     {
-        return foregroundBaseColor.getColor();
+        return foregroundBaseColor;
     }
 
 

@@ -9,17 +9,23 @@ public class GaugeSection implements Serializable
     private final double start;
     private final double stop;
 
-    private SerializableColor color;
+    private final SerializableColor color;
 
     private static final long serialVersionUID = 2000196720041976L;
 
     public GaugeSection(double start, double stop, Color color)
     {
+        this(start, stop, new SerializableColor(color));
+    }
+
+    public GaugeSection(double start, double stop, SerializableColor color)
+    {
         this.start = start;
         this.stop = stop;
 
-        this.color = new SerializableColor(color);
+        this.color = color;
     }
+
 
     public double getStart() {
         return start;
