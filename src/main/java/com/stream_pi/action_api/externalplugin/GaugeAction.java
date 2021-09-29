@@ -5,6 +5,7 @@ import com.stream_pi.util.exception.MinorException;
 import eu.hansolo.medusa.Gauge;
 import eu.hansolo.medusa.Section;
 import javafx.collections.ObservableList;
+import javafx.scene.paint.Color;
 
 import java.util.Arrays;
 
@@ -86,5 +87,20 @@ public class GaugeAction extends ExternalPlugin
     public void setSubTitle(String subTitle)
     {
         getGaugeProperties().setSubTitle(subTitle);
+    }
+
+    public void setSectionsVisible(boolean sectionsVisible)
+    {
+        getGaugeProperties().setSectionsVisible(sectionsVisible);
+    }
+
+    public void setBarColor(Color barColor)
+    {
+        getGaugeProperties().setBarColor(barColor);
+    }
+
+    public void setGaugeForegroundBaseColor(Color foregroundBaseColor)
+    {
+        getGaugeProperties().setForegroundBaseColor(foregroundBaseColor);
     }
 }

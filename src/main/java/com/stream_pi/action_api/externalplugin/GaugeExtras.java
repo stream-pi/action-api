@@ -1,8 +1,6 @@
 package com.stream_pi.action_api.externalplugin;
 
-import com.stream_pi.action_api.actionproperty.GaugeProperties;
-import com.stream_pi.util.exception.MinorException;
-import eu.hansolo.medusa.Gauge;
+import com.stream_pi.action_api.actionproperty.gaugeproperties.GaugeProperties;
 
 import java.net.SocketAddress;
 

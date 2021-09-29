@@ -6,17 +6,12 @@ Written by Debayan Sutradhar (dubbadhar)
 package com.stream_pi.action_api.action;
 
 import com.stream_pi.action_api.actionproperty.ClientProperties;
-import com.stream_pi.action_api.actionproperty.GaugeProperties;
+import com.stream_pi.action_api.actionproperty.gaugeproperties.GaugeProperties;
 import com.stream_pi.action_api.actionproperty.ServerProperties;
-import com.stream_pi.util.exception.ActionNotFoundException;
-import com.stream_pi.util.exception.ClientNotFoundException;
 import com.stream_pi.util.exception.MinorException;
-import com.stream_pi.util.exception.ProfileNotFoundException;
 import com.stream_pi.util.version.Version;
-import eu.hansolo.medusa.Gauge;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DataFormat;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.io.Serializable;
@@ -33,6 +28,18 @@ public class Action implements Cloneable, Serializable
 
     private HashMap<String,byte[]> icons = null;
     private String currentIconState = "";
+
+    private String styleClass="";
+
+    public void setStyleClass(String styleClass)
+    {
+        this.styleClass = styleClass;
+    }
+
+    public String getStyleClass()
+    {
+        return styleClass;
+    }
 
     private int rowSpan=1, colSpan=1;
 
