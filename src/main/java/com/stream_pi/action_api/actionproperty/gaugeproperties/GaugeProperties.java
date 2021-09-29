@@ -21,7 +21,7 @@ public class GaugeProperties implements Serializable
     private String subTitle;
     private int decimals;
 
-    private boolean sectionsVisible;
+    private boolean sectionsVisible = true;
     private SerializableColor foregroundBaseColor = null;
     private SerializableColor barColor = null;
 
