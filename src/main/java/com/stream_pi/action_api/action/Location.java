@@ -4,21 +4,29 @@ import java.io.Serializable;
 
 public class Location implements Serializable
 {
-    int row,col;
+    int row,col, rowSpan, colSpan;
 
     public Location(int row, int col)
     {
-        setLocation(row,col);
+        this(row, col, 1, 1);
     }
 
-    public int getRow()
+    public Location(int row, int col, int rowSpan, int colSpan)
     {
-        return row;
+        setLocation(row, col);
+        setSpan(rowSpan, colSpan);
     }
 
-    public int getCol()
+    public void setLocation(int row, int col)
     {
-        return col;
+        setRow(row);
+        setCol(col);
+    }
+
+    public void setSpan(int rowSpan, int colSpan)
+    {
+        this.rowSpan = rowSpan;
+        this.colSpan = colSpan;
     }
 
     public void setRow(int row)
@@ -31,9 +39,34 @@ public class Location implements Serializable
         this.col = col;
     }
 
-    public void setLocation(int row, int col)
+    public void setRowSpan(int rowSpan)
     {
-        this.row = row;
-        this.col = col;
+        this.rowSpan = rowSpan;
     }
+
+    public void setColSpan(int colSpan)
+    {
+        this.colSpan = colSpan;
+    }
+
+    public int getRow()
+    {
+        return row;
+    }
+
+    public int getCol()
+    {
+        return col;
+    }
+
+    public int getRowSpan()
+    {
+        return rowSpan;
+    }
+
+    public int getColSpan()
+    {
+        return colSpan;
+    }
+
 }
