@@ -4,6 +4,7 @@ import com.stream_pi.action_api.action.ActionType;
 import com.stream_pi.action_api.actionproperty.ClientProperties;
 import com.stream_pi.action_api.actionproperty.property.Property;
 import com.stream_pi.action_api.actionproperty.property.Type;
+import com.stream_pi.action_api.i18n.I18N;
 import com.stream_pi.util.exception.MinorException;
 
 import java.util.LinkedList;
@@ -12,12 +13,16 @@ import java.util.List;
 
 public class CombineAction extends OtherAction
 {
-
     public CombineAction()
     {
-        super("Combine", ActionType.COMBINE);
-        setDisplayText("Combine");
+        super(getUIName(), ActionType.COMBINE);
+        setDisplayText(I18N.getString("otheractions.CombineAction.defaultDisplayText"));
         setClientProperties(new ClientProperties());
+    }
+
+    public static String getUIName()
+    {
+        return I18N.getString("otheractions.CombineAction.combine");
     }
 
     public List<String> getChildrenIDSequential() throws MinorException
@@ -49,7 +54,8 @@ public class CombineAction extends OtherAction
         addChild(actionID, getClientProperties().getSize());
     }
 
-    public void removeChild(String actionID) throws MinorException {
+    public void removeChild(String actionID) throws MinorException
+    {
 
         int indexToBeRemoved = 0;
 
@@ -60,8 +66,6 @@ public class CombineAction extends OtherAction
             if(ids.get(i).equals(actionID))
                 indexToBeRemoved = i;
         }
-
-        System.out.println("INDEX TO BE REMOVED : "+indexToBeRemoved);
 
         ClientProperties clientProperties = new ClientProperties();
 

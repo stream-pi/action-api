@@ -1,6 +1,7 @@
 package com.stream_pi.action_api.externalplugin;
 
 import com.stream_pi.action_api.action.ActionType;
+import com.stream_pi.action_api.i18n.I18N;
 import com.stream_pi.util.exception.ActionNotFoundException;
 import com.stream_pi.util.exception.ClientNotFoundException;
 import com.stream_pi.util.exception.MinorException;
@@ -33,7 +34,7 @@ public abstract class ToggleAction extends ExternalPlugin
     public void setCurrentStatus(boolean currentStatus) throws MinorException
     {
         if(getActionType() != ActionType.TOGGLE)
-            throw new MinorException("Action type is not TOGGLE");
+            throw new MinorException(I18N.getString("externalplugin.ToggleAction.actionTypeIsNotToggle"));
 
         toggleValueChangeChecks("setCurrentStatus");
 
@@ -45,7 +46,7 @@ public abstract class ToggleAction extends ExternalPlugin
     public boolean getCurrentStatus() throws MinorException
     {
         if(getActionType() != ActionType.TOGGLE)
-            throw new MinorException("Action type is not TOGGLE");
+            throw new MinorException(I18N.getString("externalplugin.ToggleAction.actionTypeIsNotToggle"));
 
         toggleValueChangeChecks("getCurrentStatus");
 
@@ -56,13 +57,13 @@ public abstract class ToggleAction extends ExternalPlugin
             throws ClientNotFoundException, ProfileNotFoundException, ActionNotFoundException
     {
         if(getSocketAddressForClient() == null)
-            throw new ClientNotFoundException(methodName+" failed because no client connected.");
+            throw new ClientNotFoundException(I18N.getString("externalplugin.ToggleAction.methodFailedBecauseNoClientConnected", methodName));
 
         if(getProfileID() == null)
-            throw new ProfileNotFoundException(methodName+"failed because no profile assigned");
+            throw new ProfileNotFoundException(I18N.getString("externalplugin.ToggleAction.methodFailedBecauseNoProfileAssigned", methodName));
 
         if(getID() == null)
-            throw new ActionNotFoundException(methodName+"failed because no ID assigned");
+            throw new ActionNotFoundException(I18N.getString("externalplugin.ToggleAction.methodFailedBecauseNoIDAssigned", methodName));
     }
 
     public void setToggleOnIcon(byte[] icon, boolean send) throws MinorException

@@ -1,6 +1,7 @@
 package com.stream_pi.action_api.actionproperty;
 
 import com.stream_pi.action_api.actionproperty.property.Property;
+import com.stream_pi.action_api.i18n.I18N;
 import com.stream_pi.util.exception.MinorException;
 
 import java.io.Serializable;
@@ -66,7 +67,7 @@ class Properties implements Cloneable, Serializable
 
     public Property getSingleProperty(String propertyName) throws MinorException {
         if(isDuplicatePropertyAllowed)
-            throw new MinorException("DO NOT USE THIS");
+            throw new MinorException(I18N.getString("actionproperty.Properties.getSinglePropertyNotAllowedBecauseDuplicatePropertiesAreAllowed"));
 
         int index = getPropertyIndex(propertyName);
         if(index == -1)

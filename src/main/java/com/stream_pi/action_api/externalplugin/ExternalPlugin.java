@@ -7,6 +7,7 @@ import com.stream_pi.action_api.actionproperty.ClientProperties;
 import com.stream_pi.action_api.actionproperty.property.ControlType;
 import com.stream_pi.action_api.actionproperty.property.Property;
 import com.stream_pi.action_api.actionproperty.property.Type;
+import com.stream_pi.action_api.i18n.I18N;
 import com.stream_pi.util.exception.MinorException;
 import com.stream_pi.util.platform.Platform;
 import com.stream_pi.util.platform.PlatformType;
@@ -18,15 +19,17 @@ import java.util.logging.Logger;
 
 public abstract class ExternalPlugin extends Action
 {
-    private String author = "Unknown Author";
+    private String author;
 
     public ExternalPlugin(String name, String author, String helpLink, Version version)
     {
         super(ActionType.NORMAL);
         setName(name);
-        this.author = author;
+        setAuthor(author);
+        setName(I18N.getString("externalplugin.ExternalPlugin.defaultDisplayText"));
         setHelpLink(helpLink);
         setVersion(version);
+        setCategory(I18N.getString("externalplugin.ExternalPlugin.defaultCategory"));
     }
 
     private boolean visibleInPluginsPane = true;
@@ -35,7 +38,10 @@ public abstract class ExternalPlugin extends Action
     public ExternalPlugin(ActionType normal)
     {
         super(normal);
+        setAuthor(I18N.getString("externalplugin.ExternalPlugin.defaultAuthor"));
+        setName(I18N.getString("externalplugin.ExternalPlugin.defaultDisplayText"));
         setModuleName(getClass().getModule().getName());
+        setCategory(I18N.getString("externalplugin.ExternalPlugin.defaultCategory"));
     }
 
 
@@ -79,7 +85,7 @@ public abstract class ExternalPlugin extends Action
                 property.setRawValue("");
                 if(property.getControlType() == ControlType.FILE_PATH && property.getExtensionFilters() == null)
                 {
-                    throw new MinorException("File property "+property.getName()+" has no File Extensions specified. Contact Plugin developer.");
+                    throw new MinorException(I18N.getString("externalplugin.ExternalPlugin.noFileExtensionsSpecified", property.getName()));
                 }
             }
 
@@ -135,7 +141,7 @@ public abstract class ExternalPlugin extends Action
 
     public ExternalPlugin clone() throws CloneNotSupportedException {
         ExternalPlugin action = (ExternalPlugin) super.clone();
-        action.setClientProperties((ClientProperties) getClientProperties().clone());
+        action.setClientProperties(getClientProperties().clone());
         return action;
     }
 

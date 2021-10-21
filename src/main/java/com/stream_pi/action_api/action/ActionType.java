@@ -1,6 +1,8 @@
 package com.stream_pi.action_api.action;
 
-public enum ActionType
+import java.io.Serializable;
+
+public enum ActionType implements Serializable
 {
     FOLDER, NORMAL, COMBINE, TOGGLE, GAUGE
 }

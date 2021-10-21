@@ -1,15 +1,26 @@
 package com.stream_pi.action_api.action;
 
-public enum DisplayTextAlignment {
-    TOP("Top"), CENTER("Center"), BOTTOM("Bottom");
+import com.stream_pi.action_api.i18n.I18N;
 
-    private final String UIName;
-    DisplayTextAlignment(String UIName)
+import java.io.Serializable;
+
+public enum DisplayTextAlignment implements Serializable
+{
+    TOP, CENTER, BOTTOM;
+
+    public String getUIName()
     {
-        this.UIName = UIName;
-    }
-
-    public String getUIName() {
-        return UIName;
+        if (this == TOP)
+        {
+            return I18N.getString("action.DisplayTextAlignment.top");
+        }
+        else if(this == CENTER)
+        {
+            return I18N.getString("action.DisplayTextAlignment.center");
+        }
+        else
+        {
+            return I18N.getString("action.DisplayTextAlignment.bottom");
+        }
     }
 }

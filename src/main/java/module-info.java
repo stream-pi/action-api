@@ -19,4 +19,5 @@ module com.stream_pi.action_api
     exports com.stream_pi.action_api.actionproperty.property;
     exports com.stream_pi.action_api.externalplugin;
     exports com.stream_pi.action_api.actionproperty.gaugeproperties;
+    exports com.stream_pi.action_api.i18n;
 }

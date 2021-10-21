@@ -8,6 +8,7 @@ package com.stream_pi.action_api.action;
 import com.stream_pi.action_api.actionproperty.ClientProperties;
 import com.stream_pi.action_api.actionproperty.gaugeproperties.GaugeProperties;
 import com.stream_pi.action_api.actionproperty.ServerProperties;
+import com.stream_pi.action_api.i18n.I18N;
 import com.stream_pi.util.exception.MinorException;
 import com.stream_pi.util.version.Version;
 import javafx.scene.Node;
@@ -22,7 +23,7 @@ import java.util.UUID;
 public class Action implements Cloneable, Serializable
 {
     private ActionType actionType=null;
-    private String name ="Unknown action", ID=null;
+    private String name = null, ID=null;
     private double nameFontSize=-1;
     private Version version=new Version(0,0,0);
 
@@ -98,7 +99,7 @@ public class Action implements Cloneable, Serializable
     {
         if(currentIconState.equals(state))
         {
-            throw new MinorException("Cant change! Default icon state is set to "+state);
+            throw new MinorException(I18N.getString("action.Action.cannotDeleteCurrentIconState"));
         }
 
         if(state.equals("default"))
@@ -107,7 +108,7 @@ public class Action implements Cloneable, Serializable
             actionType == ActionType.COMBINE ||
             actionType == ActionType.FOLDER)
             {
-                throw new MinorException("Cant delete default icon!");
+                throw new MinorException(I18N.getString("action.Action.cannotDeleteDefaultIcon"));
             }
         }
 
@@ -115,7 +116,7 @@ public class Action implements Cloneable, Serializable
         {
             if(actionType == ActionType.TOGGLE)
             {
-                throw new MinorException("Cant delete on/off icon!");
+                throw new MinorException(I18N.getString("action.Action.cannotDeleteToggleOnOffIcon"));
             }
         }
 
@@ -212,7 +213,6 @@ public class Action implements Cloneable, Serializable
         this.clientProperties = new ClientProperties();
         this.gaugeProperties = new GaugeProperties();
         this.name = name;
-        setCategory("Others");
         this.ID = ID;
         this.actionType = actionType;
     }
@@ -293,7 +293,6 @@ public class Action implements Cloneable, Serializable
         this.serverProperties = new ServerProperties();
         this.clientProperties = new ClientProperties();
         this.gaugeProperties = new GaugeProperties();
-        this.category = "Others";
         this.ID = ID;
         this.actionType = actionType;
     }
@@ -303,7 +302,6 @@ public class Action implements Cloneable, Serializable
         this.serverProperties = new ServerProperties();
         this.clientProperties = new ClientProperties();
         this.gaugeProperties = new GaugeProperties();
-        setCategory("Others");
         this.actionType = actionType;
     }
 

@@ -1,6 +1,7 @@
 package com.stream_pi.action_api.externalplugin;
 
 import com.stream_pi.action_api.action.ActionType;
+import com.stream_pi.action_api.i18n.I18N;
 import com.stream_pi.util.exception.MinorException;
 import eu.hansolo.medusa.Gauge;
 import eu.hansolo.medusa.Section;
@@ -61,7 +62,7 @@ public class GaugeAction extends ExternalPlugin
     public void updateEntireGauge() throws MinorException
     {
         if(getActionType() != ActionType.GAUGE)
-            throw new MinorException("Action type is not GAUGE");
+            throw new MinorException(I18N.getString("externalplugin.GaugeAction.actionTypeIsNotGauge"));
 
         getGaugeExtras().updateGauge(getGaugeProperties(), getProfileID(), getID(), getSocketAddressForClient());
     }
@@ -69,7 +70,7 @@ public class GaugeAction extends ExternalPlugin
     public void updateGaugeValue() throws MinorException
     {
         if(getActionType() != ActionType.GAUGE)
-            throw new MinorException("Action type is not GAUGE");
+            throw new MinorException(I18N.getString("externalplugin.GaugeAction.actionTypeIsNotGauge"));
 
         getGaugeExtras().updateGaugeValue(getGaugeProperties().getValue(), getProfileID(), getID(), getSocketAddressForClient());
     }

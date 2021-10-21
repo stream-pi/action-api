@@ -1,5 +1,6 @@
 package com.stream_pi.action_api.actionproperty.property;
 
+import com.stream_pi.action_api.i18n.I18N;
 import com.stream_pi.util.exception.MinorException;
 
 import java.io.Serializable;
@@ -16,7 +17,7 @@ public class Property implements Serializable
     private String displayName;
 
     private Property(String name, ControlType controlType, Type type, boolean visible, String defaultRawValue,
-                     String helpLink, String displayName, String rawValue, List list, FileExtensionFilter[] extensionFilters,
+                     String helpLink, String displayName, String rawValue, List<?> list, FileExtensionFilter[] extensionFilters,
                      int maxIntValue, int minIntValue, double maxDoubleValue, double minDoubleValue)
     {
         this.name = name;
@@ -24,7 +25,6 @@ public class Property implements Serializable
         this.type = type;
         this.visible = visible;
         this.defaultRawValue = defaultRawValue;
-        this.helpLink = helpLink;
         this.displayName = displayName;
         this.list = list;
         this.rawValue = rawValue;
@@ -46,11 +46,14 @@ public class Property implements Serializable
                 maxIntValue, minIntValue, maxDoubleValue, minDoubleValue);
     }
 
-    public void setDefaultValueStr(String defaultValue) throws MinorException {
+    public void setDefaultValueStr(String defaultValue) throws MinorException
+    {
         typeCheck(Type.STRING);
 
         if(!isCanBeBlank() && defaultValue.isBlank())
-            throw new MinorException("property '"+name+"' is set to cannot be blank. Default property cannot be blank.");
+        {
+            throw new MinorException(I18N.getString("actionproperty.property.Property.cannotBeBlank", name));
+        }
 
         this.defaultRawValue = defaultValue;
     }
@@ -106,12 +109,13 @@ public class Property implements Serializable
         return canBeBlank;
     }
 
-    public void setCanBeBlank(boolean canBeBlank) throws MinorException{
+    public void setCanBeBlank(boolean canBeBlank) throws MinorException
+    {
         typeCheck(Type.STRING);
 
         if(getDefaultRawValue().isEmpty() && !canBeBlank)
         {
-            throw new MinorException("No default value given.");
+            throw new MinorException(I18N.getString("actionproperty.property.Property.noDefaultValueGiven"));
         }
 
         this.canBeBlank = canBeBlank;
@@ -266,7 +270,7 @@ public class Property implements Serializable
     }
 
     //For Type LIST
-    protected List<ListValue> list;
+    protected List list;
 
     public void setListValue(List<ListValue> list) throws MinorException
     {
@@ -344,7 +348,7 @@ public class Property implements Serializable
         }
         catch (NumberFormatException e)
         {
-            throw new MinorException("property '"+name+"' has non integer value for type INTEGER");
+            throw new MinorException(I18N.getString("actionproperty.property.Property.integerValueRequired", name));
         }
     }
 
@@ -397,7 +401,7 @@ public class Property implements Serializable
         }
         catch (NumberFormatException e)
         {
-            throw new MinorException("property '"+name+"' has non double value for type DOUBLE");
+            throw new MinorException(I18N.getString("actionproperty.property.Property.doubleValueRequired", name));
         }
     }
 
@@ -407,7 +411,7 @@ public class Property implements Serializable
     private void typeCheck(Type required) throws MinorException
     {
         if(type != required)
-            throw new MinorException("property '"+name+"' cannot have "+type+"!");
+            throw new MinorException(I18N.getString("actionproperty.property.Property.propertyCannotHaveType", name, type));
     }
 
     //ControlType Check
@@ -424,7 +428,7 @@ public class Property implements Serializable
         }
 
         if(isFail)
-            throw new MinorException("property '"+name+"' cannot have ControlType '"+controlType+"!");
+            throw new MinorException(I18N.getString("actionproperty.property.Property.propertyCannotHaveControlType", name, controlType));
     }
 
 
