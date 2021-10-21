@@ -9,6 +9,7 @@ import java.util.Locale;
 public class ActionAPI
 {
     public static final Version VERSION = new Version(1,0,0);
+    public static final Version MIN_VERSION_SUPPORTED = new Version(1,0,0);
 
     public static void initI18n(Locale locale)
     {
