@@ -15,6 +15,7 @@ import com.stream_pi.util.version.Version;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
+import java.util.Locale;
 import java.util.logging.Logger;
 
 public abstract class ExternalPlugin extends Action
@@ -245,5 +246,10 @@ public abstract class ExternalPlugin extends Action
     public Logger getLogger()
     {
         return Logger.getLogger(getModuleName());
+    }
+
+    public Locale getCurrentLocale()
+    {
+        return getServerConnection().getCurrentLocale();
     }
 }
