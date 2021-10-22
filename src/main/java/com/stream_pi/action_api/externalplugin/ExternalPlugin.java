@@ -248,8 +248,8 @@ public abstract class ExternalPlugin extends Action
         return Logger.getLogger(getModuleName());
     }
 
-    public Locale getCurrentLocale()
+    public Locale getCurrentLanguageLocale()
     {
-        return getServerConnection().getCurrentLocale();
+        return getServerConnection().getCurrentLanguageLocale();
     }
 }

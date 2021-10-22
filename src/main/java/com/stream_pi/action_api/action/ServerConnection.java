@@ -10,5 +10,5 @@ public interface ServerConnection
 {
     Platform getPlatform();
     void sendActionFailed(MinorException exception, SocketAddress socketAddress, String profileID, String actionID);
-    Locale getCurrentLocale();
+    Locale getCurrentLanguageLocale();
 }
