@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Location implements Serializable
 {
+    private static final long serialVersionUID = 2087650019667976L;
+
     int row,col, rowSpan, colSpan;
 
     public Location(int row, int col)

@@ -27,6 +27,8 @@ public class Action implements Cloneable, Serializable
     private double nameFontSize=-1;
     private Version version=new Version(0,0,0);
 
+    private static final long serialVersionUID = 990909019667976L;
+
     private HashMap<String,byte[]> icons = null;
     private String currentIconState = "";
 

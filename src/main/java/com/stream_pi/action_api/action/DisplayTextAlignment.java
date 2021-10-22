@@ -8,6 +8,8 @@ public enum DisplayTextAlignment implements Serializable
 {
     TOP, CENTER, BOTTOM;
 
+    private static final long serialVersionUID = 2039570019687656L;
+
     public String getUIName()
     {
         if (this == TOP)
