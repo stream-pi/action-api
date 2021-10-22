@@ -4,5 +4,7 @@ import java.io.Serializable;
 
 public enum Type implements Serializable
 {
-    INTEGER, DOUBLE, STRING, BOOLEAN, LIST
+    INTEGER, DOUBLE, STRING, BOOLEAN, LIST;
+
+    private static final long serialVersionUID = 2039570019667976L;
 }
