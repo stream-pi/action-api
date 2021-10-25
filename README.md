@@ -4,6 +4,8 @@
 
 API for building actions and/or integrations for the Stream-Pi, see [Stream-Pi Essential Actions](https://github.com/stream-pi/essential-actions) for examples of pre-built actions.
 
+[Help us Translate!](https://github.com/stream-pi/action-api/blob/master/i18n.md)
+
 ## Prerequisites
 
 - Java >= 11

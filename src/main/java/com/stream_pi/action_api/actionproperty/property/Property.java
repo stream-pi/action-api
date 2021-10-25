@@ -115,7 +115,7 @@ public class Property implements Serializable
 
         if(getDefaultRawValue().isEmpty() && !canBeBlank)
         {
-            throw new MinorException(I18N.getString("actionproperty.property.Property.noDefaultValueGiven"));
+            throw new MinorException(I18N.getString("actionproperty.property.Property.defaultValueRequired", name));
         }
 
         this.canBeBlank = canBeBlank;
