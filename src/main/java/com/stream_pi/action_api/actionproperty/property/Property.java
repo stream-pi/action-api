@@ -5,6 +5,10 @@ import com.stream_pi.util.exception.MinorException;
 import java.io.Serializable;
 import java.util.List;
 
+/*
+Property will be written when updated to Java 17
+ */
+
 public class Property implements Serializable
 {
     private String name;
