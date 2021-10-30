@@ -1,6 +1,5 @@
 package com.stream_pi.action_api.actionproperty.property;
 
-import com.stream_pi.action_api.i18n.I18N;
 import com.stream_pi.util.exception.MinorException;
 
 import java.io.Serializable;
@@ -52,7 +51,7 @@ public class Property implements Serializable
 
         if(!isCanBeBlank() && defaultValue.isBlank())
         {
-            throw new MinorException(I18N.getString("actionproperty.property.Property.cannotBeBlank", name));
+            throw new MinorException(PropertyValidation.cannotBeBlank(name));
         }
 
         this.defaultRawValue = defaultValue;
@@ -115,7 +114,7 @@ public class Property implements Serializable
 
         if(getDefaultRawValue().isEmpty() && !canBeBlank)
         {
-            throw new MinorException(I18N.getString("actionproperty.property.Property.defaultValueRequired", name));
+            throw new MinorException(PropertyValidation.defaultValueRequired(name));
         }
 
         this.canBeBlank = canBeBlank;
@@ -348,7 +347,7 @@ public class Property implements Serializable
         }
         catch (NumberFormatException e)
         {
-            throw new MinorException(I18N.getString("actionproperty.property.Property.integerValueRequired", name));
+            throw new MinorException(PropertyValidation.integerValueRequired(name));
         }
     }
 
@@ -401,7 +400,7 @@ public class Property implements Serializable
         }
         catch (NumberFormatException e)
         {
-            throw new MinorException(I18N.getString("actionproperty.property.Property.doubleValueRequired", name));
+            throw new MinorException(PropertyValidation.doubleValueRequired(name));
         }
     }
 
@@ -411,7 +410,7 @@ public class Property implements Serializable
     private void typeCheck(Type required) throws MinorException
     {
         if(type != required)
-            throw new MinorException(I18N.getString("actionproperty.property.Property.propertyCannotHaveType", name, type));
+            throw new MinorException(PropertyValidation.cannotHaveType(name, type));
     }
 
     //ControlType Check
@@ -428,7 +427,7 @@ public class Property implements Serializable
         }
 
         if(isFail)
-            throw new MinorException(I18N.getString("actionproperty.property.Property.propertyCannotHaveControlType", name, controlType));
+            throw new MinorException(PropertyValidation.cannotHaveControlType(name, controlType));
     }
 
 
