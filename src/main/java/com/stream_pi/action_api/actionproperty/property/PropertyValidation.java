@@ -4,33 +4,33 @@ import com.stream_pi.action_api.i18n.I18N;
 
 public class PropertyValidation 
 {
-    public static String cannotBeBlank(Object... strings)
+    public static String cannotBeBlank(Object... objs)
     {
-        return I18N.getString("actionproperty.property.PropertyValidation.cannotBeBlank", strings);
+        return I18N.getString("actionproperty.property.PropertyValidation.cannotBeBlank", objs);
     }
 
-    public static String defaultValueRequired(Object... strings)
+    public static String defaultValueRequired(Object... objs)
     {
-        return I18N.getString("actionproperty.property.PropertyValidation.defaultValueRequired", strings);
+        return I18N.getString("actionproperty.property.PropertyValidation.defaultValueRequired", objs);
     }
 
-    public static String integerValueRequired(Object... strings)
+    public static String integerValueRequired(Object... objs)
     {
-        return I18N.getString("actionproperty.property.PropertyValidation.integerValueRequired", strings);
+        return I18N.getString("actionproperty.property.PropertyValidation.integerValueRequired", objs);
     }
     
-    public static String doubleValueRequired(Object... strings)
+    public static String doubleValueRequired(Object... objs)
     {
-        return I18N.getString("actionproperty.property.PropertyValidation.doubleValueRequired", strings);
+        return I18N.getString("actionproperty.property.PropertyValidation.doubleValueRequired", objs);
     }
 
-    public static String cannotHaveType(Object... strings)
+    public static String invalidType(Object... objs)
     {
-        return I18N.getString("actionproperty.property.PropertyValidation.cannotHaveType", strings);
+        return I18N.getString("actionproperty.property.PropertyValidation.invalidType", objs);
     }
 
-    public static String cannotHaveControlType(Object... strings)
+    public static String invalidControlType(Object... objs)
     {
-        return I18N.getString("actionproperty.property.PropertyValidation.cannotHaveControlType", strings);
+        return I18N.getString("actionproperty.property.PropertyValidation.invalidControlType", objs);
     }
 }

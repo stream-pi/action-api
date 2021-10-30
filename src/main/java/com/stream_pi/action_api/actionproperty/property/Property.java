@@ -410,7 +410,7 @@ public class Property implements Serializable
     private void typeCheck(Type required) throws MinorException
     {
         if(type != required)
-            throw new MinorException(PropertyValidation.cannotHaveType(name, type));
+            throw new MinorException(PropertyValidation.invalidType(name, required, type));
     }
 
     //ControlType Check
@@ -427,7 +427,7 @@ public class Property implements Serializable
         }
 
         if(isFail)
-            throw new MinorException(PropertyValidation.cannotHaveControlType(name, controlType));
+            throw new MinorException(PropertyValidation.invalidControlType(name, required, controlType));
     }
 
 

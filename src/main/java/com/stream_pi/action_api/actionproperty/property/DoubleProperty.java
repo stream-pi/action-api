@@ -1,7 +1,5 @@
 package com.stream_pi.action_api.actionproperty.property;
 
-import com.stream_pi.util.exception.MinorException;
-
 public class DoubleProperty extends Property
 {
     public DoubleProperty(String name)
