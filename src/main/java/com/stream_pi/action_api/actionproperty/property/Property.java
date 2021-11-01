@@ -21,7 +21,7 @@ import java.util.List;
 
 /*
 Property will be written when updated to Java 17
- */
+*/
 
 public class Property implements Serializable
 {
