@@ -54,7 +54,6 @@ public abstract class ExternalPlugin extends Action
         super(normal);
         setAuthor(I18N.getString("externalplugin.ExternalPlugin.defaultAuthor"));
         setName(I18N.getString("externalplugin.ExternalPlugin.defaultDisplayText"));
-        setModuleName(getClass().getModule().getName());
         setCategory(I18N.getString("externalplugin.ExternalPlugin.defaultCategory"));
     }
 
@@ -258,7 +257,7 @@ public abstract class ExternalPlugin extends Action
 
     public Logger getLogger()
     {
-        return Logger.getLogger(getModuleName());
+        return Logger.getLogger(getClass().getCanonicalName());
     }
 
     public Locale getCurrentLanguageLocale()

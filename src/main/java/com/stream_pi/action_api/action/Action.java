@@ -197,8 +197,6 @@ public class Action implements Cloneable, Serializable
     private ClientProperties clientProperties;
     private String category;
 
-    public String moduleName;
-
     public boolean invalid;
 
     public Action(String name, String ID, ActionType actionType)
@@ -350,11 +348,6 @@ public class Action implements Cloneable, Serializable
         this.clientProperties = properties;
     }
 
-    public void setModuleName(String moduleName)
-    {
-        this.moduleName = moduleName;
-    }
-
     public void setLocation(Location location)
     {
         this.location = location;
@@ -375,9 +368,9 @@ public class Action implements Cloneable, Serializable
         return clientProperties;
     }
 
-    public String getModuleName()
+    public String getUniqueID()
     {
-        return moduleName;
+        return getClass().getModule().getName()+"."+getClass().getCanonicalName();
     }
 
 
