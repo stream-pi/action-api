@@ -242,7 +242,7 @@ public abstract class ExternalPlugin extends Action
 
     public void throwMinorException(MinorException exception)
     {
-        getServerConnection().sendActionFailed(exception, getSocketAddressForClient(), getProfileID(), getID());
+        getServerConnection().sendActionFailed(exception, getSocketAddressForClient(), getProfileID(), this);
     }
 
     public Platform getPlatform()

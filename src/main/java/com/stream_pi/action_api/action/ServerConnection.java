@@ -23,6 +23,6 @@ import java.util.Locale;
 public interface ServerConnection
 {
     Platform getPlatform();
-    void sendActionFailed(MinorException exception, SocketAddress socketAddress, String profileID, String actionID);
+    void sendActionFailed(MinorException exception, SocketAddress socketAddress, String profileID, Action action);
     Locale getCurrentLanguageLocale();
 }
