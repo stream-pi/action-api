@@ -176,6 +176,7 @@ public class Action implements Cloneable, Serializable
     private String displayTextFontColourHex = null;
     private String bgColourHex = null;
     private String displayText = null;
+    private String temporaryDisplayText = null;
     private boolean showDisplayText = true;
     private DisplayTextAlignment displayTextAlignment = DisplayTextAlignment.CENTER;
 
@@ -209,8 +210,13 @@ public class Action implements Cloneable, Serializable
         this.actionType = actionType;
     }
 
-    public void setDisplayText(String displayText) {
+    public void setDisplayText(String displayText)
+    {
         this.displayText = displayText;
+    }
+
+    public void setTemporaryDisplayText(String temporaryDisplayText) {
+        this.temporaryDisplayText = temporaryDisplayText;
     }
 
     public void setShowDisplayText(boolean showDisplayText) {
@@ -241,8 +247,14 @@ public class Action implements Cloneable, Serializable
         return displayTextAlignment;
     }
 
-    public String getDisplayText() {
+    public String getDisplayText()
+    {
         return displayText;
+    }
+
+    public String getTemporaryDisplayText()
+    {
+        return temporaryDisplayText;
     }
 
     public boolean isShowDisplayText()
@@ -390,18 +402,6 @@ public class Action implements Cloneable, Serializable
         action.setGaugeProperties(action.getGaugeProperties().chaap());
         action.setIcons((HashMap<String, byte[]>) action.getIcons().clone());
         return action;
-    }
-
-    private ServerConnection serverConnection = null;
-
-    public void setServerConnection(ServerConnection serverConnection)
-    {
-        this.serverConnection = serverConnection;
-    }
-
-    public ServerConnection getServerConnection()
-    {
-        return serverConnection;
     }
 
     private String profileID = null;

@@ -16,7 +16,7 @@ package com.stream_pi.action_api.externalplugin;
 
 import com.stream_pi.action_api.action.Action;
 import com.stream_pi.action_api.action.ActionType;
-import com.stream_pi.action_api.action.PropertySaver;
+import com.stream_pi.action_api.action.ServerConnection;
 import com.stream_pi.action_api.actionproperty.property.ControlType;
 import com.stream_pi.action_api.actionproperty.property.Property;
 import com.stream_pi.action_api.actionproperty.property.Type;
@@ -207,47 +207,51 @@ public abstract class ExternalPlugin extends Action
         // This method is called when client is connected
     }
 
-    private PropertySaver propertySaver = null;
+    private ServerConnection serverConnection = null;
 
-    public void setPropertySaver(PropertySaver propertySaver)
+    public void setServerConnection(ServerConnection serverConnection)
     {
-        this.propertySaver = propertySaver;
+        this.serverConnection = serverConnection;
     }
 
     public void saveServerProperties()
     {
-        propertySaver.saveServerProperties();
+        serverConnection.saveServerProperties();
     }
-
 
     public void saveClientAction(boolean sendIcons, boolean runAsync)
     {
-        propertySaver.saveClientAction(getProfileID(), getID(), getSocketAddressForClient(), sendIcons, runAsync);
+        serverConnection.saveClientAction(getProfileID(), getID(), getSocketAddressForClient(), sendIcons, runAsync);
     }
 
     public void saveClientAction()
     {
-        propertySaver.saveClientAction(getProfileID(), getID(), getSocketAddressForClient(), true, false);
+        serverConnection.saveClientAction(getProfileID(), getID(), getSocketAddressForClient(), true, false);
+    }
+
+    public void updateTemporaryDisplayText(String displayText)
+    {
+        serverConnection.updateTemporaryDisplayText(getProfileID(), getID(), getSocketAddressForClient(), displayText);
     }
 
     public void saveAllIcons()
     {
-        propertySaver.saveAllIcons(getProfileID(), getID(), getSocketAddressForClient());
+        serverConnection.saveAllIcons(getProfileID(), getID(), getSocketAddressForClient());
     }
 
     public void saveIcon(String state)
     {
-        propertySaver.saveIcon(state, getProfileID(), getID(), getSocketAddressForClient());
+        serverConnection.saveIcon(state, getProfileID(), getID(), getSocketAddressForClient());
     }
 
     public void throwMinorException(MinorException exception)
     {
-        getServerConnection().sendActionFailed(exception, getSocketAddressForClient(), getProfileID(), this);
+        serverConnection.sendActionFailed(exception, getSocketAddressForClient(), getProfileID(), this);
     }
 
     public Platform getPlatform()
     {
-        return getServerConnection().getPlatform();
+        return serverConnection.getPlatform();
     }
 
     public void throwMinorException(String message)
@@ -262,6 +266,6 @@ public abstract class ExternalPlugin extends Action
 
     public Locale getCurrentLanguageLocale()
     {
-        return getServerConnection().getCurrentLanguageLocale();
+        return serverConnection.getCurrentLanguageLocale();
     }
 }
