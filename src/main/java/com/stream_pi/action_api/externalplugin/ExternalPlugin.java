@@ -28,7 +28,10 @@ import com.stream_pi.util.version.Version;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.*;
 import java.util.logging.Logger;
 
 public abstract class ExternalPlugin extends Action
@@ -267,5 +270,72 @@ public abstract class ExternalPlugin extends Action
     public Locale getCurrentLanguageLocale()
     {
         return serverConnection.getCurrentLanguageLocale();
+    }
+
+    private ScheduledExecutorService scheduledExecutorService = null;
+    private List<Future<?>> listOfTasks = null;
+
+    private void initScheduledExecutorServiceIfNull()
+    {
+        if (scheduledExecutorService == null)
+        {
+            scheduledExecutorService = Executors.newScheduledThreadPool(64);
+            listOfTasks = new ArrayList<>();
+        }
+    }
+
+    public Future<?> scheduleRunnableAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)
+    {
+        initScheduledExecutorServiceIfNull();
+
+        Future<?> future = scheduledExecutorService.scheduleAtFixedRate(command, initialDelay, period, unit);
+
+        listOfTasks.add(future);
+        return future;
+    }
+
+    public Future<?> scheduleRunnableWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)
+    {
+        initScheduledExecutorServiceIfNull();
+
+        Future<?> future = scheduledExecutorService.scheduleWithFixedDelay(command, initialDelay, delay, unit);
+
+        listOfTasks.add(future);
+        return future;
+    }
+
+    public Future<?> scheduleRunnable(Runnable command, long delay, TimeUnit unit)
+    {
+        initScheduledExecutorServiceIfNull();
+
+        Future<?> future = scheduledExecutorService.schedule(command, delay, unit);
+
+        listOfTasks.add(future);
+        return future;
+    }
+
+    public Future<?> scheduleCallable(Callable<?> callable, long delay, TimeUnit unit)
+    {
+        initScheduledExecutorServiceIfNull();
+
+        Future<?> future = scheduledExecutorService.schedule(callable, delay, unit);
+
+        listOfTasks.add(future);
+        return future;
+    }
+
+    public void shutdownExecutor()
+    {
+        if  (scheduledExecutorService != null)
+        {
+            for(Future<?> future : listOfTasks)
+            {
+                if (!future.isDone())
+                {
+                    future.cancel(true);
+                }
+            }
+            scheduledExecutorService.shutdownNow();
+        }
     }
 }
