@@ -23,6 +23,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 
 import java.util.Arrays;
+import java.util.concurrent.Future;
 
 public class GaugeAction extends ExternalPlugin
 {
@@ -117,5 +118,30 @@ public class GaugeAction extends ExternalPlugin
     public void setGaugeForegroundBaseColor(Color foregroundBaseColor)
     {
         getGaugeProperties().setForegroundBaseColor(foregroundBaseColor);
+    }
+
+    public void onGaugeInit() throws MinorException
+    {
+
+    }
+
+    private Future<?> gaugeUpdaterFuture = null;
+
+    public void setGaugeUpdaterRunnable(Future<?> gaugeUpdaterFuture)
+    {
+        if(this.gaugeUpdaterFuture != null)
+        {
+            this.gaugeUpdaterFuture.cancel(true);
+        }
+
+        this.gaugeUpdaterFuture = gaugeUpdaterFuture;
+    }
+
+    public void cancelGaugeUpdaterFuture()
+    {
+        if (gaugeUpdaterFuture != null && !gaugeUpdaterFuture.isDone())
+        {
+            gaugeUpdaterFuture.cancel(true);
+        }
     }
 }

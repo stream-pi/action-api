@@ -324,9 +324,9 @@ public abstract class ExternalPlugin extends Action
         return future;
     }
 
-    public void shutdownExecutor()
+    public void cancelAllBackgroundTasks()
     {
-        if  (scheduledExecutorService != null)
+        if (listOfTasks != null)
         {
             for(Future<?> future : listOfTasks)
             {
@@ -335,6 +335,14 @@ public abstract class ExternalPlugin extends Action
                     future.cancel(true);
                 }
             }
+        }
+    }
+
+    public void shutdownExecutor()
+    {
+        if  (scheduledExecutorService != null)
+        {
+            cancelAllBackgroundTasks();
             scheduledExecutorService.shutdownNow();
         }
     }
