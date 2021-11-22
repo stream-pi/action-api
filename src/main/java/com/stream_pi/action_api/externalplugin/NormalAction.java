@@ -26,20 +26,20 @@ public abstract class NormalAction extends ExternalPlugin
 
     public abstract void onActionClicked() throws MinorException;
 
-    public void setDefaultIcon(byte[] icon, boolean send) throws MinorException
+    public void setDefaultIcon(byte[] icon, boolean send)
     {
         addIcon("default",icon);
 
         if(send)
-            saveIcon("toggle_on");
+            saveIcon("default");
     }
 
-    public void setDefaultIcon(byte[] icon) throws MinorException
+    public void setDefaultIcon(byte[] icon)
     {
-        setDefaultIcon(icon, false);
+        setDefaultIcon(icon, true);
     }
 
-    public byte[] getDefaultIcon() throws MinorException
+    public byte[] getDefaultIcon()
     {
 
         return getIcon("default");
