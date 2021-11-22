@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 public class I18N
 {
     public static ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(I18N.class.getPackageName()+".lang");
+    private static ResourceBundle BASE_RESOURCE_BUNDLE = null;
 
     public static void init(Locale locale)
     {
@@ -39,7 +40,12 @@ public class I18N
         }
         else
         {
-            result = key;
+            if (BASE_RESOURCE_BUNDLE == null)
+            {
+                BASE_RESOURCE_BUNDLE = ResourceBundle.getBundle(I18N.class.getPackageName()+".lang", new Locale("en"));
+            }
+
+            result = BASE_RESOURCE_BUNDLE.getString(key);
         }
 
         if (args.length == 0)
