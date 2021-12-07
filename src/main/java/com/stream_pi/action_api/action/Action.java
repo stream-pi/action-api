@@ -316,6 +316,12 @@ public class Action implements Cloneable, Serializable
         this.gaugeProperties = new GaugeProperties();
     }
 
+    private String uniqueID = getClass().getModule().getName()+"."+getClass().getCanonicalName();
+    public Action(String uniqueID)
+    {
+        this.uniqueID = uniqueID;
+    }
+
     public void setIDRandom()
     {
         setID(UUID.randomUUID().toString());
@@ -382,7 +388,7 @@ public class Action implements Cloneable, Serializable
 
     public String getUniqueID()
     {
-        return getClass().getModule().getName()+"."+getClass().getCanonicalName();
+        return uniqueID;
     }
 
 
@@ -400,7 +406,12 @@ public class Action implements Cloneable, Serializable
     {
         Action action = (Action) super.clone();
         action.setClientProperties(action.getClientProperties().clone());
-        action.setGaugeProperties(action.getGaugeProperties().chaap());
+
+        if (action.getGaugeProperties() != null)
+        {
+            action.setGaugeProperties(action.getGaugeProperties().chaap());
+        }
+
         action.setIcons((HashMap<String, byte[]>) action.getIcons().clone());
         return action;
     }
