@@ -22,13 +22,11 @@ import java.util.List;
 
 public class StreamPiTouchEvent extends StreamPiInputEvent implements Serializable
 {
-    public StreamPiTouchEvent(EventType<?> eventType, int touchCount, int eventSetId, TouchPoint touchPoint, List<TouchPoint> touchPoints)
+    public StreamPiTouchEvent(EventType<?> eventType, int touchCount, int eventSetId)
     {
         super(eventType);
         this.touchCount = touchCount;
         this.eventSetId = eventSetId;
-        this.touchPoint = touchPoint;
-        this.touchPoints = touchPoints;
     }
 
     private final int touchCount;
@@ -43,18 +41,5 @@ public class StreamPiTouchEvent extends StreamPiInputEvent implements Serializab
     public int getEventSetId()
     {
         return eventSetId;
-    }
-
-    private final TouchPoint touchPoint;
-
-    public TouchPoint getTouchPoint()
-    {
-        return touchPoint;
-    }
-    private final List<TouchPoint> touchPoints;
-
-    public List<TouchPoint> getTouchPoints()
-    {
-        return touchPoints;
     }
 }
