@@ -20,6 +20,7 @@ import com.stream_pi.action_api.action.ServerConnection;
 import com.stream_pi.action_api.actionproperty.property.ControlType;
 import com.stream_pi.action_api.actionproperty.property.Property;
 import com.stream_pi.action_api.actionproperty.property.Type;
+import com.stream_pi.action_api.externalplugin.inputevent.StreamPiInputEvent;
 import com.stream_pi.action_api.i18n.I18N;
 import com.stream_pi.util.exception.MinorException;
 import com.stream_pi.util.platform.Platform;
@@ -350,7 +351,7 @@ public abstract class ExternalPlugin extends Action
         }
     }
 
-    public void onInputEventReceived(EventType<?> inputEventType) throws MinorException
+    public void onInputEventReceived(StreamPiInputEvent streamPiInputEvent) throws MinorException
     {
         // This method is called when a InputEvent is received from the client
     }
