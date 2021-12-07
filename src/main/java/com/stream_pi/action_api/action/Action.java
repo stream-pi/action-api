@@ -396,7 +396,8 @@ public class Action implements Cloneable, Serializable
         return version;
     }
 
-    public Action clone() throws CloneNotSupportedException {
+    public Action clone() throws CloneNotSupportedException
+    {
         Action action = (Action) super.clone();
         action.setClientProperties(action.getClientProperties().clone());
         action.setGaugeProperties(action.getGaugeProperties().chaap());

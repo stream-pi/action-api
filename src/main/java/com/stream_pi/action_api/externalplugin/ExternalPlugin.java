@@ -26,6 +26,8 @@ import com.stream_pi.util.platform.Platform;
 import com.stream_pi.util.platform.PlatformType;
 import com.stream_pi.util.version.Version;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TouchEvent;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
@@ -187,7 +189,7 @@ public abstract class ExternalPlugin extends Action
 
     public void onActionCreate() throws MinorException
     {
-        // This method is called when the action is first created and send to the Client
+        // This method is called when the action is first created and send to the client
     }
 
     public void onActionSavedFromServer() throws MinorException
@@ -197,7 +199,7 @@ public abstract class ExternalPlugin extends Action
 
     public void onActionDeleted() throws MinorException
     {
-        // This method is called when action is deleted from client.
+        // This method is called when action is deleted from client
     }
 
     public void onClientDisconnected() throws MinorException
@@ -345,5 +347,15 @@ public abstract class ExternalPlugin extends Action
             cancelAllBackgroundTasks();
             scheduledExecutorService.shutdownNow();
         }
+    }
+
+    public void onMouseEventReceived(MouseEvent mouseEvent) throws MinorException
+    {
+        // This method is called when a MouseEvent is received from the client
+    }
+
+    public void onTouchEventReceived(TouchEvent touchEvent) throws MinorException
+    {
+        // This method is called when a TouchEvent is received from the client
     }
 }
