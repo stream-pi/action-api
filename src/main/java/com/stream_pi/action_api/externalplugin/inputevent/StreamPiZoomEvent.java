@@ -21,6 +21,8 @@ import java.io.Serializable;
 
 public class StreamPiZoomEvent extends StreamPiInputEvent implements Serializable
 {
+    private static final long serialVersionUID = 1508194720042000L;
+
     public StreamPiZoomEvent(EventType<?> eventType, double zoomFactor, double totalZoomFactor)
     {
         super(eventType);

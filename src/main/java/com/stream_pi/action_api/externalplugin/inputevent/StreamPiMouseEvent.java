@@ -23,6 +23,8 @@ import java.io.Serializable;
 
 public class StreamPiMouseEvent extends StreamPiInputEvent implements Serializable
 {
+    private static final long serialVersionUID = 1967194720041978L;
+
     public StreamPiMouseEvent(EventType<?> eventType, int clickCount, MouseButton button)
     {
         super(eventType);

@@ -21,6 +21,8 @@ import java.io.Serializable;
 
 public class StreamPiSwipeEvent extends StreamPiInputEvent implements Serializable
 {
+    private static final long serialVersionUID = 1967194720041980L;
+
     public StreamPiSwipeEvent(EventType<?> eventType, int touchCount)
     {
         super(eventType);

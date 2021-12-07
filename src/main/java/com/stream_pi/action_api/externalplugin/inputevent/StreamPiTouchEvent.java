@@ -22,6 +22,8 @@ import java.util.List;
 
 public class StreamPiTouchEvent extends StreamPiInputEvent implements Serializable
 {
+    private static final long serialVersionUID = 1967194720041981L;
+
     public StreamPiTouchEvent(EventType<?> eventType, int touchCount, int eventSetId)
     {
         super(eventType);

@@ -22,6 +22,8 @@ import java.io.Serializable;
 
 public class StreamPiRotateEvent extends StreamPiInputEvent implements Serializable
 {
+    private static final long serialVersionUID = 1967194720041979L;
+
     public StreamPiRotateEvent(EventType<?> eventType, double angle, double totalAngle)
     {
         super(eventType);
