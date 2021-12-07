@@ -25,6 +25,7 @@ import com.stream_pi.util.exception.MinorException;
 import com.stream_pi.util.platform.Platform;
 import com.stream_pi.util.platform.PlatformType;
 import com.stream_pi.util.version.Version;
+import javafx.event.EventType;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
@@ -349,13 +350,8 @@ public abstract class ExternalPlugin extends Action
         }
     }
 
-    public void onMouseEventReceived(MouseEvent mouseEvent) throws MinorException
+    public void onInputEventReceived(EventType<?> inputEventType) throws MinorException
     {
-        // This method is called when a MouseEvent is received from the client
-    }
-
-    public void onTouchEventReceived(TouchEvent touchEvent) throws MinorException
-    {
-        // This method is called when a TouchEvent is received from the client
+        // This method is called when a InputEvent is received from the client
     }
 }
