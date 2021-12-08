@@ -24,7 +24,10 @@ public abstract class NormalAction extends ExternalPlugin
         super(ActionType.NORMAL);
     }
 
-    public abstract void onActionClicked() throws MinorException;
+    public void onActionClicked() throws MinorException
+    {
+        // This method is called when Action is clicked
+    }
 
     public void setDefaultIcon(byte[] icon, boolean send)
     {
