@@ -236,7 +236,7 @@ public abstract class ExternalPlugin extends Action
         serverConnection.saveClientAction(getProfileID(), getID(), getSocketAddressForClient(), true, false);
     }
 
-    public void updateTemporaryDisplayText(String displayText)
+    public void updateTemporaryDisplayText(String displayText) throws MinorException
     {
         serverConnection.updateTemporaryDisplayText(getProfileID(), getID(), getSocketAddressForClient(), displayText);
     }

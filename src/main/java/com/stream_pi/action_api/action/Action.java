@@ -440,6 +440,11 @@ public class Action implements Cloneable, Serializable
         return socketAddressForClient;
     }
 
+    public boolean isConnectedToClient()
+    {
+        return socketAddressForClient != null;
+    }
+
 
     private boolean currentToggleStatus = false;
 
