@@ -159,9 +159,11 @@ public abstract class ExternalPlugin extends Action
         //Runs when server shuts down
     }
 
-    public ExternalPlugin clone() throws CloneNotSupportedException {
+    public ExternalPlugin clone() throws CloneNotSupportedException
+    {
         ExternalPlugin action = (ExternalPlugin) super.clone();
         action.setClientProperties(getClientProperties().clone());
+        action.cancelAllBackgroundTasks();
         return action;
     }
 
