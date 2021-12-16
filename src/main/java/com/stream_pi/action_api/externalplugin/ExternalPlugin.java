@@ -26,6 +26,7 @@ import com.stream_pi.util.exception.MinorException;
 import com.stream_pi.util.platform.Platform;
 import com.stream_pi.util.platform.PlatformType;
 import com.stream_pi.util.version.Version;
+import javafx.application.HostServices;
 import javafx.event.EventType;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -351,6 +352,11 @@ public abstract class ExternalPlugin extends Action
             cancelAllBackgroundTasks();
             scheduledExecutorService.shutdownNow();
         }
+    }
+
+    public HostServices getHostServices()
+    {
+        return serverConnection.getHostServices();
     }
 
     public void onInputEventReceived(StreamPiInputEvent streamPiInputEvent) throws MinorException

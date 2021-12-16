@@ -16,6 +16,7 @@ package com.stream_pi.action_api.action;
 
 import com.stream_pi.util.exception.MinorException;
 import com.stream_pi.util.platform.Platform;
+import javafx.application.HostServices;
 
 import java.net.SocketAddress;
 import java.util.Locale;
@@ -30,4 +31,5 @@ public interface ServerConnection
     void saveAllIcons(String profileID, String actionID, SocketAddress clientSocketAddress);
     void saveIcon(String state, String profileID, String actionID, SocketAddress clientSocketAddress);
     void updateTemporaryDisplayText(String profileID, String actionID, SocketAddress clientSocketAddress, String displayText) throws MinorException;
+    HostServices getHostServices();
 }
