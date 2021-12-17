@@ -33,7 +33,7 @@ public class Property implements Serializable
     private String helpLink=null;
     private String displayName;
 
-    private Property(String name, ControlType controlType, Type type, boolean visible, String defaultRawValue,
+    private Property(String name, ControlType controlType, Type type, boolean visible, boolean canBeBlank, String defaultRawValue,
                      String helpLink, String displayName, String rawValue, List<?> list, FileExtensionFilter[] extensionFilters,
                      int maxIntValue, int minIntValue, double maxDoubleValue, double minDoubleValue)
     {
@@ -41,6 +41,7 @@ public class Property implements Serializable
         this.controlType = controlType;
         this.type = type;
         this.visible = visible;
+        this.canBeBlank = canBeBlank;
         this.defaultRawValue = defaultRawValue;
         this.displayName = displayName;
         this.list = list;
@@ -58,7 +59,7 @@ public class Property implements Serializable
 
     public Property chaap()
     {
-        return new Property(getName(), getControlType(), getType(), isVisible(), getDefaultRawValue(),
+        return new Property(getName(), getControlType(), getType(), isVisible(), isCanBeBlank(), getDefaultRawValue(),
                 getHelpLink(), getDisplayName(), getRawValue(), list, getExtensionFilters(),
                 maxIntValue, minIntValue, maxDoubleValue, minDoubleValue);
     }
