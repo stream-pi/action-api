@@ -20,6 +20,8 @@ import javafx.application.HostServices;
 
 import java.net.SocketAddress;
 import java.util.Locale;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
 
 public interface ServerConnection
 {
@@ -32,4 +34,6 @@ public interface ServerConnection
     void saveIcon(String state, String profileID, String actionID, SocketAddress clientSocketAddress);
     void updateTemporaryDisplayText(String profileID, String actionID, SocketAddress clientSocketAddress, String displayText) throws MinorException;
     HostServices getHostServices();
+    boolean isConnected(SocketAddress socketAddress);
+    ExecutorService getExecutorService();
 }

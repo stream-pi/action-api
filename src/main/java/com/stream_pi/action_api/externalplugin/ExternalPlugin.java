@@ -164,7 +164,6 @@ public abstract class ExternalPlugin extends Action
     {
         ExternalPlugin action = (ExternalPlugin) super.clone();
         action.setClientProperties(getClientProperties().clone());
-        action.cancelAllBackgroundTasks();
         return action;
     }
 
@@ -279,79 +278,19 @@ public abstract class ExternalPlugin extends Action
         return serverConnection.getCurrentLanguageLocale();
     }
 
-    private ScheduledExecutorService scheduledExecutorService = null;
-    private List<Future<?>> listOfTasks = null;
-
-    private void initScheduledExecutorServiceIfNull()
+    public Future<?> submitToExecutorService(Runnable command)
     {
-        if (scheduledExecutorService == null)
-        {
-            scheduledExecutorService = Executors.newScheduledThreadPool(64);
-            listOfTasks = new ArrayList<>();
-        }
+        return serverConnection.getExecutorService().submit(command);
     }
 
-    public Future<?> scheduleRunnableAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)
+    public Future<?> submitToExecutorService(Callable<?> callable)
     {
-        initScheduledExecutorServiceIfNull();
-
-        Future<?> future = scheduledExecutorService.scheduleAtFixedRate(command, initialDelay, period, unit);
-
-        listOfTasks.add(future);
-        return future;
+        return serverConnection.getExecutorService().submit(callable);
     }
 
-    public Future<?> scheduleRunnableWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit)
+    public Future<?> submitToExecutorService(Runnable task, Object result)
     {
-        initScheduledExecutorServiceIfNull();
-
-        Future<?> future = scheduledExecutorService.scheduleWithFixedDelay(command, initialDelay, delay, unit);
-
-        listOfTasks.add(future);
-        return future;
-    }
-
-    public Future<?> scheduleRunnable(Runnable command, long delay, TimeUnit unit)
-    {
-        initScheduledExecutorServiceIfNull();
-
-        Future<?> future = scheduledExecutorService.schedule(command, delay, unit);
-
-        listOfTasks.add(future);
-        return future;
-    }
-
-    public Future<?> scheduleCallable(Callable<?> callable, long delay, TimeUnit unit)
-    {
-        initScheduledExecutorServiceIfNull();
-
-        Future<?> future = scheduledExecutorService.schedule(callable, delay, unit);
-
-        listOfTasks.add(future);
-        return future;
-    }
-
-    public void cancelAllBackgroundTasks()
-    {
-        if (listOfTasks != null)
-        {
-            for(Future<?> future : listOfTasks)
-            {
-                if (!future.isDone())
-                {
-                    future.cancel(true);
-                }
-            }
-        }
-    }
-
-    public void shutdownExecutor()
-    {
-        if  (scheduledExecutorService != null)
-        {
-            cancelAllBackgroundTasks();
-            scheduledExecutorService.shutdownNow();
-        }
+        return serverConnection.getExecutorService().submit(task, result);
     }
 
     public HostServices getHostServices()
@@ -362,5 +301,10 @@ public abstract class ExternalPlugin extends Action
     public void onInputEventReceived(StreamPiInputEvent streamPiInputEvent) throws MinorException
     {
         // This method is called when a InputEvent is received from the client
+    }
+
+    public boolean isConnectedToClient()
+    {
+        return serverConnection.isConnected(getSocketAddressForClient());
     }
 }
