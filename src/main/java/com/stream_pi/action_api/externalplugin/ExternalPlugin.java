@@ -28,6 +28,7 @@ import com.stream_pi.util.platform.PlatformType;
 import com.stream_pi.util.version.Version;
 import javafx.application.HostServices;
 import javafx.event.EventType;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
@@ -177,6 +178,17 @@ public abstract class ExternalPlugin extends Action
     public VBox getServerSettingsButtonBar()
     {
         return serverSettingsButtonBar;
+    }
+
+    private Node[] serverSettingsNodes = null;
+    public void setServerSettingsNodes(Node... nodes)
+    {
+        serverSettingsNodes = nodes;
+    }
+
+    public Node[] getServerSettingsNodes()
+    {
+        return serverSettingsNodes;
     }
 
     private VBox clientActionSettingsButtonBar = null;
