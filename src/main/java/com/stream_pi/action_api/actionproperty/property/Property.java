@@ -130,12 +130,6 @@ public class Property implements Serializable
     public void setCanBeBlank(boolean canBeBlank) throws MinorException
     {
         typeCheck(Type.STRING);
-
-        if(getDefaultRawValue().isEmpty() && !canBeBlank)
-        {
-            throw new MinorException(PropertyValidation.defaultValueRequired(name));
-        }
-
         this.canBeBlank = canBeBlank;
     }
 

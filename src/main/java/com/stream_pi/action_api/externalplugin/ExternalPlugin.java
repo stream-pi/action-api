@@ -151,6 +151,11 @@ public abstract class ExternalPlugin extends Action
 
     }
 
+    public void onServerPropertiesSavedByUser() throws MinorException
+    {
+
+    }
+
     public void initClientActionSettingsButtonBar()
     {
 
@@ -237,7 +242,12 @@ public abstract class ExternalPlugin extends Action
 
     public void saveServerProperties()
     {
-        serverConnection.saveServerProperties();
+        serverConnection.saveServerProperties(getUniqueID());
+    }
+
+    public boolean saveServerPropertiesProvidedByUser()
+    {
+        return serverConnection.saveServerPropertiesProvidedByUser(getUniqueID());
     }
 
     public void saveClientAction(boolean sendIcons, boolean runAsync)

@@ -28,7 +28,8 @@ public interface ServerConnection
     Platform getPlatform();
     void sendActionFailed(MinorException exception, SocketAddress socketAddress, String profileID, Action action);
     Locale getCurrentLanguageLocale();
-    void saveServerProperties();
+    void saveServerProperties(String uniqueID);
+    boolean saveServerPropertiesProvidedByUser(String uniqueID);
     void saveClientAction(String profileID, String actionID, SocketAddress clientSocketAddress, boolean sendIcons, boolean runAsync);
     void saveAllIcons(String profileID, String actionID, SocketAddress clientSocketAddress);
     void saveIcon(String state, String profileID, String actionID, SocketAddress clientSocketAddress);
