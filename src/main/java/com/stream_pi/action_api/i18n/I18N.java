@@ -22,8 +22,8 @@ import java.util.logging.Logger;
 
 public class I18N
 {
-    public static ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(I18N.class.getPackageName()+".lang");
-    private static ResourceBundle BASE_RESOURCE_BUNDLE = null;
+    public static ResourceBundle RESOURCE_BUNDLE;
+    private static ResourceBundle BASE_RESOURCE_BUNDLE;
 
     public static void init(Locale locale)
     {
