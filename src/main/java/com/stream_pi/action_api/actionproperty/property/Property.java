@@ -311,6 +311,13 @@ public class Property implements Serializable
         return list;
     }
 
+    public ListValue getSelectedListValue() throws MinorException
+    {
+        typeCheck(Type.LIST);
+
+        return getListValue().get(getSelectedIndex());
+    }
+
     //For Type INTEGER
     protected int maxIntValue, minIntValue;
 
