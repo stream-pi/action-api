@@ -298,7 +298,7 @@ public class Property implements Serializable
         this.rawValue = index+"";
     }
 
-    public int getSelectedIndex() throws MinorException
+    public int getSelectedListIndex() throws MinorException
     {
         typeCheck(Type.LIST);
         return Integer.parseInt(this.rawValue);
@@ -315,7 +315,7 @@ public class Property implements Serializable
     {
         typeCheck(Type.LIST);
 
-        return getListValue().get(getSelectedIndex());
+        return getListValue().get(getSelectedListIndex());
     }
 
     //For Type INTEGER
